@@ -1,0 +1,261 @@
+<!doctype html>
+<!-- @dsCard group="UI Kit — Website" name="Website UI Kit — Homepage" subtitle="Interactive homepage prototype — click any CTA to open the contact modal" viewport="1280x900" -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1280, initial-scale=1">
+  <title>OpenEconomics — Mitigate risks, adapt with confidence</title>
+
+  <!-- ext-resource-dependency: code-referenced assets (JSX inline styles / props) -->
+  <meta name="ext-resource-dependency" content="../../assets/hero-bg.png"      data-resource-id="heroBg" />
+  <meta name="ext-resource-dependency" content="../../assets/card-featured.png" data-resource-id="cardFeatured" />
+  <meta name="ext-resource-dependency" content="../../assets/news-card.jpg"     data-resource-id="newsCard" />
+  <meta name="ext-resource-dependency" content="../../assets/logo-white.svg"    data-resource-id="logoWhite" />
+  <meta name="ext-resource-dependency" content="../../assets/logo-black.svg"    data-resource-id="logoBlack" />
+
+  <!-- Bundler thumbnail -->
+  <template id="__bundler_thumbnail" data-bg-color="#270065">
+    <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+      <rect width="120" height="80" fill="#270065"/>
+      <!-- wordmark bar -->
+      <rect x="16" y="10" width="60" height="6" rx="0" fill="#B9FF69"/>
+      <rect x="16" y="20" width="40" height="3" rx="0" fill="rgba(255,255,255,0.4)"/>
+      <!-- hero image placeholder -->
+      <rect x="16" y="30" width="88" height="26" fill="#4400B3"/>
+      <!-- hero text lines -->
+      <rect x="22" y="36" width="50" height="4" rx="0" fill="rgba(255,255,255,0.7)"/>
+      <rect x="22" y="44" width="36" height="3" rx="0" fill="rgba(255,255,255,0.4)"/>
+      <!-- footer -->
+      <rect x="0" y="66" width="120" height="14" fill="#1a0040"/>
+      <rect x="16" y="70" width="30" height="3" rx="0" fill="rgba(255,255,255,0.5)"/>
+      <rect x="74" y="70" width="30" height="3" rx="0" fill="#B9FF69"/>
+    </svg>
+  </template>
+
+  <link rel="stylesheet" href="../../colors_and_type.css">
+  <style>
+    html, body { margin: 0; background: #fff; }
+    body { overflow-x: hidden; }
+    main { min-height: 100vh; }
+
+    /* Section: Big intro statement */
+    .intro {
+      max-width: 1760px;
+      margin: 0 auto;
+      padding: 160px var(--oe-page-pad) 100px;
+      display: grid;
+      grid-template-columns: 1fr 520px;
+      gap: 120px;
+      align-items: center;
+    }
+    .intro h2 {
+      margin: 0;
+      font-family: var(--oe-font-serif);
+      font-size: 56px;
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.005em;
+      text-wrap: balance;
+      color: var(--oe-black);
+    }
+    .intro .bullet {
+      font-family: var(--oe-font-sans);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--oe-bluette-700);
+      padding: 16px 0;
+      border-top: 1px solid var(--oe-gray-200);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .intro .bullet:last-child { border-bottom: 1px solid var(--oe-gray-200); }
+    .intro .bullet::before { content: "→"; color: var(--oe-bluette-700); font-weight: 400; }
+    .intro .compass {
+      height: 460px;
+      border-radius: 0;
+      background: url("../../assets/compass.png") center / cover no-repeat;
+    }
+
+    /* Section: Projects strip */
+    .projects {
+      max-width: 1760px;
+      margin: 0 auto;
+      padding: 40px var(--oe-page-pad) 80px;
+    }
+    .projects-head {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 48px;
+    }
+    .projects-head h2 {
+      margin: 0;
+      font-family: var(--oe-font-serif);
+      font-size: 48px; font-weight: 400; line-height: 1.05; letter-spacing: -0.005em;
+      max-width: 760px; text-wrap: balance;
+      color: var(--oe-black);
+    }
+    .projects-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+    /* Section: Solution cards */
+    .solutions {
+      max-width: 1760px;
+      margin: 0 auto;
+      padding: 80px var(--oe-page-pad);
+    }
+    .solutions h2 {
+      margin: 0 0 56px;
+      font-family: var(--oe-font-serif);
+      font-size: 56px; font-weight: 400; line-height: 1.05; letter-spacing: -0.005em;
+      text-wrap: balance;
+      color: var(--oe-black);
+    }
+    .solutions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+
+    /* Section: Why us */
+    .why-us {
+      position: relative;
+      padding: 120px var(--oe-page-pad);
+      background:
+        linear-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,0) 30%, rgba(255,255,255,0) 70%, rgba(255,255,255,1) 100%),
+        url("../../assets/grid-bg.png") center / cover repeat;
+    }
+    .why-us-inner {
+      max-width: 1760px; margin: 0 auto;
+      display: grid; grid-template-columns: 520px 1fr; gap: 80px; align-items: flex-start;
+    }
+    .why-us h2 {
+      margin: 0 0 40px;
+      font-family: var(--oe-font-serif);
+      font-size: 48px; font-weight: 400; line-height: 1.05; letter-spacing: -0.005em;
+      color: var(--oe-black);
+    }
+    .why-us-list { display: flex; flex-direction: column; gap: 20px; }
+    .why-card {
+      background: #F1F1F1;
+      border-radius: 0;
+      padding: 32px 40px;
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .why-card .tile {
+      width: 56px; height: 56px;
+      background: #270065;
+      display: inline-flex; align-items: center; justify-content: center;
+      color: #F1F1F1;
+    }
+    .why-card .tile svg { width: 32px; height: 32px; }
+    .why-card .h { font-family: var(--oe-font-sans); font-weight: 400; font-size: 28px; line-height: 1.15; color: var(--oe-black); margin: 0 0 8px; letter-spacing: -0.005em; }
+    .why-card .d { font-family: var(--oe-font-sans); font-weight: 300; font-size: 18px; line-height: 1.35; color: var(--oe-gray-700); margin: 0; }
+
+    /* Client logos */
+    .clients {
+      max-width: 1760px; margin: 0 auto;
+      padding: 60px var(--oe-page-pad);
+      border-top: 1px solid var(--oe-gray-200);
+      border-bottom: 1px solid var(--oe-gray-200);
+      display: flex; justify-content: space-around; align-items: center; gap: 32px;
+    }
+    .clients span { font-family: var(--oe-font-serif); font-size: 24px; }
+
+    /* News section */
+    .news {
+      max-width: 1760px; margin: 0 auto;
+      padding: 100px var(--oe-page-pad);
+    }
+    .news-head {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 56px;
+    }
+    .news-head h2 {
+      margin: 0;
+      font-family: var(--oe-font-serif);
+      font-size: 48px; font-weight: 400; line-height: 1.05; letter-spacing: -0.005em;
+      max-width: 920px; text-wrap: balance;
+      color: var(--oe-black);
+    }
+    .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed; inset: 0;
+      background: rgba(39,0,101,0.7);
+      backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 100;
+      animation: fadeIn 0.22s var(--oe-ease) both;
+    }
+    @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+    .modal {
+      width: min(560px, calc(100vw - 80px));
+      background: #fff;
+      padding: 48px;
+      border-radius: 0;
+      box-shadow: var(--oe-shadow-3);
+    }
+    .modal h3 { margin: 0 0 12px; font-family: var(--oe-font-serif); font-size: 40px; line-height: 1.05; }
+    .modal p { font-size: 18px; }
+    .modal .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+    .modal .row.full { grid-template-columns: 1fr; }
+    .modal label {
+      display: block;
+      font-family: var(--oe-font-sans);
+      font-weight: 500;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--oe-gray-700);
+      margin-bottom: 6px;
+    }
+    .modal input, .modal textarea {
+      font-family: var(--oe-font-sans);
+      font-size: 16px;
+      font-weight: 300;
+      padding: 12px 14px;
+      border: 1px solid var(--oe-gray-200);
+      background: #fff;
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 0;
+      outline: none;
+    }
+    .modal input:focus, .modal textarea:focus { border-color: var(--oe-bluette-700); box-shadow: inset 0 0 0 1px var(--oe-bluette-700); }
+    .modal .close {
+      position: absolute; top: 24px; right: 24px;
+      background: none; border: none; cursor: pointer;
+      font-size: 24px; color: var(--oe-bluette-700);
+    }
+    .modal .actions { display: flex; justify-content: flex-end; margin-top: 28px; }
+    .toast {
+      position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%);
+      background: var(--oe-bluette-900); color: var(--oe-lime-400);
+      padding: 16px 24px;
+      font-family: var(--oe-font-sans);
+      font-weight: 500;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      border-radius: 0;
+      z-index: 200;
+      animation: slideUp 0.3s var(--oe-ease-out) both;
+    }
+    @keyframes slideUp { from { opacity: 0; transform: translate(-50%, 16px); } to { opacity: 1; transform: translate(-50%, 0); } }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="CtaButton.jsx"></script>
+  <script type="text/babel" src="Header.jsx"></script>
+  <script type="text/babel" src="Hero.jsx"></script>
+  <script type="text/babel" src="FeatureCard.jsx"></script>
+  <script type="text/babel" src="ProjectCard.jsx"></script>
+  <script type="text/babel" src="NewsCard.jsx"></script>
+  <script type="text/babel" src="CoinvestBlock.jsx"></script>
+  <script type="text/babel" src="Footer.jsx"></script>
+  <script type="text/babel" src="App.jsx"></script>
+</body>
+</html>

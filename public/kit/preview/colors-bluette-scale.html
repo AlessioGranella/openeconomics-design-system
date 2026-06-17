@@ -1,0 +1,52 @@
+<!-- @dsCard group="Colors" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: #fff; padding: 20px; box-sizing: border-box; }
+  .scale {
+    width: 700px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 4px;
+  }
+  .swatch {
+    aspect-ratio: 1 / 1.4;
+    border-radius: var(--oe-radius-xs);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 8px;
+    font-family: var(--oe-font-mono);
+    font-size: 12px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    box-sizing: border-box;
+  }
+  .step { font-family: var(--oe-font-sans); font-weight: 600; font-size: 12px; }
+  .hex { opacity: 0.85; text-transform: uppercase; }
+  .label {
+    font-family: var(--oe-font-sans);
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 12px 4px;
+    letter-spacing: -0.01em;
+  }
+</style>
+</head>
+<body>
+<div class="label">Bluette</div>
+<div class="scale">
+  <div class="swatch" style="background:#EFE5FF;color:#270065"><div class="step">050</div><div class="hex">#EFE5FF</div></div>
+  <div class="swatch" style="background:#D9C1FF;color:#270065"><div class="step">100</div><div class="hex">#D9C1FF</div></div>
+  <div class="swatch" style="background:#B991FF;color:#270065"><div class="step">200</div><div class="hex">#B991FF</div></div>
+  <div class="swatch" style="background:#A16AFF;color:#fff"><div class="step">300</div><div class="hex">#A16AFF</div></div>
+  <div class="swatch" style="background:#8742FF;color:#fff"><div class="step">400</div><div class="hex">#8742FF</div></div>
+  <div class="swatch" style="background:#6E1AFF;color:#fff"><div class="step">500</div><div class="hex">#6E1AFF</div></div>
+  <div class="swatch" style="background:#5902EE;color:#fff"><div class="step">600</div><div class="hex">#5902EE</div></div>
+  <div class="swatch" style="background:#4400B3;color:#B9FF69"><div class="step">700</div><div class="hex">#4400B3</div></div>
+  <div class="swatch" style="background:#340088;color:#fff"><div class="step">800</div><div class="hex">#340088</div></div>
+  <div class="swatch" style="background:#270065;color:#fff"><div class="step">900</div><div class="hex">#270065</div></div>
+</div>
+</body>
+</html>

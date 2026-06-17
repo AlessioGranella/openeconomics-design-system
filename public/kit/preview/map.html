@@ -1,0 +1,73 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: #fff; padding: 24px; box-sizing: border-box; }
+  .map {
+    width: 652px;
+    background: var(--oe-gray-100);
+    padding: 24px 28px 20px;
+    box-sizing: border-box;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .pretitle {
+    font-family: var(--oe-font-mono);
+    font-weight: 500; font-size: 12px;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--oe-black);
+  }
+  .title { font-family: var(--oe-font-sans); font-weight: 400; font-size: 16px; color: var(--oe-black); margin: 2px 0 0; }
+  .subtitle { font-family: var(--oe-font-sans); font-size: 14px; color: #2C2C2C; margin: 0 0 14px; }
+  /* Plot placeholder — choropleth canvas (real geo asset dropped in production) */
+  .canvas {
+    height: 150px;
+    background: var(--oe-bluette-050);
+    display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px;
+    padding: 10px; box-sizing: border-box;
+  }
+  .cell { background: var(--oe-bluette-200); }
+  .cell.s3 { background: var(--oe-bluette-400); }
+  .cell.s4 { background: var(--oe-bluette-700); }
+  /* Legend numbers — sans, on light → black */
+  .legend { display: flex; gap: 18px; align-items: center; margin: 12px 0 6px; font-family: var(--oe-font-sans); font-size: 12px; color: var(--oe-black); }
+  .legend .sw { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { width: 12px; height: 12px; display: inline-block; }
+  .legend .num { font-variant-numeric: tabular-nums; font-weight: 600; }
+  /* Note a piè della mappa — trasparente, icona ⓘ */
+  .note {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: var(--oe-font-sans);
+    font-size: 12px;
+    line-height: 1.45;
+    color: #2C2C2C;
+    background: transparent;
+    padding: 12px 0 0;
+    margin-top: 4px;
+  }
+  .note svg { flex-shrink: 0; width: 18px; height: 18px; margin-top: 1px; }
+</style>
+</head>
+<body>
+<div class="map">
+  <div class="pretitle">MAPPA 1</div>
+  <div class="title">Distribuzione territoriale dei fondi erogati</div>
+  <div class="subtitle">Intensità per provincia, 2024</div>
+  <div class="canvas">
+    <div class="cell"></div><div class="cell s3"></div><div class="cell s4"></div><div class="cell"></div><div class="cell s3"></div><div class="cell s4"></div><div class="cell s3"></div><div class="cell"></div>
+    <div class="cell s3"></div><div class="cell s4"></div><div class="cell s4"></div><div class="cell s3"></div><div class="cell"></div><div class="cell s3"></div><div class="cell s4"></div><div class="cell s3"></div>
+    <div class="cell"></div><div class="cell s3"></div><div class="cell s4"></div><div class="cell s4"></div><div class="cell s3"></div><div class="cell"></div><div class="cell s3"></div><div class="cell"></div>
+  </div>
+  <div class="legend">
+    <span class="sw"><i style="background:var(--oe-bluette-200)"></i><span class="num">0–50</span></span>
+    <span class="sw"><i style="background:var(--oe-bluette-400)"></i><span class="num">50–150</span></span>
+    <span class="sw"><i style="background:var(--oe-bluette-700)"></i><span class="num">150+</span></span>
+  </div>
+  <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="var(--oe-bluette-700)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="8" stroke-width="2.5"/><path d="M12 11v5"/></svg><span>Elaborazione OpenEconomics&nbsp;&nbsp;|&nbsp;&nbsp;Fonti: ISTAT, Agenzia per la Coesione&nbsp;&nbsp;|&nbsp;&nbsp;Aggiornamento: giugno 2026</span></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,575 @@
+<!-- @dsCard group="UI Kit — Dashboard" name="Dashboard UI Kit" subtitle="Side nav, top nav, tabs, data cards — interactive prototype" -->
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440, initial-scale=1">
+<title>OpenEconomics Dashboard</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; background: #F1F1F1; font-family: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, sans-serif; }
+  #root { height: 100%; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+/* ── Icons ───────────────────────────────────────────────────── */
+const Icon = ({ d, size = 20, stroke = "currentColor", fill = "none", sw = 1.8 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke={stroke} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round">
+    {Array.isArray(d) ? d.map((p,i) => <path key={i} d={p}/>) : <path d={d}/>}
+  </svg>
+);
+
+const icons = {
+  dashboard: ["M3 3h7v7H3z","M14 3h7v7h-7z","M14 14h7v7h-7z","M3 14h7v7H3z"],
+  dataRoom:  ["M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z","M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"],
+  analisi:   ["M18 20V10","M12 20V4","M6 20v-6"],
+  composing: ["M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7","M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"],
+  projects:  ["M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"],
+  settings:  ["M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z","M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"],
+  logout:    ["M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4","M16 17l5-5-5-5","M21 12H9"],
+  bell:      ["M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9","M13.73 21a2 2 0 0 1-3.46 0"],
+  search:    ["M11 17.25a6.25 6.25 0 1 1 0-12.5 6.25 6.25 0 0 1 0 12.5z","M16 16l4.5 4.5"],
+  chevronR:  "M9 18l6-6-6-6",
+  chevronD:  "M6 9l6 6 6-6",
+  menu:      ["M3 12h18","M3 6h18","M3 18h18"],
+  close:     ["M18 6L6 18","M6 6l12 12"],
+  expand:    ["M15 3h6v6","M9 21H3v-6","M21 3l-7 7","M3 21l7-7"],
+  collapse:  ["M9 3H3v6","M15 21h6v-6","M3 3l7 7","M21 21l-7-7"],
+  user:      ["M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2","M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8"],
+  chart:     ["M18 20V10","M12 20V4","M6 20v-6"],
+  info:      ["M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z","M12 8v4","M12 16h.01"],
+  arrowUp:   "M12 19V5M5 12l7-7 7 7",
+  arrowDown: "M12 5v14M5 12l7 7 7-7",
+};
+
+/* ── Tokens ────────────────────────────────────────────────── */
+const C = {
+  white:    "#FFFFFF",
+  gray100:  "#F1F1F1",
+  gray200:  "#E7E7E7",
+  gray300:  "#D2D2D2",
+  gray500:  "#999",
+  gray600:  "#6E6E6E",
+  gray700:  "#545454",
+  gray800:  "#2C2C2C",
+  black:    "#000000",
+  blue:     "#4400B3",
+  blue800:  "#340088",
+  blue900:  "#270065",
+  lime:     "#B9FF69",
+  red:      "#CC0000",
+  violet:   "#6161FF",
+};
+const NAV_W_EXPANDED  = 240;
+const NAV_W_COLLAPSED = 64;
+const TOP_H           = 64;
+
+/* ── Nav menu definition ───────────────────────────────────── */
+const NAV_ITEMS = [
+  { id:"dashboard",  label:"Dashboard",   icon:"dashboard", section: null },
+  { id:"dataRoom",   label:"Data Room",   icon:"dataRoom",  section: null },
+  { id:"analisi",    label:"Valutazione", icon:"analisi",   section: "VALUTAZIONI" },
+  { id:"composing",  label:"Composing",   icon:"composing", section: null },
+  { id:"projects",   label:"Progetti",    icon:"projects",  section: null },
+];
+
+/* ── SideNavItem ───────────────────────────────────────────── */
+function SideNavItem({ item, active, collapsed, onSelect }) {
+  const [hovered, setHovered] = React.useState(false);
+  const isActive = active === item.id;
+  const bg = isActive ? C.white : hovered ? C.gray100 : C.white;
+  const iconColor = isActive ? C.blue : C.gray800;
+  const textColor = isActive ? C.black : C.gray800;
+  const borderLeft = isActive ? `3px solid ${C.blue}` : `3px solid transparent`;
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: collapsed ? 64 : 56,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "stretch",
+      }}
+    >
+      {item.section && !collapsed && (
+        <div style={{
+          height: 48,
+          display: "flex",
+          alignItems: "flex-end",
+          padding: "0 16px 8px",
+          borderTop: `2px solid ${C.gray200}`,
+          marginTop: 4,
+        }}>
+          <span style={{
+            fontFamily: "inherit", fontSize: 12, fontWeight: 400,
+            letterSpacing: "0.06em", textTransform: "uppercase",
+            color: C.gray600,
+          }}>{item.section}</span>
+        </div>
+      )}
+      {item.section && collapsed && (
+        <div style={{ height: 1, background: C.gray200, margin: "6px 0" }} />
+      )}
+      <button
+        onClick={() => onSelect(item.id)}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={{
+          all: "unset",
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          gap: 12,
+          padding: collapsed ? "0" : "0 16px",
+          height: 56,
+          background: bg,
+          borderLeft,
+          justifyContent: collapsed ? "center" : "flex-start",
+          flexShrink: 0,
+          transition: "background 0.1s",
+        }}
+        title={collapsed ? item.label : undefined}
+      >
+        <span style={{ color: iconColor, display: "flex", flexShrink: 0 }}>
+          <Icon d={icons[item.icon]} size={20} sw={1.8}/>
+        </span>
+        {!collapsed && (
+          <span style={{
+            fontFamily: "inherit", fontSize: 14, fontWeight: isActive ? 500 : 400,
+            color: textColor, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
+          }}>{item.label}</span>
+        )}
+      </button>
+    </div>
+  );
+}
+
+/* ── SideNav ───────────────────────────────────────────────── */
+function SideNav({ active, onSelect, collapsed, onToggle }) {
+  return (
+    <div style={{
+      width: collapsed ? NAV_W_COLLAPSED : NAV_W_EXPANDED,
+      minHeight: "100%",
+      background: C.white,
+      borderRight: `1px solid ${C.gray200}`,
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      flexShrink: 0,
+      transition: "width 0.2s ease",
+      overflow: "hidden",
+    }}>
+      {/* Nav items */}
+      <div style={{ flex: 1, overflowY: "auto", overflowX: "hidden" }}>
+        {NAV_ITEMS.map(item => (
+          <SideNavItem key={item.id} item={item} active={active} collapsed={collapsed} onSelect={onSelect}/>
+        ))}
+      </div>
+      {/* Toggle resize button */}
+      <button
+        onClick={onToggle}
+        style={{
+          all: "unset",
+          cursor: "pointer",
+          height: 56,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: collapsed ? "center" : "flex-end",
+          padding: collapsed ? "0" : "0 16px",
+          borderTop: `1px solid ${C.gray200}`,
+          color: C.gray600,
+        }}
+        title={collapsed ? "Espandi navigazione" : "Comprimi navigazione"}
+      >
+        <Icon d={collapsed ? icons.expand : icons.collapse} size={18} sw={1.8}/>
+        {!collapsed && (
+          <span style={{ marginLeft: 8, fontSize: 12, fontWeight: 400, color: C.gray600 }}>Comprimi</span>
+        )}
+      </button>
+    </div>
+  );
+}
+
+/* ── TopNav ───────────────────────────────────────────────── */
+function TopNav({ user, onMenuOpen }) {
+  const [searchVal, setSearchVal] = React.useState("");
+  return (
+    <div style={{
+      height: TOP_H,
+      background: C.white,
+      borderBottom: `4px solid ${C.lime}`,
+      display: "flex",
+      alignItems: "center",
+      padding: "0 24px",
+      gap: 16,
+      flexShrink: 0,
+      zIndex: 10,
+    }}>
+      {/* Logo */}
+      <div style={{ display: "flex", alignItems: "center", gap: 8, marginRight: 8 }}>
+        <img src="../../assets/logo-black.svg" alt="OpenEconomics" style={{ height: 22 }}/>
+      </div>
+      {/* Search */}
+      <div style={{
+        flex: 1, maxWidth: 420,
+        height: 40,
+        display: "flex", alignItems: "center", gap: 8,
+        border: `1px solid ${C.gray200}`,
+        background: C.gray100,
+        padding: "0 12px",
+      }}>
+        <span style={{ color: C.gray500, display: "flex" }}>
+          <Icon d={icons.search} size={16} sw={1.8}/>
+        </span>
+        <input
+          value={searchVal}
+          onChange={e => setSearchVal(e.target.value)}
+          placeholder="Cerca..."
+          style={{
+            all: "unset",
+            flex: 1, fontSize: 14, color: C.black,
+            fontFamily: "inherit",
+          }}
+        />
+      </div>
+      {/* Spacer */}
+      <div style={{ flex: 1 }}/>
+      {/* Notification + settings */}
+      <button style={{ all:"unset", cursor:"pointer", color: C.gray700, display:"flex", padding: 8 }}>
+        <Icon d={icons.bell} size={20} sw={1.8}/>
+      </button>
+      <button style={{ all:"unset", cursor:"pointer", color: C.gray700, display:"flex", padding: 8 }}>
+        <Icon d={icons.settings} size={20} sw={1.8}/>
+      </button>
+      {/* User avatar */}
+      <div style={{
+        display: "flex", alignItems: "center", gap: 8,
+        cursor: "pointer",
+        padding: "6px 10px",
+      }} onClick={onMenuOpen}>
+        <div style={{
+          width: 32, height: 32, borderRadius: "50%",
+          background: C.blue,
+          display: "flex", alignItems: "center", justifyContent: "center",
+          color: C.white, fontSize: 12, fontWeight: 700,
+          flexShrink: 0,
+        }}>
+          {user.initials}
+        </div>
+        <span style={{ fontSize: 14, fontWeight: 400, color: C.black }}>{user.name}</span>
+        <span style={{ color: C.gray600, display:"flex" }}>
+          <Icon d={icons.chevronD} size={16} sw={2}/>
+        </span>
+      </div>
+    </div>
+  );
+}
+
+/* ── Tabs ────────────────────────────────────────────────── */
+function Tabs({ tabs, active, onChange }) {
+  return (
+    <div style={{
+      display: "flex",
+      borderBottom: `1px solid ${C.gray200}`,
+      background: C.white,
+      paddingLeft: 24,
+    }}>
+      {tabs.map(t => {
+        const isActive = t.id === active;
+        return (
+          <button
+            key={t.id}
+            onClick={() => onChange(t.id)}
+            style={{
+              all: "unset",
+              cursor: "pointer",
+              padding: "12px 20px",
+              fontSize: 14,
+              fontWeight: isActive ? 600 : 400,
+              color: isActive ? C.blue : C.gray700,
+              borderBottom: isActive ? `2px solid ${C.blue}` : "2px solid transparent",
+              marginBottom: -1,
+              transition: "color 0.1s",
+              whiteSpace: "nowrap",
+            }}
+          >{t.label}</button>
+        );
+      })}
+    </div>
+  );
+}
+
+/* ── KPI Card ────────────────────────────────────────────── */
+function KpiCard({ label, value, unit, delta, deltaPositive }) {
+  return (
+    <div style={{
+      background: C.white,
+      padding: "20px 24px",
+      display: "flex", flexDirection: "column", gap: 8,
+      borderBottom: `3px solid ${C.blue}`,
+    }}>
+      <div style={{ fontSize: 12, fontWeight: 400, color: C.gray600, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+        {label}
+      </div>
+      <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
+        <span style={{ fontSize: 32, fontWeight: 700, color: C.black, fontVariantNumeric: "tabular-nums" }}>
+          {value}
+        </span>
+        {unit && <span style={{ fontSize: 16, color: C.gray600 }}>{unit}</span>}
+      </div>
+      {delta !== undefined && (
+        <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+          <span style={{ color: deltaPositive ? "#007733" : C.red, display: "flex" }}>
+            <Icon d={deltaPositive ? icons.arrowUp : icons.arrowDown} size={14} sw={2}/>
+          </span>
+          <span style={{ fontSize: 12, color: deltaPositive ? "#007733" : C.red, fontWeight: 500 }}>
+            {delta}
+          </span>
+          <span style={{ fontSize: 12, color: C.gray600 }}>vs periodo precedente</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ── Status Badge ────────────────────────────────────────── */
+function Badge({ label, type = "default" }) {
+  const styles = {
+    default: { bg: C.gray200, color: C.gray800 },
+    success: { bg: "#D6F5E0", color: "#006622" },
+    warning: { bg: "#FFF3D4", color: "#7A4A00" },
+    error:   { bg: "#FFE0E0", color: C.red },
+    info:    { bg: "#EFE5FF", color: C.blue },
+  };
+  const s = styles[type] || styles.default;
+  return (
+    <span style={{
+      display: "inline-block",
+      padding: "3px 10px",
+      background: s.bg, color: s.color,
+      fontFamily: "inherit", fontSize: 12, fontWeight: 500,
+      textTransform: "uppercase", letterSpacing: "0.04em",
+    }}>{label}</span>
+  );
+}
+
+/* ── Mini Bar Chart ──────────────────────────────────────── */
+function BarChart({ data }) {
+  const max = Math.max(...data.map(d => d.v));
+  return (
+    <div style={{ display: "flex", alignItems: "flex-end", gap: 8, height: 80, padding: "0 0 20px" }}>
+      {data.map((d, i) => (
+        <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4, height: "100%" }}>
+          <div style={{ flex: 1, width: "100%", display: "flex", alignItems: "flex-end" }}>
+            <div style={{
+              width: "100%",
+              height: `${(d.v / max) * 100}%`,
+              background: d.active ? C.blue : "#D5D5FF",
+              transition: "height 0.3s ease",
+            }}/>
+          </div>
+          <span style={{ fontSize: 12, color: C.gray600, whiteSpace: "nowrap" }}>{d.l}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ── Table ───────────────────────────────────────────────── */
+function DataTable({ rows }) {
+  return (
+    <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: "inherit" }}>
+      <thead>
+        <tr>
+          {["Progetto","Stato","Valore (M€)","Var %"].map(h => (
+            <th key={h} style={{
+              padding: "10px 14px", textAlign: "left", background: C.blue,
+              color: C.white, fontSize: 12, fontWeight: 600,
+              textTransform: "uppercase", letterSpacing: "0.04em",
+            }}>{h}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((r, i) => (
+          <tr key={i} style={{ background: i % 2 === 0 ? C.white : C.gray100 }}>
+            <td style={{ padding: "10px 14px", fontSize: 13, color: C.black }}>{r.name}</td>
+            <td style={{ padding: "10px 14px" }}><Badge label={r.status} type={r.statusType}/></td>
+            <td style={{ padding: "10px 14px", fontSize: 13, fontWeight: 600, color: C.black, fontVariantNumeric: "tabular-nums" }}>
+              {r.value.toLocaleString("it-IT", { minimumFractionDigits: 1 })}
+            </td>
+            <td style={{ padding: "10px 14px", fontSize: 13, color: r.delta > 0 ? "#007733" : C.red, fontWeight: 500, fontVariantNumeric: "tabular-nums" }}>
+              {r.delta > 0 ? "+" : ""}{r.delta.toLocaleString("it-IT", { minimumFractionDigits: 1 })}%
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
+/* ── Profile Dropdown ────────────────────────────────────── */
+function ProfileDropdown({ user, onClose }) {
+  return (
+    <div style={{
+      position: "fixed", top: TOP_H, right: 16,
+      background: C.white,
+      border: `1px solid ${C.gray200}`,
+      boxShadow: "0 4px 16px rgba(0,0,0,0.12)",
+      zIndex: 100, minWidth: 200,
+    }}>
+      <div style={{ padding: "14px 16px", borderBottom: `1px solid ${C.gray200}` }}>
+        <div style={{ fontSize: 14, fontWeight: 700, color: C.black }}>{user.name}</div>
+        <div style={{ fontSize: 12, color: C.gray600, marginTop: 2 }}>{user.email}</div>
+      </div>
+      {[
+        { label: "Profilo", icon: "user" },
+        { label: "Impostazioni", icon: "settings" },
+        { label: "Admin console", icon: "projects" },
+      ].map(item => (
+        <button key={item.label} onClick={onClose} style={{
+          all: "unset", cursor: "pointer", width: "100%",
+          display: "flex", alignItems: "center", gap: 10,
+          padding: "11px 16px", fontSize: 14, color: C.gray800,
+          boxSizing: "border-box",
+        }}
+        onMouseEnter={e => e.currentTarget.style.background = C.gray100}
+        onMouseLeave={e => e.currentTarget.style.background = "transparent"}
+        >
+          <Icon d={icons[item.icon]} size={16} sw={1.8}/> {item.label}
+        </button>
+      ))}
+      <div style={{ borderTop: `1px solid ${C.gray200}` }}>
+        <button onClick={onClose} style={{
+          all: "unset", cursor: "pointer", width: "100%",
+          display: "flex", alignItems: "center", gap: 10,
+          padding: "11px 16px", fontSize: 14, color: C.red,
+          boxSizing: "border-box",
+        }}
+        onMouseEnter={e => e.currentTarget.style.background = "#FFF0F0"}
+        onMouseLeave={e => e.currentTarget.style.background = "transparent"}
+        >
+          <Icon d={icons.logout} size={16} sw={1.8}/> Log out
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/* ── Page content ────────────────────────────────────────── */
+const PAGES = {
+  dashboard: () => {
+    const [tab, setTab] = React.useState("overview");
+    const chartData = [
+      {l:"Gen",v:312,active:false},{l:"Feb",v:388,active:false},
+      {l:"Mar",v:441,active:false},{l:"Apr",v:529,active:false},
+      {l:"Mag",v:604,active:false},{l:"Giu",v:712,active:true},
+    ];
+    const rows = [
+      {name:"Progetto Alfa",    status:"Attivo",    statusType:"success", value:412.6, delta:18.4},
+      {name:"Progetto Beta",    status:"In attesa", statusType:"warning", value:287.1, delta:-3.2},
+      {name:"Progetto Gamma",   status:"Attivo",    statusType:"success", value:203.8, delta:9.2},
+      {name:"Progetto Delta",   status:"Chiuso",    statusType:"default", value:178.4, delta:0},
+      {name:"Progetto Epsilon", status:"Errore",    statusType:"error",   value:94.2,  delta:-12.1},
+    ];
+    return (
+      <div style={{ display:"flex", flexDirection:"column", gap:0 }}>
+        <Tabs tabs={[{id:"overview",label:"Overview"},{id:"analisi",label:"Analisi"},{id:"report",label:"Report"}]} active={tab} onChange={setTab}/>
+        <div style={{ padding: 24, display:"flex", flexDirection:"column", gap:20 }}>
+          {/* KPI row */}
+          <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:16 }}>
+            <KpiCard label="PIL stimato"         value="2.847"  unit="M€" delta="+18,4%"  deltaPositive={true}/>
+            <KpiCard label="Occupati generati"   value="12.340" unit=""   delta="+9,2%"   deltaPositive={true}/>
+            <KpiCard label="Gettito fiscale"     value="412,6"  unit="M€" delta="-3,2%"   deltaPositive={false}/>
+            <KpiCard label="Progetti attivi"     value="34"     unit=""   delta="+6"      deltaPositive={true}/>
+          </div>
+          {/* Chart + table row */}
+          <div style={{ display:"grid", gridTemplateColumns:"1fr 2fr", gap:16 }}>
+            <div style={{ background:C.white, padding:"20px 20px 0" }}>
+              <div style={{ fontSize: 12, fontFamily:"\"Atkinson Hyperlegible Mono\",monospace", fontWeight:500, letterSpacing:"0.04em", textTransform:"uppercase", color:C.black, marginBottom:4 }}>GRAFICO 1</div>
+              <div style={{ fontSize:14, fontWeight:400, color:C.black, marginBottom:2 }}>Investimenti per periodo</div>
+              <div style={{ fontSize:12, color:"#2C2C2C", marginBottom:12 }}>Valori in M€, 2024</div>
+              <BarChart data={chartData}/>
+              <div style={{ borderTop:`1px solid ${C.gray200}`, paddingTop:8, marginTop:4, fontSize: 12, color:"#2C2C2C" }}>
+                Elaborazione OpenEconomics | Fonti: ISTAT | Aggiornamento: giugno 2026
+              </div>
+            </div>
+            <div style={{ background:C.white }}>
+              <div style={{ padding:"16px 20px 8px", borderBottom:`1px solid ${C.gray200}` }}>
+                <div style={{ fontSize: 12, fontFamily:"\"Atkinson Hyperlegible Mono\",monospace", fontWeight:500, letterSpacing:"0.04em", textTransform:"uppercase", color:C.black }}>TABELLA 1</div>
+                <div style={{ fontSize:14, fontWeight:400, color:C.black, marginTop:2 }}>Stato dei progetti in portfolio</div>
+              </div>
+              <DataTable rows={rows}/>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  },
+  dataRoom: () => (
+    <div style={{ padding:40, color:C.gray600, textAlign:"center", paddingTop:80 }}>
+      <Icon d={icons.dataRoom} size={48} stroke={C.gray300} sw={1}/>
+      <div style={{ marginTop:16, fontSize:18, color:C.gray500 }}>Data Room</div>
+      <div style={{ fontSize:13, color:C.gray500, marginTop:8 }}>Seleziona un elemento dalla navigazione per iniziare.</div>
+    </div>
+  ),
+  analisi: () => (
+    <div style={{ padding:40, color:C.gray600, textAlign:"center", paddingTop:80 }}>
+      <Icon d={icons.analisi} size={48} stroke={C.gray300} sw={1}/>
+      <div style={{ marginTop:16, fontSize:18, color:C.gray500 }}>Valutazione</div>
+    </div>
+  ),
+  composing: () => (
+    <div style={{ padding:40, color:C.gray600, textAlign:"center", paddingTop:80 }}>
+      <Icon d={icons.composing} size={48} stroke={C.gray300} sw={1}/>
+      <div style={{ marginTop:16, fontSize:18, color:C.gray500 }}>Composing</div>
+    </div>
+  ),
+  projects: () => (
+    <div style={{ padding:40, color:C.gray600, textAlign:"center", paddingTop:80 }}>
+      <Icon d={icons.projects} size={48} stroke={C.gray300} sw={1}/>
+      <div style={{ marginTop:16, fontSize:18, color:C.gray500 }}>Progetti</div>
+    </div>
+  ),
+};
+
+/* ── App ─────────────────────────────────────────────────── */
+function App() {
+  const [navActive,   setNavActive]   = React.useState("dashboard");
+  const [collapsed,   setCollapsed]   = React.useState(false);
+  const [profileOpen, setProfileOpen] = React.useState(false);
+
+  const user = { name:"Mario Rossi", initials:"MR", email:"m.rossi@openeconomics.eu" };
+  const PageContent = PAGES[navActive] || PAGES.dashboard;
+
+  return (
+    <div style={{ height: "100vh", display:"flex", flexDirection:"column", background: C.gray100 }}>
+      <TopNav user={user} onMenuOpen={() => setProfileOpen(o => !o)}/>
+      <div style={{ flex:1, display:"flex", overflow:"hidden" }}>
+        <SideNav
+          active={navActive}
+          onSelect={id => { setNavActive(id); setProfileOpen(false); }}
+          collapsed={collapsed}
+          onToggle={() => setCollapsed(c => !c)}
+        />
+        <main style={{ flex:1, overflowY:"auto", background: C.gray100 }}>
+          <PageContent/>
+        </main>
+      </div>
+      {profileOpen && <ProfileDropdown user={user} onClose={() => setProfileOpen(false)}/>}
+      {profileOpen && <div onClick={() => setProfileOpen(false)} style={{ position:"fixed", inset:0, zIndex:90 }}/>}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>

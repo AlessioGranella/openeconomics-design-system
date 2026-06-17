@@ -1,0 +1,29 @@
+<!-- @dsCard group="Brand" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: #fff; }
+  .card {
+    width: 700px; height: 220px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    border-radius: var(--oe-radius-sm);
+    overflow: hidden;
+  }
+  .pane { display: flex; align-items: center; justify-content: center; padding: 28px 36px; box-sizing: border-box; }
+  .pane.light { background: #fff; border: 1px solid var(--oe-gray-200); }
+  .pane.dark { background: var(--oe-bluette-900); }
+  .pane img { display: block; }
+  .pane.light .full { width: 100%; height: auto; max-height: 56px; }
+  .pane.dark .mark { width: 88px; height: auto; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="pane light"><img class="full" src="../assets/logo-black.svg" alt="OpenEconomics logo"></div>
+  <div class="pane dark"><img class="full" src="../assets/logo-white.svg" alt="OpenEconomics logo white"></div>
+</div>
+</body>
+</html>

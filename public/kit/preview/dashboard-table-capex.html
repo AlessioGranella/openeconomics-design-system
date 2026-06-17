@@ -1,0 +1,70 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #E7E7E7; font-family: "Atkinson Hyperlegible Next", system-ui, sans-serif; padding: 16px; }
+  .sec-lbl { font-family: "Atkinson Hyperlegible Mono", monospace; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: #545454; margin-bottom: 8px; }
+  .wrap { display: flex; gap: 14px; }
+
+  /* Desktop */
+  .table-capex { background: #fff; overflow: hidden; flex: 1; }
+  .table-capex table { border-collapse: collapse; width: 100%; }
+  .table-capex th { background: #4400B3; color: #fff; font-size: 12px; font-weight: 600; text-align: right; padding: 7px 10px; text-transform: uppercase; letter-spacing: 0.04em; border-right: 1px solid #340088; }
+  .table-capex th:first-child { text-align: left; background: #270065; }
+  .table-capex td { font-size: 12px; color: #2C2C2C; padding: 6px 10px; background: #fff; text-align: right; font-variant-numeric: tabular-nums; border-right: 1px solid #E7E7E7; border-bottom: 1px solid #F1F1F1; }
+  .table-capex td:first-child { text-align: left; background: #F1F1F1; border-right: 2px solid #E7E7E7; }
+  .table-capex tr:last-child td { font-weight: 700; background: #F5F0FF; }
+  .scrollbar { height: 5px; background: linear-gradient(to right, #4400B3 45%, #E7E7E7 45%); }
+  .hint { font-size: 12px; color: #6E6E6E; background: #F1F1F1; padding: 5px 10px; text-align: center; }
+
+  /* Mobile card */
+  .mobile-stack { width: 130px; flex-shrink: 0; }
+  .card-pag { background: #fff; border: 1px solid #E7E7E7; }
+  .card-row { padding: 8px 10px; border-bottom: 1px solid #F1F1F1; }
+  .card-row .lbl { font-size: 12px; color: #6E6E6E; margin-bottom: 2px; }
+  .card-row .val { font-size: 13px; font-weight: 700; color: #000; font-variant-numeric: tabular-nums; }
+  .pag-nav { display: flex; justify-content: space-between; align-items: center; padding: 5px 8px; background: #F1F1F1; font-size: 12px; color: #545454; }
+  .nb { width: 20px; height: 20px; background: #fff; border: 1px solid #E7E7E7; display: flex; align-items: center; justify-content: center; }
+  .nb svg { width: 12px; height: 12px; fill: none; stroke: #4400B3; stroke-width: 2; stroke-linecap: round; }
+  .pag-hint { font-size: 12px; color: #6E6E6E; padding: 4px 10px; }
+</style>
+</head>
+<body>
+<div class="sec-lbl">TABELLA 1 · CAPEX/OPEX desktop + mobile card</div>
+<div class="wrap">
+  <div class="table-capex">
+    <table>
+      <thead><tr>
+        <th>Voce di spesa</th>
+        <th>2023</th><th>2024</th><th>2025</th><th>2026</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Costi del personale</td><td>276.000 €</td><td>276.000 €</td><td>276.000 €</td><td>276.000 €</td></tr>
+        <tr><td>Costi operativi</td><td>142.500 €</td><td>148.000 €</td><td>155.000 €</td><td>160.000 €</td></tr>
+        <tr><td>Investimenti</td><td>85.000 €</td><td>90.000 €</td><td>92.000 €</td><td>88.000 €</td></tr>
+        <tr><td>Totale</td><td>503.500 €</td><td>514.000 €</td><td>523.000 €</td><td>524.000 €</td></tr>
+      </tbody>
+    </table>
+    <div class="scrollbar"></div>
+    <div class="hint">Usa le frecce per passare da un anno all'altro</div>
+  </div>
+  <div class="mobile-stack">
+    <div class="card-pag">
+      <div class="card-row"><div class="lbl">Costi del personale</div><div class="val">276.000 €</div></div>
+      <div class="card-row"><div class="lbl">Costi operativi</div><div class="val">142.500 €</div></div>
+      <div class="card-row"><div class="lbl">Investimenti</div><div class="val">85.000 €</div></div>
+      <div class="pag-nav">
+        <div class="nb"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></div>
+        <span>1 di 20</span>
+        <div class="nb"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>
+      </div>
+      <div class="pag-hint">Usa le frecce per passare da un anno all'altro</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

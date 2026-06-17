@@ -1,0 +1,67 @@
+<!-- @dsCard group="Colors" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: #fff; padding: 24px; box-sizing: border-box; }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    width: 700px;
+  }
+  .swatch {
+    height: 200px;
+    border-radius: var(--oe-radius-sm);
+    padding: 18px 20px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    font-family: var(--oe-font-mono);
+    font-size: 12px;
+    letter-spacing: -0.01em;
+    box-sizing: border-box;
+  }
+  .name { font-family: var(--oe-font-sans); font-weight: 600; font-size: 20px; letter-spacing: -0.01em; }
+  .label { opacity: 0.7; }
+  .hex { text-transform: uppercase; }
+  .white { background: #FFFFFF; color: var(--oe-black); border: 1px solid var(--oe-gray-200); }
+  .gray  { background: #F1F1F1; color: var(--oe-black); }
+  .deep  { background: #270065; color: #fff; }
+</style>
+</head>
+<body>
+<div class="row">
+  <div class="swatch white">
+    <div>
+      <div class="name">White</div>
+      <div class="label">Default canvas</div>
+    </div>
+    <div>
+      <div class="hex">#FFFFFF</div>
+      <div class="label">--oe-bg</div>
+    </div>
+  </div>
+  <div class="swatch gray">
+    <div>
+      <div class="name">Light Gray</div>
+      <div class="label">Elevated / card fill</div>
+    </div>
+    <div>
+      <div class="hex">#F1F1F1</div>
+      <div class="label">--oe-bg-elev</div>
+    </div>
+  </div>
+  <div class="swatch deep">
+    <div>
+      <div class="name">Deep Purple</div>
+      <div class="label">Dark sections / footer</div>
+    </div>
+    <div>
+      <div class="hex">#270065</div>
+      <div class="label">--oe-bg-dark</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

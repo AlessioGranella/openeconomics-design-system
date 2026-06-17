@@ -1,0 +1,66 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: #fff; padding: 0; box-sizing: border-box; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: stretch; width: 700px; }
+  .surface { padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; }
+  .surface.on-white { background: #FFFFFF; }
+  .surface.on-gray  { background: #F1F1F1; }
+  .surface.on-dark  { background: #270065; }
+  .ctx { font-family: var(--oe-font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 12px; }
+  .on-white .ctx, .on-gray .ctx { color: var(--oe-gray-600); }
+  .on-dark .ctx { color: rgba(255,255,255,0.7); }
+  .card {
+    border-radius: 0;
+    padding: 20px;
+    display: flex; flex-direction: column; gap: 12px;
+    flex: 1;
+  }
+  .card.fill-gray { background: #F1F1F1; }
+  .card.fill-white { background: #FFFFFF; }
+  .card.fill-purple { background: #4400B3; }
+  .tile { width: 44px; height: 44px; background: #270065; display: inline-flex; align-items: center; justify-content: center; color: #F1F1F1; }
+  .tile svg { width: 26px; height: 26px; }
+  .h { font-family: var(--oe-font-sans); font-size: 18px; font-weight: 400; line-height: 1.2; letter-spacing: -0.005em; }
+  .d { font-family: var(--oe-font-sans); font-size: 12px; font-weight: 300; line-height: 1.35; margin: 0; }
+  .fill-gray .h { color: var(--oe-black); }
+  .fill-gray .d { color: var(--oe-gray-700); }
+  .fill-white .h { color: var(--oe-black); }
+  .fill-white .d { color: var(--oe-gray-700); }
+  .fill-purple .h { color: #fff; }
+  .fill-purple .d { color: rgba(255,255,255,0.88); }
+</style>
+</head>
+<body>
+<div class="grid">
+  <div class="surface on-white">
+    <div class="ctx">on #FFFFFF</div>
+    <div class="card fill-gray">
+      <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+      <div class="h">Impact assessment</div>
+      <p class="d">Card #F1F1F1 · icon #270065</p>
+    </div>
+  </div>
+  <div class="surface on-gray">
+    <div class="ctx">on #F1F1F1</div>
+    <div class="card fill-white">
+      <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4M16 21l4-4-4-4M4 7h16M20 17H4"/></svg></div>
+      <div class="h">Public funding<br>End-to-end support</div>
+      <p class="d">Card #FFFFFF · icon #270065</p>
+    </div>
+  </div>
+  <div class="surface on-dark">
+    <div class="ctx">on #270065</div>
+    <div class="card fill-purple">
+      <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <div class="h">Maximum efficiency</div>
+      <p class="d">Card #4400B3 · icon #270065</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

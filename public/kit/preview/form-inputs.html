@@ -1,0 +1,67 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: #fff; padding: 28px 32px; box-sizing: border-box; }
+  .meta {
+    font-family: var(--oe-font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--oe-gray-500);
+    margin-bottom: 18px;
+  }
+  .stack { display: flex; flex-direction: column; gap: 16px; max-width: 640px; }
+  label {
+    font-family: var(--oe-font-sans);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--oe-gray-700);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .input {
+    font-family: var(--oe-font-sans);
+    font-size: 18px;
+    font-weight: 300;
+    padding: 14px 18px;
+    border: 1px solid var(--oe-gray-200);
+    background: #fff;
+    color: var(--oe-fg);
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0;
+    outline: none;
+  }
+  .input:focus { border-color: var(--oe-bluette-700); box-shadow: inset 0 0 0 1px var(--oe-bluette-700); }
+  .input::placeholder { color: var(--oe-gray-500); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .check { display: flex; align-items: center; gap: 10px; font-family: var(--oe-font-sans); font-size: 14px; color: var(--oe-gray-700); }
+  .check input { width: 18px; height: 18px; accent-color: var(--oe-bluette-700); }
+</style>
+</head>
+<body>
+<div class="meta">Form inputs — sharp 0-radius, 1px black border, focus to Bluette-700</div>
+<div class="stack">
+  <div class="row">
+    <div>
+      <label>Full name</label>
+      <input class="input" placeholder="Maria Rossi">
+    </div>
+    <div>
+      <label>Work email</label>
+      <input class="input" placeholder="maria@company.com">
+    </div>
+  </div>
+  <div>
+    <label>How can we help?</label>
+    <input class="input" placeholder="A project, a question, an idea …">
+  </div>
+  <div class="check"><input type="checkbox" checked> I agree to the Privacy Policy.</div>
+</div>
+</body>
+</html>

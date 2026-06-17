@@ -1,0 +1,93 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; font-family: "Atkinson Hyperlegible Next", system-ui, sans-serif; padding: 20px; }
+  .grid { display: grid; grid-template-columns: max-content 1fr 1fr 1fr 1fr 1fr; gap: 0; width: 660px; }
+  .th { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #999; padding: 0 8px 8px; display: flex; align-items: flex-end; }
+  .th.lbl { padding-left: 0; min-width: 90px; }
+  .row-lbl { font-size: 12px; font-weight: 500; color: #999; text-transform: uppercase; letter-spacing: 0.04em; display: flex; align-items: center; padding: 10px 0; min-width: 90px; border-top: 1px solid #F1F1F1; }
+  .cell { padding: 8px; display: flex; align-items: center; border-top: 1px solid #F1F1F1; }
+
+  /* Input */
+  .inp { height: 38px; border: 1px solid #E7E7E7; background: #F1F1F1; padding: 0 10px; font-family: inherit; font-size: 13px; color: #000; width: 100%; min-width: 80px; }
+  .inp.hover   { border-color: #999; background: #fff; }
+  .inp.focus   { border-color: #4400B3; background: #fff; outline: 2px solid rgba(68,0,179,0.2); outline-offset: 0; }
+  .inp.filled  { border-color: #E7E7E7; background: #fff; }
+  .inp.error   { border-color: #CC0000; background: #fff; }
+  .inp.disabled{ opacity: 0.4; cursor: not-allowed; }
+
+  /* Checkbox */
+  .cb { width: 18px; height: 18px; border: 1.5px solid #E7E7E7; background: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; transition: border-color 0.1s, background 0.1s; }
+  .cb:hover    { border-color: #4400B3; }
+  .cb.checked  { background: #4400B3; border-color: #4400B3; }
+  .cb.focus    { outline: 2px solid rgba(68,0,179,0.3); outline-offset: 1px; }
+  .cb.disabled { opacity: 0.38; cursor: not-allowed; }
+  .cb svg { width: 11px; height: 11px; fill: none; stroke: #fff; stroke-width: 2.5; stroke-linecap: round; }
+
+  /* Radio */
+  .rb { width: 18px; height: 18px; border: 1.5px solid #E7E7E7; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; transition: border-color 0.1s; }
+  .rb:hover      { border-color: #4400B3; }
+  .rb.checked    { border-color: #4400B3; border-width: 2px; }
+  .rb.checked::after { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #4400B3; }
+  .rb.focus      { outline: 2px solid rgba(68,0,179,0.3); outline-offset: 1px; }
+  .rb.disabled   { opacity: 0.38; cursor: not-allowed; }
+
+  /* Toggle */
+  .tog { width: 38px; height: 22px; border-radius: 11px; background: #E7E7E7; position: relative; cursor: pointer; transition: background 0.15s; flex-shrink: 0; }
+  .tog.hover  { background: #999; }
+  .tog.on     { background: #4400B3; }
+  .tog.on.hover { background: #340088; }
+  .tog.focus  { outline: 2px solid rgba(68,0,179,0.3); outline-offset: 2px; }
+  .tog.disabled { opacity: 0.38; cursor: not-allowed; }
+  .tog::after { content: ""; width: 18px; height: 18px; border-radius: 50%; background: #fff; position: absolute; top: 2px; left: 2px; transition: left 0.15s; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+  .tog.on::after { left: 18px; }
+</style>
+</head>
+<body>
+<div class="grid">
+  <div class="th lbl"></div>
+  <div class="th">Default</div>
+  <div class="th">Hover</div>
+  <div class="th">Focus/Filled</div>
+  <div class="th">Error/Active</div>
+  <div class="th">Disabled</div>
+
+  <!-- Input -->
+  <div class="row-lbl">Input</div>
+  <div class="cell"><input class="inp" placeholder="Testo..." readonly></div>
+  <div class="cell"><input class="inp hover" placeholder="Testo..." readonly></div>
+  <div class="cell"><input class="inp focus" value="In focus" readonly></div>
+  <div class="cell"><input class="inp error" value="Errore" readonly></div>
+  <div class="cell"><input class="inp disabled" placeholder="Disab." readonly></div>
+
+  <!-- Checkbox -->
+  <div class="row-lbl">Checkbox</div>
+  <div class="cell"><div class="cb"></div></div>
+  <div class="cell"><div class="cb" style="border-color:#4400B3"></div></div>
+  <div class="cell"><div class="cb checked focus"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div></div>
+  <div class="cell"><div class="cb checked"><svg viewBox="0 0 12 10"><polyline points="1,5 4,8 11,1"/></svg></div></div>
+  <div class="cell"><div class="cb disabled"></div></div>
+
+  <!-- Radio -->
+  <div class="row-lbl">Radio</div>
+  <div class="cell"><div class="rb"></div></div>
+  <div class="cell"><div class="rb" style="border-color:#4400B3"></div></div>
+  <div class="cell"><div class="rb checked focus"></div></div>
+  <div class="cell"><div class="rb checked"></div></div>
+  <div class="cell"><div class="rb disabled"></div></div>
+
+  <!-- Toggle -->
+  <div class="row-lbl">Toggle</div>
+  <div class="cell"><div class="tog"></div></div>
+  <div class="cell"><div class="tog hover"></div></div>
+  <div class="cell"><div class="tog on focus"></div></div>
+  <div class="cell"><div class="tog on"></div></div>
+  <div class="cell"><div class="tog disabled"></div></div>
+</div>
+</body>
+</html>

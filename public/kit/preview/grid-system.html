@@ -1,0 +1,77 @@
+<!-- @dsCard group="Spacing" -->
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; font-family: "Atkinson Hyperlegible Next", system-ui, sans-serif; padding: 24px 20px; }
+  .sec-lbl { font-family: "Atkinson Hyperlegible Mono", monospace; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: #545454; margin-bottom: 12px; }
+  .section { margin-bottom: 20px; }
+  /* Grid visual */
+  .grid-vis { position: relative; width: 660px; margin-bottom: 6px; }
+  .grid-inner { display: flex; gap: 0; height: 40px; }
+  .col { flex: 1; height: 40px; background: rgba(68,0,179,0.12); }
+  .col:nth-child(odd) { background: rgba(68,0,179,0.2); }
+  .gutter { width: 24px; background: rgba(185,255,105,0.5); height: 40px; flex-shrink: 0; }
+  .margin { width: 12px; background: rgba(204,0,0,0.15); height: 40px; flex-shrink: 0; }
+  .legend { display: flex; gap: 16px; margin-top: 6px; flex-wrap: wrap; }
+  .leg { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #545454; }
+  .leg-swatch { width: 14px; height: 14px; flex-shrink: 0; }
+  /* Breakpoints table */
+  .bp-table { width: 660px; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  .bp-table th { text-align: left; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: #6E6E6E; padding: 6px 10px; border-bottom: 2px solid #E7E7E7; }
+  .bp-table td { padding: 7px 10px; border-bottom: 1px solid #F1F1F1; color: #2C2C2C; font-variant-numeric: tabular-nums; }
+  .bp-table td:first-child { font-family: "Atkinson Hyperlegible Mono", monospace; font-weight: 600; color: #4400B3; }
+  .bp-table td:nth-child(2) { font-size: 12px; }
+  .note { font-size: 12px; color: #6E6E6E; margin-top: 10px; line-height: 1.5; }
+  .note strong { color: #2C2C2C; }
+</style>
+</head>
+<body>
+
+<div class="section">
+  <div class="sec-lbl">Grid — 12 colonne (desktop XL)</div>
+  <div class="grid-vis">
+    <div class="grid-inner">
+      <div class="margin"></div>
+      <div class="col"></div><div class="gutter"></div>
+      <div class="col"></div><div class="gutter"></div>
+      <div class="col"></div><div class="gutter"></div>
+      <div class="col"></div><div class="gutter"></div>
+      <div class="col"></div><div class="gutter"></div>
+      <div class="col"></div><div class="gutter"></div>
+      <div class="col"></div><div class="gutter"></div>
+      <div class="col"></div><div class="gutter"></div>
+      <div class="col"></div><div class="gutter"></div>
+      <div class="col"></div><div class="gutter"></div>
+      <div class="col"></div><div class="gutter"></div>
+      <div class="col"></div>
+      <div class="margin"></div>
+    </div>
+  </div>
+  <div class="legend">
+    <div class="leg"><div class="leg-swatch" style="background:rgba(68,0,179,0.2)"></div> Colonna</div>
+    <div class="leg"><div class="leg-swatch" style="background:rgba(185,255,105,0.6)"></div> Gutter 24px</div>
+    <div class="leg"><div class="leg-swatch" style="background:rgba(204,0,0,0.2)"></div> Margine 12px</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-lbl">Breakpoints</div>
+  <table class="bp-table">
+    <thead><tr><th>Token</th><th>Breakpoint</th><th>Colonne</th><th>Gutter</th><th>Margine</th></tr></thead>
+    <tbody>
+      <tr><td>--oe-bp-xxl</td><td>≥ 1440px · XXL</td><td>12</td><td>24px</td><td>12px</td></tr>
+      <tr><td>--oe-bp-xl</td><td>≥ 1200px · XL</td><td>12</td><td>24px</td><td>12px</td></tr>
+      <tr><td>--oe-bp-l</td><td>≥ 992px · L</td><td>12</td><td>24px</td><td>12px</td></tr>
+      <tr><td>--oe-bp-m</td><td>≥ 768px · M</td><td>8</td><td>24px</td><td>12px</td></tr>
+      <tr><td>—</td><td>< 768px · S (mobile)</td><td>4</td><td>16px</td><td>12px</td></tr>
+    </tbody>
+  </table>
+  <div class="note">Contenitore fluido fino a <strong>max-width: 1440px</strong>. Se la viewport è più grande, applicare la griglia a un contenitore con <code>width: 1440px</code> centrato. Usa <code>.oe-container</code> per il wrapper standard.</div>
+</div>
+
+</body>
+</html>

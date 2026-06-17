@@ -1,0 +1,52 @@
+<!-- @dsCard group="Spacing" -->
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; font-family: "Atkinson Hyperlegible Next", system-ui, sans-serif; padding: 24px; }
+  .sec-lbl { font-family: "Atkinson Hyperlegible Mono", monospace; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: #545454; margin-bottom: 14px; }
+  /* Visual scale */
+  .scale { display: flex; align-items: flex-end; gap: 20px; margin-bottom: 28px; }
+  .step { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .bar { background: #4400B3; width: 28px; }
+  .name  { font-family: "Atkinson Hyperlegible Mono", monospace; font-size: 12px; font-weight: 600; color: #4400B3; }
+  .px    { font-size: 12px; color: #545454; }
+  .token { font-family: "Atkinson Hyperlegible Mono", monospace; font-size: 12px; color: #999; }
+  /* Table */
+  .table { width: 660px; border-collapse: collapse; font-size: 13px; }
+  .table th { text-align: left; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: #6E6E6E; padding: 6px 12px; border-bottom: 2px solid #E7E7E7; }
+  .table td { padding: 7px 12px; border-bottom: 1px solid #F1F1F1; color: #2C2C2C; font-variant-numeric: tabular-nums; }
+  .table td:first-child { font-family: "Atkinson Hyperlegible Mono", monospace; font-weight: 600; color: #4400B3; }
+  .table .swatch { height: 16px; background: #4400B3; display: inline-block; vertical-align: middle; }
+</style>
+</head>
+<body>
+<div class="sec-lbl">Scala spacing (Figma)</div>
+<div class="scale">
+  <div class="step"><div class="bar" style="height:4px"></div> <div class="name">XXS</div><div class="px">4px</div></div>
+  <div class="step"><div class="bar" style="height:8px"></div> <div class="name">XS</div><div class="px">8px</div></div>
+  <div class="step"><div class="bar" style="height:16px"></div><div class="name">S</div><div class="px">16px</div></div>
+  <div class="step"><div class="bar" style="height:24px"></div><div class="name">M</div><div class="px">24px</div></div>
+  <div class="step"><div class="bar" style="height:32px"></div><div class="name">L</div><div class="px">32px</div></div>
+  <div class="step"><div class="bar" style="height:40px"></div><div class="name">XL</div><div class="px">40px</div></div>
+  <div class="step"><div class="bar" style="height:48px"></div><div class="name">2XL</div><div class="px">48px</div></div>
+  <div class="step"><div class="bar" style="height:64px"></div><div class="name">3XL</div><div class="px">64px</div></div>
+</div>
+<table class="table">
+  <thead><tr><th>Token</th><th>Nome Figma</th><th>Valore</th><th>Uso tipico</th><th>Visual</th></tr></thead>
+  <tbody>
+    <tr><td>--oe-space-xxs</td><td>spacing.xxs</td><td>4px</td><td>Gap inline micro, icon padding</td><td><span class="swatch" style="width:4px"></span></td></tr>
+    <tr><td>--oe-space-xs</td><td>spacing.xs</td><td>8px</td><td>Padding chip/badge, gap bottoni ravvicinati</td><td><span class="swatch" style="width:8px"></span></td></tr>
+    <tr><td>--oe-space-s</td><td>spacing.s</td><td>16px</td><td>Padding interno card, gap form fields</td><td><span class="swatch" style="width:16px"></span></td></tr>
+    <tr><td>--oe-space-m</td><td>spacing.m</td><td>24px</td><td>Gutter griglia, padding sezione compatta</td><td><span class="swatch" style="width:24px"></span></td></tr>
+    <tr><td>--oe-space-l</td><td>spacing.l</td><td>32px</td><td>Padding card grande, gap tra sezioni</td><td><span class="swatch" style="width:32px"></span></td></tr>
+    <tr><td>--oe-space-xl</td><td>spacing.xl</td><td>40px</td><td>Padding verticale nav item desktop</td><td><span class="swatch" style="width:40px"></span></td></tr>
+    <tr><td>--oe-space-2xl</td><td>spacing.2xl</td><td>48px</td><td>Padding sezione standard</td><td><span class="swatch" style="width:48px"></span></td></tr>
+    <tr><td>--oe-space-3xl</td><td>spacing.3xl</td><td>64px</td><td>Padding hero, spaziatura grandi sezioni</td><td><span class="swatch" style="width:64px"></span></td></tr>
+  </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; font-family: "Atkinson Hyperlegible Next", system-ui, sans-serif; padding: 20px; }
+  .sec-lbl { font-family: "Atkinson Hyperlegible Mono", monospace; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: #545454; margin-bottom: 12px; }
+  .section { margin-bottom: 28px; }
+
+  /* ── Desktop pagination ── */
+  .pag-desktop {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 660px; height: 56px; gap: 16px;
+  }
+
+  /* Left: record per pagina + totali */
+  .pag-left { display: flex; align-items: center; gap: 12px; }
+  .pag-label { font-size: 14px; color: #000; white-space: nowrap; }
+  .pag-dropdown {
+    height: 36px; width: 64px;
+    background: #F1F1F1;
+    box-shadow: inset 0 0 0 1px #545454;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 8px; cursor: pointer; gap: 4px;
+  }
+  .pag-dropdown span { font-size: 14px; color: #000; }
+  .pag-dropdown svg { width: 16px; height: 16px; fill: none; stroke: #000; stroke-width: 2; stroke-linecap: round; flex-shrink: 0; }
+  .pag-total { font-size: 14px; color: #000; white-space: nowrap; }
+
+  /* Right: nav arrows + page numbers */
+  .pag-nav { display: flex; align-items: center; gap: 0; }
+  .nav-icon {
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: #6E6E6E;
+    transition: background 0.1s, color 0.1s;
+  }
+  .nav-icon:hover { background: #F1F1F1; color: #000; }
+  .nav-icon svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+  .nav-icon.disabled { color: #D2D2D2; cursor: not-allowed; pointer-events: none; }
+
+  /* Page number buttons */
+  .pg {
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; cursor: pointer;
+    transition: background 0.1s, color 0.1s;
+    font-variant-numeric: tabular-nums;
+  }
+  .pg.default { color: #000; background: #fff; }
+  .pg.default:hover { background: #F1F1F1; }
+  .pg.focus { color: #4400B3; background: #fff; outline: 2px solid #4400B3; outline-offset: -2px; }
+  .pg.active { color: #fff; background: #4400B3; font-weight: 600; }
+  .pg.ellipsis { color: #999; cursor: default; }
+
+  /* ── Mobile pagination ── */
+  .pag-mobile {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 12px; width: 360px;
+  }
+  .pag-mobile .top-row { display: flex; align-items: center; gap: 12px; }
+  .pag-mobile .pag-label { font-size: 13px; }
+  .pag-mobile .pag-dropdown { height: 32px; width: 56px; }
+  .pag-mobile .pag-dropdown span { font-size: 13px; }
+  .pag-mobile .pag-total { font-size: 13px; }
+  .pag-mobile .nav-row { display: flex; align-items: center; gap: 4px; }
+  .pag-mobile .pg { width: 36px; height: 36px; font-size: 13px; }
+  .pag-mobile .nav-icon { width: 32px; height: 32px; }
+
+  /* ── States row ── */
+  .states { display: flex; align-items: center; gap: 6px; margin-top: 16px; flex-wrap: wrap; }
+  .state-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .state-lbl { font-size: 12px; color: #999; text-align: center; }
+
+  /* Divider */
+  .divider { width: 100%; height: 1px; background: #E7E7E7; margin: 4px 0 20px; }
+</style>
+</head>
+<body>
+
+<!-- Desktop -->
+<div class="section">
+  <div class="sec-lbl">Paginazione — Desktop</div>
+  <div class="pag-desktop">
+    <!-- Left -->
+    <div class="pag-left">
+      <span class="pag-label">Record per pagina:</span>
+      <div class="pag-dropdown">
+        <span>10</span>
+        <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <span class="pag-total">240 totali</span>
+    </div>
+    <!-- Right -->
+    <div class="pag-nav">
+      <!-- First page -->
+      <div class="nav-icon disabled" title="Prima pagina">
+        <svg viewBox="0 0 24 24"><path d="M19 20L9 12l10-8"/><line x1="5" y1="4" x2="5" y2="20"/></svg>
+      </div>
+      <!-- Prev -->
+      <div class="nav-icon disabled" title="Pagina precedente">
+        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      </div>
+      <!-- Page numbers -->
+      <div class="pg focus">1</div>
+      <div class="pg active">2</div>
+      <div class="pg default">3</div>
+      <div class="pg default">4</div>
+      <div class="pg default">5</div>
+      <div class="pg ellipsis">…</div>
+      <div class="pg default">24</div>
+      <!-- Next -->
+      <div class="nav-icon" title="Pagina successiva">
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
+      <!-- Last page -->
+      <div class="nav-icon" title="Ultima pagina">
+        <svg viewBox="0 0 24 24"><path d="M5 4l10 8-10 8"/><line x1="19" y1="4" x2="19" y2="20"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page number states -->
+  <div class="divider"></div>
+  <div class="sec-lbl">Stati numero di pagina</div>
+  <div class="states">
+    <div class="state-item"><div class="pg default">7</div><div class="state-lbl">Default</div></div>
+    <div class="state-item"><div class="pg default" style="background:#F1F1F1">8</div><div class="state-lbl">Hover</div></div>
+    <div class="state-item"><div class="pg focus">9</div><div class="state-lbl">Focus</div></div>
+    <div class="state-item"><div class="pg active">10</div><div class="state-lbl">Active</div></div>
+    <div class="state-item" style="margin-left:12px">
+      <div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>
+      <div class="state-lbl">Default</div>
+    </div>
+    <div class="state-item">
+      <div class="nav-icon" style="background:#F1F1F1;color:#000"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>
+      <div class="state-lbl">Hover</div>
+    </div>
+    <div class="state-item">
+      <div class="nav-icon disabled"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>
+      <div class="state-lbl">Disabled</div>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile -->
+<div class="section">
+  <div class="sec-lbl">Paginazione — Mobile</div>
+  <div class="pag-mobile">
+    <div class="top-row">
+      <span class="pag-label">Record per pagina:</span>
+      <div class="pag-dropdown">
+        <span>10</span>
+        <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:#000;stroke-width:2;stroke-linecap:round"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <span class="pag-total">240 totali</span>
+    </div>
+    <div class="nav-row">
+      <div class="nav-icon disabled"><svg viewBox="0 0 24 24"><path d="M19 20L9 12l10-8"/><line x1="5" y1="4" x2="5" y2="20"/></svg></div>
+      <div class="nav-icon disabled"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></div>
+      <div class="pg focus">1</div>
+      <div class="pg active">2</div>
+      <div class="pg default">3</div>
+      <div class="pg default">4</div>
+      <div class="pg default">5</div>
+      <div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>
+      <div class="nav-icon"><svg viewBox="0 0 24 24"><path d="M5 4l10 8-10 8"/><line x1="19" y1="4" x2="19" y2="20"/></svg></div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.pg:not(.ellipsis):not(.active)').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const container = this.closest('.pag-nav, .nav-row');
+    if (!container) return;
+    container.querySelectorAll('.pg').forEach(p => {
+      p.classList.remove('active','focus');
+      if (!p.classList.contains('ellipsis')) p.classList.add('default');
+    });
+    this.classList.remove('default','focus');
+    this.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!-- @dsCard group="Spacing" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: var(--oe-gray-100); padding: 28px; box-sizing: border-box; min-height: 240px; }
+  .meta {
+    font-family: var(--oe-font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--oe-gray-500);
+    margin-bottom: 18px;
+  }
+  .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 640px; }
+  .card {
+    background: #fff;
+    border-radius: 0;
+    padding: 18px 16px;
+    font-family: var(--oe-font-sans);
+    height: 110px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .name { font-size: 14px; font-weight: 600; }
+  .val { font-family: var(--oe-font-mono); font-size: 12px; color: var(--oe-gray-500); letter-spacing: -0.01em; }
+  .s1 { box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06); }
+  .s2 { box-shadow: 0 4px 12px rgba(39,0,101,0.08); }
+  .s3 { box-shadow: 0 16px 40px rgba(39,0,101,0.18); }
+</style>
+</head>
+<body>
+<div class="meta">Elevation · brand is mostly flat — used sparingly</div>
+<div class="row">
+  <div class="card s1"><div class="name">Shadow 1</div><div class="val">small chips · 0 1px 2px / 0.06</div></div>
+  <div class="card s2"><div class="name">Shadow 2</div><div class="val">hovered cards · 0 4px 12px / 0.08 purple</div></div>
+  <div class="card s3"><div class="name">Shadow 3</div><div class="val">popovers · 0 16px 40px / 0.18 purple</div></div>
+</div>
+</body>
+</html>

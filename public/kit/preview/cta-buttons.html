@@ -1,0 +1,65 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: var(--oe-bluette-900); padding: 28px; box-sizing: border-box; min-height: 200px; }
+  .meta {
+    font-family: var(--oe-font-mono);
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--oe-bluette-200);
+    margin-bottom: 22px;
+  }
+  .row { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: stretch;
+    gap: 4px;
+    height: 52px;
+    font-family: var(--oe-font-sans);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .btn .arrow {
+    width: 52px; height: 52px;
+    display: inline-flex; align-items: center; justify-content: center;
+    box-sizing: border-box;
+    flex-shrink: 0;
+  }
+  .btn .arrow svg { width: 22px; height: 22px; }
+  .btn .lbl {
+    padding: 0 24px;
+    display: inline-flex; align-items: center;
+    box-sizing: border-box;
+  }
+  /* Primary lime: lime arrow tile + bluette icon, lime label, bluette text */
+  .primary .arrow { background: var(--oe-lime-400); }
+  .primary .arrow svg { stroke: var(--oe-bluette-700); }
+  .primary .lbl   { background: var(--oe-lime-400); color: var(--oe-bluette-700); }
+  /* Bluette: bluette arrow + lime icon, bluette label + lime text */
+  .bluette .arrow { background: var(--oe-bluette-700); }
+  .bluette .arrow svg { stroke: var(--oe-lime-400); }
+  .bluette .lbl   { background: var(--oe-bluette-700); color: var(--oe-lime-400); }
+  /* Ghost on dark: transparent arrow + white icon, transparent label + white text, with white outline on both */
+  .ghost .arrow { background: transparent; border: 1px solid #fff; }
+  .ghost .arrow svg { stroke: #fff; }
+  .ghost .lbl   { background: transparent; color: #fff; border: 1px solid #fff; }
+</style>
+</head>
+<body>
+<div class="meta">Buttons — arrow tile matches button background; lime / bluette / ghost</div>
+<div class="row">
+  <a class="btn primary" href="#"><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="square"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span><span class="lbl">Find the right path</span></a>
+  <a class="btn bluette" href="#"><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="square"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span><span class="lbl">Explore the solutions</span></a>
+  <a class="btn ghost" href="#"><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="square"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span><span class="lbl">Talk to an expert</span></a>
+</div>
+</body>
+</html>

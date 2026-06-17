@@ -1,0 +1,76 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: #fff; padding: 24px; box-sizing: border-box; }
+  .card {
+    width: 320px;
+    border: none;
+    border-radius: 0;
+    overflow: hidden;
+    padding-bottom: 28px;
+    background: #fff;
+  }
+  .photo {
+    width: 100%; height: 180px;
+    background-image: linear-gradient(rgba(68,0,179,0.55) 0%, rgba(68,0,179,0) 100%), url("../assets/news-card.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  .content { padding: 18px 22px; display: flex; flex-direction: column; gap: 14px; }
+  .chip {
+    display: inline-flex; align-items: center;
+    height: 26px;
+    padding: 0 12px;
+    align-self: flex-start;
+    border-radius: 0;
+    background: var(--oe-lime-400);
+    color: var(--oe-bluette-700);
+    font-family: var(--oe-font-mono);
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+  .title {
+    font-family: var(--oe-font-sans);
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--oe-black);
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+    margin: 0;
+  }
+  .date {
+    font-family: var(--oe-font-sans);
+    font-size: 12px;
+    color: var(--oe-gray-500);
+    letter-spacing: 0;
+  }
+  .row { display: flex; gap: 18px; }
+</style>
+</head>
+<body>
+<div class="row">
+  <div class="card">
+    <div class="photo"></div>
+    <div class="content">
+      <div class="chip">INSIGHTS &amp; OPINION</div>
+      <p class="title">Bad data leads to bad policy — how impact assessment closes the gap.</p>
+      <div class="date">04 / 06 / 2025</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="photo" style="background-image: linear-gradient(rgba(68,0,179,0.55) 0%, rgba(68,0,179,0) 100%), url('../assets/card-featured.png')"></div>
+    <div class="content">
+      <div class="chip">FLAGSHIP ANALYSIS</div>
+      <p class="title">When football moves more than fans: the global economic footprint.</p>
+      <div class="date">12 / 03 / 2025</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: #fff; padding: 0; box-sizing: border-box; }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 700px;
+  }
+
+  /* Surface backgrounds */
+  .surface { padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; }
+  .on-white { background: #FFFFFF; }
+  .on-gray  { background: #F1F1F1; }
+  .on-dark  { background: #270065; }
+
+  /* Surface label */
+  .ctx {
+    font-family: var(--oe-font-mono);
+    font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.04em; margin-bottom: 12px;
+  }
+  .on-white .ctx, .on-gray .ctx { color: var(--oe-gray-500); }
+  .on-dark .ctx { color: rgba(255,255,255,0.5); }
+
+  /* Cards — no border, no radius, fill only */
+  .card {
+    flex: 1;
+    border-radius: 0;
+    border: none;
+    padding: 20px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .on-white .card { background: #F1F1F1; }
+  .on-gray  .card { background: #FFFFFF; }
+  .on-dark  .card { background: #4400B3; }
+
+  /* Icon tile — always #270065 / #F1F1F1 glyph */
+  .tile {
+    width: 44px; height: 44px;
+    background: #270065;
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .tile svg { width: 24px; height: 24px; stroke: #F1F1F1; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Card text */
+  .ch { font-family: var(--oe-font-sans); font-weight: 400; font-size: 15px; line-height: 1.2; letter-spacing: -0.005em; }
+  .cd { font-family: var(--oe-font-sans); font-weight: 300; font-size: 12px; line-height: 1.35; }
+  .on-white .ch, .on-gray .ch { color: #2C2C2C; }
+  .on-dark  .ch { color: #fff; }
+  .on-white .cd, .on-gray .cd { color: var(--oe-gray-700); }
+  .on-dark  .cd { color: rgba(255,255,255,0.78); }
+
+  /* Rule callout */
+  .rules {
+    width: 700px;
+    background: #F1F1F1;
+    padding: 16px 24px;
+    display: flex; gap: 32px;
+    box-sizing: border-box;
+    border-top: 1px solid var(--oe-gray-200);
+  }
+  .rule { font-family: var(--oe-font-sans); font-size: 12px; color: #2C2C2C; line-height: 1.45; }
+  .rule strong { font-weight: 600; display: block; margin-bottom: 2px; }
+</style>
+</head>
+<body>
+
+<div class="row">
+  <!-- on #FFFFFF -->
+  <div class="surface on-white">
+    <div class="ctx">on #FFFFFF</div>
+    <div class="card">
+      <div class="tile"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+      <div class="ch">Impact Assessment</div>
+      <div class="cd">Card fill #F1F1F1</div>
+    </div>
+  </div>
+
+  <!-- on #F1F1F1 -->
+  <div class="surface on-gray">
+    <div class="ctx">on #F1F1F1</div>
+    <div class="card">
+      <div class="tile"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div class="ch">Public Funding</div>
+      <div class="cd">Card fill #FFFFFF</div>
+    </div>
+  </div>
+
+  <!-- on #270065 -->
+  <div class="surface on-dark">
+    <div class="ctx">on #270065</div>
+    <div class="card">
+      <div class="tile"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <div class="ch">Efficiency</div>
+      <div class="cd">Card fill #4400B3</div>
+    </div>
+  </div>
+</div>
+
+<div class="rules">
+  <div class="rule"><strong>No black border</strong>Cards are differentiated by fill only — never a 1px black outline.</div>
+  <div class="rule"><strong>No border-radius</strong>All corners are sharp (0px). No rounding anywhere in the system.</div>
+  <div class="rule"><strong>Icon tile always #270065</strong>White glyph (#F1F1F1) inside a #270065 square, on all surfaces.</div>
+</div>
+
+</body>
+</html>

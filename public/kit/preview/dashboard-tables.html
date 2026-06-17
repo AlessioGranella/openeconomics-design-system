@@ -1,0 +1,257 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #E7E7E7; font-family: "Atkinson Hyperlegible Next", system-ui, sans-serif; padding: 20px; color: #000; }
+
+  .section { margin-bottom: 28px; }
+  .sec-lbl {
+    font-family: "Atkinson Hyperlegible Mono", monospace;
+    font-size: 12px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.06em; color: #545454;
+    margin-bottom: 8px;
+  }
+
+  /* ── 1. CAPEX/OPEX desktop ── */
+  .table-capex { background: #fff; overflow: hidden; width: 660px; }
+  .table-capex table { border-collapse: collapse; width: 100%; table-layout: fixed; }
+  .table-capex th, .table-capex td { padding: 0; border-right: 1px solid #E7E7E7; border-bottom: 1px solid #E7E7E7; }
+  .table-capex thead th {
+    background: #4400B3; color: #fff;
+    font-size: 12px; font-weight: 600;
+    text-align: right; padding: 8px 10px;
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .table-capex thead th:first-child { text-align: left; background: #270065; }
+  .table-capex tbody td {
+    font-size: 12px; color: #2C2C2C;
+    padding: 7px 10px; background: #fff;
+    text-align: right; font-variant-numeric: tabular-nums;
+  }
+  .table-capex tbody td:first-child { text-align: left; font-weight: 400; background: #F1F1F1; color: #2C2C2C; border-right: 2px solid #E7E7E7; }
+  .table-capex tbody tr:last-child td { font-weight: 700; background: #F5F0FF; }
+  .table-capex tfoot td { background: #F1F1F1; padding: 6px 10px; font-size: 12px; color: #6E6E6E; text-align: center; }
+  .scrollbar-mock { height: 6px; background: linear-gradient(to right, #4400B3 40%, #E7E7E7 40%); margin: 0; }
+
+  /* ── 2. Mobile card table ── */
+  .mobile-card-table { display: flex; gap: 10px; align-items: flex-start; width: 660px; }
+  .card-pag { background: #fff; width: 160px; border: 1px solid #E7E7E7; flex-shrink: 0; }
+  .card-row { padding: 12px 14px; border-bottom: 1px solid #F1F1F1; }
+  .card-row .label { font-size: 12px; color: #6E6E6E; margin-bottom: 3px; }
+  .card-row .val   { font-size: 14px; font-weight: 700; color: #000; font-variant-numeric: tabular-nums; }
+  .card-pag-nav { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; background: #F1F1F1; font-size: 12px; color: #545454; }
+  .nav-btn { width: 24px; height: 24px; background: #fff; border: 1px solid #E7E7E7; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+  .nav-btn svg { width: 14px; height: 14px; fill: none; stroke: #4400B3; stroke-width: 2; stroke-linecap: round; }
+  .pag-hint { font-size: 12px; color: #6E6E6E; padding: 6px 14px; }
+
+  /* ── 3. Moltiplicatori ── */
+  .table-moltipl { background: #fff; width: 400px; border: 1px solid #E7E7E7; }
+  .moltipl-head { background: #4400B3; display: flex; justify-content: space-between; padding: 10px 14px; }
+  .moltipl-head .ht { color: #fff; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+  .moltipl-head .ht svg { width: 14px; height: 14px; fill: none; stroke: #B9FF69; stroke-width: 1.8; stroke-linecap: round; }
+  .moltipl-head .range { color: #B9FF69; font-size: 12px; font-weight: 600; }
+  .moltipl-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border-bottom: 1px solid #F1F1F1; }
+  .moltipl-row:last-of-type { font-weight: 700; border-bottom: none; background: #F5F0FF; }
+  .moltipl-lbl { font-size: 12px; color: #2C2C2C; }
+  .moltipl-sub { font-size: 12px; color: #6E6E6E; margin-top: 2px; }
+  .moltipl-val { font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; color: #000; text-align: right; }
+  .moltipl-range { font-size: 12px; color: #545454; text-align: right; width: 60px; flex-shrink: 0; }
+  .moltipl-link { padding: 10px 14px; border-top: 1px solid #E7E7E7; }
+  .moltipl-link a { font-size: 12px; color: #4400B3; text-decoration: none; font-weight: 500; }
+
+  /* ── 4. KPI input table ── */
+  .table-kpi { background: #fff; width: 660px; border: 1px solid #E7E7E7; overflow: hidden; }
+  .kpi-table { width: 100%; border-collapse: collapse; }
+  .kpi-table th { background: #F1F1F1; font-size: 12px; font-weight: 600; text-align: right; padding: 8px 10px; border-right: 1px solid #E7E7E7; border-bottom: 2px solid #E7E7E7; }
+  .kpi-table th:first-child { text-align: left; width: 110px; }
+  .kpi-table th:nth-child(2) { width: 90px; }
+  .kpi-table .cat-row td { background: #EFE5FF; font-size: 12px; font-weight: 600; color: #4400B3; text-transform: uppercase; letter-spacing: 0.04em; padding: 6px 10px; border-bottom: 1px solid #D9C1FF; }
+  .kpi-table td { font-size: 12px; padding: 6px 10px; border-right: 1px solid #E7E7E7; border-bottom: 1px solid #F1F1F1; color: #2C2C2C; text-align: right; vertical-align: middle; }
+  .kpi-table td:first-child { text-align: left; font-size: 12px; }
+  .kpi-table td:nth-child(2) { font-weight: 600; font-variant-numeric: tabular-nums; }
+  .inp-field { width: 70px; height: 26px; border: 1px solid #D2D2D2; background: #F9F9FF; padding: 0 6px; font-family: inherit; font-size: 12px; color: #000; text-align: right; font-variant-numeric: tabular-nums; }
+  .inp-field:focus { outline: none; border-color: #4400B3; }
+  .kpi-actions { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #F1F1F1; border-top: 1px solid #E7E7E7; }
+  .btn-insert { height: 32px; padding: 0 14px; background: #4400B3; color: #fff; border: none; cursor: pointer; font-family: inherit; font-size: 12px; font-weight: 500; }
+  .btn-clear  { font-size: 12px; color: #CC0000; background: none; border: none; cursor: pointer; font-family: inherit; }
+
+  /* ── 5. Summary/recap ── */
+  .table-recap { background: #fff; width: 320px; border: 1px solid #E7E7E7; }
+  .recap-row { display: flex; justify-content: space-between; align-items: baseline; padding: 9px 14px; border-bottom: 1px solid #F1F1F1; gap: 16px; }
+  .recap-row:last-child { border-bottom: none; }
+  .recap-lbl { font-size: 12px; color: #545454; flex: 1; }
+  .recap-val { font-size: 13px; font-weight: 700; color: #000; white-space: nowrap; }
+  .recap-note { font-size: 12px; color: #6E6E6E; padding: 8px 14px; border-top: 1px solid #E7E7E7; }
+</style>
+</head>
+<body>
+
+<!-- 1. CAPEX/OPEX desktop -->
+<div class="section">
+  <div class="sec-lbl">TABELLA 1 · CAPEX/OPEX — Desktop (prima colonna frozen, scroll orizzontale)</div>
+  <div class="table-capex">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:160px">Voce di spesa</th>
+          <th>2023</th>
+          <th>2024</th>
+          <th>2025</th>
+          <th>2026</th>
+          <th>2027</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Costi del personale</td>
+          <td>276.000 €</td><td>276.000 €</td><td>276.000 €</td><td>276.000 €</td><td>276.000 €</td>
+        </tr>
+        <tr>
+          <td>Costi operativi</td>
+          <td>142.500 €</td><td>148.000 €</td><td>155.000 €</td><td>160.000 €</td><td>165.000 €</td>
+        </tr>
+        <tr>
+          <td>Investimenti</td>
+          <td>85.000 €</td><td>90.000 €</td><td>92.000 €</td><td>88.000 €</td><td>94.000 €</td>
+        </tr>
+        <tr>
+          <td>Totale</td>
+          <td>503.500 €</td><td>514.000 €</td><td>523.000 €</td><td>524.000 €</td><td>535.000 €</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr><td colspan="6">Usa le frecce per passare da un anno all'altro</td></tr>
+      </tfoot>
+    </table>
+    <div class="scrollbar-mock"></div>
+  </div>
+</div>
+
+<!-- 2. Mobile card + pagination -->
+<div class="section">
+  <div class="sec-lbl">TABELLA 2 · Mobile card con paginazione</div>
+  <div class="mobile-card-table">
+    <div class="card-pag">
+      <div class="card-row"><div class="label">Costi del personale</div><div class="val">276.000 €</div></div>
+      <div class="card-row"><div class="label">Costi del personale</div><div class="val">276.000 €</div></div>
+      <div class="card-row"><div class="label">Costi del personale</div><div class="val">276.000 €</div></div>
+      <div class="card-pag-nav">
+        <div class="nav-btn"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></div>
+        <span>1 di 20</span>
+        <div class="nav-btn"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>
+      </div>
+      <div class="pag-hint">Usa le frecce per passare da un anno all'altro</div>
+    </div>
+
+    <!-- 3. Moltiplicatori -->
+    <div class="table-moltipl">
+      <div class="moltipl-head">
+        <div class="ht">
+          Moltiplicatori di spesa
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        </div>
+        <div class="range">Range</div>
+      </div>
+      <div class="moltipl-row">
+        <div><div class="moltipl-lbl">Moltiplicatore diretto</div><div class="moltipl-sub">Effetto della spesa iniziale</div></div>
+        <div style="display:flex;gap:16px;align-items:center">
+          <div class="moltipl-val">0,89</div>
+          <div class="moltipl-range">0 : 0</div>
+        </div>
+      </div>
+      <div class="moltipl-row">
+        <div><div class="moltipl-lbl">Moltiplicatore indiretto</div><div class="moltipl-sub">Effetto sull'economia collegata</div></div>
+        <div style="display:flex;gap:16px;align-items:center">
+          <div class="moltipl-val">0,66</div>
+          <div class="moltipl-range">0 : 0</div>
+        </div>
+      </div>
+      <div class="moltipl-row">
+        <div><div class="moltipl-lbl">Moltiplicatore indotto</div><div class="moltipl-sub">Effetto dei consumi generati</div></div>
+        <div style="display:flex;gap:16px;align-items:center">
+          <div class="moltipl-val">0,31</div>
+          <div class="moltipl-range">0 : 0</div>
+        </div>
+      </div>
+      <div class="moltipl-row">
+        <div><div class="moltipl-lbl" style="font-weight:700">Moltiplicatore totale stimato</div></div>
+        <div style="display:flex;gap:16px;align-items:center">
+          <div class="moltipl-val">1,86</div>
+          <div class="moltipl-range">0 : 0</div>
+        </div>
+      </div>
+      <div class="moltipl-link"><a href="#">Approfondisci i moltiplicatori di spesa →</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. KPI input table -->
+<div class="section">
+  <div class="sec-lbl">TABELLA 3 · KPI con input per anno (inserimento dati)</div>
+  <div class="table-kpi">
+    <table class="kpi-table">
+      <thead>
+        <tr>
+          <th>KPI</th>
+          <th>Valore</th>
+          <th>2025</th>
+          <th>2026</th>
+          <th>2027</th>
+          <th>2028</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="cat-row"><td colspan="6">Risparmio ambientale</td></tr>
+        <tr>
+          <td>Migliore qualità rifiuti differenziati</td>
+          <td>509.000.999 €</td>
+          <td><input class="inp-field" value="0,00"></td>
+          <td><input class="inp-field" value="0,00"></td>
+          <td><input class="inp-field" value="0,00"></td>
+          <td><input class="inp-field" value="0,00"></td>
+        </tr>
+        <tr>
+          <td>Fattore di Risparmio Ambientale</td>
+          <td>509.000.999 €</td>
+          <td><input class="inp-field" value="0,00"></td>
+          <td><input class="inp-field" value="0,00"></td>
+          <td><input class="inp-field" value="0,00"></td>
+          <td><input class="inp-field" value="0,00"></td>
+        </tr>
+        <tr class="cat-row"><td colspan="6">Maggiore introito da TARI</td></tr>
+        <tr>
+          <td>Numero di nuovi paganti</td>
+          <td>509.000.999 €</td>
+          <td><input class="inp-field" value="0,00"></td>
+          <td><input class="inp-field" value="0,00"></td>
+          <td><input class="inp-field" value="0,00"></td>
+          <td><input class="inp-field" value="0,00"></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="kpi-actions">
+      <button class="btn-insert">Inserisci automaticamente sugli anni</button>
+      <button class="btn-clear">Pulisci la distribuzione ✕</button>
+    </div>
+  </div>
+</div>
+
+<!-- 5. Summary/recap -->
+<div class="section">
+  <div class="sec-lbl">TABELLA 4 · Riepilogo (label + valore)</div>
+  <div class="table-recap">
+    <div class="recap-row"><span class="recap-lbl">Lorem Ipsum dolor sit</span><span class="recap-val">Lorem Ipsum</span></div>
+    <div class="recap-row"><span class="recap-lbl">Lorem Ipsum dolor sit</span><span class="recap-val">Lorem Ipsum</span></div>
+    <div class="recap-row"><span class="recap-lbl">Lorem Ipsum dolor sit</span><span class="recap-val">Lorem Ipsum</span></div>
+    <div class="recap-row"><span class="recap-lbl">Lorem Ipsum dolor sit</span><span class="recap-val">Lorem Ipsum</span></div>
+    <div class="recap-row"><span class="recap-lbl">Lorem Ipsum dolor sit</span><span class="recap-val">Lorem Ipsum</span></div>
+    <div class="recap-note">Lorem Ipsum dolor sit amet consectetur. Dui sed ac anim amet sit volutpat arcu.</div>
+  </div>
+</div>
+
+</body>
+</html>

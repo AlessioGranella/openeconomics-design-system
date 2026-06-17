@@ -1,0 +1,214 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #E7E7E7; font-family: "Atkinson Hyperlegible Next", system-ui, sans-serif; padding: 20px; }
+  .sec-lbl { font-family: "Atkinson Hyperlegible Mono", monospace; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: #545454; margin-bottom: 10px; }
+  .section { margin-bottom: 24px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-start; }
+
+  /* ── Base filter trigger (filter-number / filter-icon) ── */
+  .filter-btn {
+    height: 40px; display: inline-flex; align-items: center; gap: 8px;
+    padding: 0 12px; background: #fff; cursor: pointer;
+    border: 1px solid #E7E7E7; font-size: 14px; color: #000;
+    white-space: nowrap; transition: background 0.1s, border-color 0.1s;
+    font-family: inherit;
+  }
+  .filter-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; flex-shrink: 0; }
+  .filter-btn .count { background: #D5D5FF; color: #4400B3; font-size: 12px; font-weight: 600; padding: 2px 6px; font-family: inherit; }
+
+  /* States */
+  .filter-btn.default { background: #fff; border-color: #E7E7E7; color: #000; }
+  .filter-btn.hover   { background: #EFE5FF; border-color: #6E1AFF; color: #6E1AFF; }
+  .filter-btn.hover svg { stroke: #6E1AFF; }
+  .filter-btn.hover .count { background: #D5D5FF; }
+  .filter-btn.active  { background: #EFE5FF; border-color: #4400B3; color: #4400B3; border-width: 2px; }
+  .filter-btn.active svg { stroke: #4400B3; }
+  .filter-btn.disabled { background: #F1F1F1; color: #999; border-color: #E7E7E7; cursor: not-allowed; }
+
+  /* Selected tag */
+  .sel-tag { height: 32px; display: inline-flex; align-items: center; gap: 6px; padding: 0 10px; background: #EFE5FF; border: 1px solid #4400B3; font-size: 13px; color: #4400B3; font-weight: 500; }
+  .sel-tag button { all: unset; cursor: pointer; display: flex; align-items: center; color: #4400B3; }
+  .sel-tag button svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+
+  /* ── Dropdown semplice ── */
+  .filter-dd { background: #fff; border: 1px solid #E7E7E7; box-shadow: 0 0 10px rgba(0,0,0,0.12); width: 210px; }
+  .dd-item { height: 48px; display: flex; align-items: center; padding: 0 14px; font-size: 14px; color: #000; cursor: pointer; gap: 10px; border-bottom: 1px solid #F1F1F1; }
+  .dd-item:last-child { border-bottom: none; }
+  .dd-item:hover { background: #EFE5FF; color: #4400B3; }
+  .dd-item.checked { color: #4400B3; font-weight: 500; }
+  .dd-item svg { width: 16px; height: 16px; fill: none; stroke: #4400B3; stroke-width: 2; stroke-linecap: round; flex-shrink: 0; }
+
+  /* ── Filter text (expanded) ── */
+  .filter-text-panel { background: #fff; border: 1px solid #E7E7E7; width: 300px; }
+  .ftp-head { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-bottom: 1px solid #E7E7E7; }
+  .ftp-title { font-size: 14px; font-weight: 600; color: #000; }
+  .ftp-clear { font-size: 12px; color: #4400B3; background: none; border: none; cursor: pointer; font-family: inherit; }
+  .ftp-search { padding: 8px 14px; border-bottom: 1px solid #F1F1F1; }
+  .ftp-input { width: 100%; height: 34px; border: 1px solid #E7E7E7; background: #F1F1F1; padding: 0 10px; font-family: inherit; font-size: 13px; color: #000; }
+  .ftp-option { display: flex; align-items: center; gap: 10px; padding: 10px 14px; font-size: 13px; color: #000; cursor: pointer; border-bottom: 1px solid #F1F1F1; }
+  .ftp-option:hover { background: #F1F1F1; }
+  .ftp-cb { width: 16px; height: 16px; border: 1.5px solid #E7E7E7; background: #fff; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+  .ftp-cb.checked { background: #4400B3; border-color: #4400B3; }
+  .ftp-cb.checked svg { display: block; }
+  .ftp-cb svg { display: none; width: 10px; height: 10px; fill: none; stroke: #fff; stroke-width: 2.5; stroke-linecap: round; }
+
+  /* ── Advanced filter panel ── */
+  .adv-panel { background: #fff; border: 1px solid #E7E7E7; width: 400px; }
+  .adv-head { padding: 14px 16px; border-bottom: 1px solid #E7E7E7; display: flex; justify-content: space-between; align-items: center; }
+  .adv-head span { font-size: 15px; font-weight: 600; color: #000; }
+  .adv-head button { all: unset; cursor: pointer; color: #6E6E6E; display: flex; }
+  .adv-head button svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+  .adv-section { padding: 12px 16px; border-bottom: 1px solid #F1F1F1; }
+  .adv-section-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #6E6E6E; margin-bottom: 10px; }
+  .adv-opts { display: flex; flex-wrap: wrap; gap: 6px; }
+  .adv-opt { height: 30px; padding: 0 12px; background: #F1F1F1; border: 1px solid #E7E7E7; font-size: 13px; color: #2C2C2C; cursor: pointer; display: flex; align-items: center; }
+  .adv-opt.sel { background: #EFE5FF; border-color: #4400B3; color: #4400B3; font-weight: 500; }
+  .adv-actions { display: flex; gap: 8px; padding: 12px 16px; }
+  .btn-apply { flex: 1; height: 36px; background: #4400B3; color: #fff; border: none; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 500; }
+  .btn-reset { height: 36px; padding: 0 16px; background: transparent; color: #4400B3; border: 1px solid #4400B3; cursor: pointer; font-family: inherit; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<!-- Simple filter triggers -->
+<div class="section">
+  <div class="sec-lbl">Filtri semplici — trigger + stati</div>
+  <div class="row">
+    <!-- filter-icon -->
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div class="filter-btn default">
+        <svg viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+        Filtra
+      </div>
+      <div class="filter-btn hover">
+        <svg viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+        Filtra
+      </div>
+      <div class="filter-btn active">
+        <svg viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+        Filtra
+        <span class="count">3</span>
+      </div>
+      <div class="filter-btn disabled">
+        <svg viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+        Filtra
+      </div>
+    </div>
+    <!-- filter-text trigger -->
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div class="filter-btn default" style="min-width:160px;justify-content:space-between">
+        <span>Filtra per:</span>
+        <span style="display:flex;align-items:center;gap:4px">
+          <span style="font-size:13px;color:#999">10</span>
+          <svg viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </div>
+      <div class="filter-btn hover" style="min-width:160px;justify-content:space-between">
+        <span>Filtra per:</span>
+        <span style="display:flex;align-items:center;gap:4px">
+          <span style="font-size:13px">10</span>
+          <svg viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </div>
+      <div class="filter-btn active" style="min-width:160px;justify-content:space-between">
+        <span>Filtra per:</span>
+        <span class="count">3</span>
+        <svg viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+    <!-- "Hai selezionato" tags -->
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="font-size:12px;color:#6E6E6E;margin-bottom:4px">Hai selezionato:</div>
+      <div class="sel-tag">Lombardia<button><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+      <div class="sel-tag">2024<button><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+      <div class="sel-tag">Attivo<button><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+    </div>
+  </div>
+</div>
+
+<!-- Dropdown + text panel side by side -->
+<div class="section">
+  <div class="sec-lbl">Dropdown semplice + Pannello filtro testo</div>
+  <div class="row" style="align-items:flex-start">
+    <div class="filter-dd">
+      <div class="dd-item checked"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Tutti i progetti</div>
+      <div class="dd-item">Attivi</div>
+      <div class="dd-item">In attesa</div>
+      <div class="dd-item">Chiusi</div>
+      <div class="dd-item">Archiviati</div>
+      <div class="dd-item">Bozze</div>
+    </div>
+    <div class="filter-text-panel">
+      <div class="ftp-head">
+        <span class="ftp-title">Regione</span>
+        <button class="ftp-clear">Cancella tutto</button>
+      </div>
+      <div class="ftp-search">
+        <input class="ftp-input" placeholder="Cerca regione...">
+      </div>
+      <div class="ftp-option">
+        <div class="ftp-cb checked"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,7 9,1"/></svg></div>Lombardia
+      </div>
+      <div class="ftp-option">
+        <div class="ftp-cb checked"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,7 9,1"/></svg></div>Lazio
+      </div>
+      <div class="ftp-option"><div class="ftp-cb"></div>Campania</div>
+      <div class="ftp-option"><div class="ftp-cb"></div>Veneto</div>
+      <div class="ftp-option"><div class="ftp-cb"></div>Sicilia</div>
+    </div>
+  </div>
+</div>
+
+<!-- Advanced filter panel -->
+<div class="section">
+  <div class="sec-lbl">Filtro avanzato — Lista progetti</div>
+  <div class="adv-panel">
+    <div class="adv-head">
+      <span>Filtri avanzati</span>
+      <button><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="adv-section">
+      <div class="adv-section-title">Stato progetto</div>
+      <div class="adv-opts">
+        <div class="adv-opt sel">Attivo</div>
+        <div class="adv-opt">In attesa</div>
+        <div class="adv-opt sel">Chiuso</div>
+        <div class="adv-opt">Bozza</div>
+        <div class="adv-opt">Archiviato</div>
+      </div>
+    </div>
+    <div class="adv-section">
+      <div class="adv-section-title">Anno</div>
+      <div class="adv-opts">
+        <div class="adv-opt sel">2024</div>
+        <div class="adv-opt">2023</div>
+        <div class="adv-opt">2022</div>
+        <div class="adv-opt">2021</div>
+      </div>
+    </div>
+    <div class="adv-section">
+      <div class="adv-section-title">Regione</div>
+      <div class="adv-opts">
+        <div class="adv-opt sel">Lombardia</div>
+        <div class="adv-opt">Lazio</div>
+        <div class="adv-opt">Campania</div>
+        <div class="adv-opt sel">Veneto</div>
+        <div class="adv-opt">Sicilia</div>
+        <div class="adv-opt">Puglia</div>
+      </div>
+    </div>
+    <div class="adv-actions">
+      <button class="btn-reset">Reset</button>
+      <button class="btn-apply">Applica filtri</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

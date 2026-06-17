@@ -1,0 +1,54 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; font-family: "Atkinson Hyperlegible Next", system-ui, sans-serif; padding: 24px; }
+  .sec-lbl { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: #999; margin-bottom: 12px; }
+  .section { margin-bottom: 24px; }
+
+  /* Tab bar */
+  .tabs { display: flex; border-bottom: 1px solid #E7E7E7; }
+  .tab { padding: 10px 20px; font-size: 13px; font-weight: 400; color: #545454; border-bottom: 2px solid transparent; margin-bottom: -1px; cursor: pointer; }
+  .tab.active { color: #4400B3; font-weight: 600; border-bottom-color: #4400B3; }
+
+  /* Switcher (segment control) */
+  .switcher { display: inline-flex; border: 1px solid #E7E7E7; height: 36px; overflow: hidden; }
+  .sw-item { padding: 0 20px; font-size: 13px; font-weight: 400; color: #545454; display: flex; align-items: center; cursor: pointer; border-right: 1px solid #E7E7E7; }
+  .sw-item:last-child { border-right: none; }
+  .sw-item.active { background: #4400B3; color: #fff; font-weight: 500; }
+
+  /* Content area */
+  .content { background: #F1F1F1; padding: 20px; margin-top: 0; }
+  .placeholder { height: 60px; background: #E7E7E7; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #999; }
+</style>
+</head>
+<body>
+
+<div class="section">
+  <div class="sec-lbl">Tabs — standard</div>
+  <div class="tabs">
+    <div class="tab active">Overview</div>
+    <div class="tab">Analisi</div>
+    <div class="tab">Report</div>
+    <div class="tab">Storico</div>
+  </div>
+  <div class="content">
+    <div class="placeholder">Contenuto tab attivo</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-lbl">Switcher (segmented control)</div>
+  <div class="switcher">
+    <div class="sw-item active">Annuale</div>
+    <div class="sw-item">Trimestrale</div>
+    <div class="sw-item">Mensile</div>
+  </div>
+</div>
+
+</body>
+</html>

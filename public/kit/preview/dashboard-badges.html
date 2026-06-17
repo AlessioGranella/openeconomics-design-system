@@ -1,0 +1,64 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; font-family: "Atkinson Hyperlegible Next", system-ui, sans-serif; padding: 24px; }
+  .section { margin-bottom: 20px; }
+  .sec-lbl { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: #999; margin-bottom: 10px; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    height: 24px; padding: 0 10px;
+    font-family: "Atkinson Hyperlegible Mono", monospace;
+    font-size: 12px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  /* stati progetto */
+  .active  { background: #D6F5E0; color: #006622; }
+  .waiting { background: #FFF3D4; color: #7A4A00; }
+  .error   { background: #FFE0E0; color: #CC0000; }
+  .closed  { background: #E7E7E7; color: #545454; }
+  .info    { background: #EFE5FF; color: #4400B3; }
+  /* analisi */
+  .an-run  { background: #4400B3; color: #B9FF69; }
+  .an-wait { background: #E7E7E7; color: #545454; }
+  .an-err  { background: #CC0000; color: #fff; }
+  /* ESG */
+  .esg-e   { background: #D6F5E0; color: #006622; }
+  .esg-s   { background: #EFE5FF; color: #4400B3; }
+  .esg-g   { background: #FFF3D4; color: #7A4A00; }
+</style>
+</head>
+<body>
+<div class="section">
+  <div class="sec-lbl">Badge stati — progetto</div>
+  <div class="row">
+    <span class="badge active">Attivo</span>
+    <span class="badge waiting">In attesa</span>
+    <span class="badge error">Errore</span>
+    <span class="badge closed">Chiuso</span>
+    <span class="badge info">In revisione</span>
+  </div>
+</div>
+<div class="section">
+  <div class="sec-lbl">Badge analisi</div>
+  <div class="row">
+    <span class="badge an-run">In esecuzione</span>
+    <span class="badge an-wait">In coda</span>
+    <span class="badge an-err">Fallita</span>
+  </div>
+</div>
+<div class="section">
+  <div class="sec-lbl">Badge ESG</div>
+  <div class="row">
+    <span class="badge esg-e">Environmental</span>
+    <span class="badge esg-s">Social</span>
+    <span class="badge esg-g">Governance</span>
+  </div>
+</div>
+</body>
+</html>

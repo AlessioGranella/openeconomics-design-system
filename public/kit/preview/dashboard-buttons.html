@@ -1,0 +1,102 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; font-family: "Atkinson Hyperlegible Next", system-ui, sans-serif; padding: 20px; }
+  .grid { display: grid; grid-template-columns: max-content 1fr 1fr 1fr 1fr 1fr; gap: 0; width: 660px; }
+  .header-row { display: contents; }
+  .th { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #999; padding: 0 10px 8px; display: flex; align-items: flex-end; }
+  .th.lbl { padding-left: 0; min-width: 80px; }
+  .row-lbl { font-size: 12px; font-weight: 500; color: #999; text-transform: uppercase; letter-spacing: 0.04em; display: flex; align-items: center; padding: 10px 0; min-width: 80px; white-space: nowrap; border-top: 1px solid #F1F1F1; }
+  .cell { padding: 8px 10px; display: flex; align-items: center; border-top: 1px solid #F1F1F1; }
+
+  /* Base button */
+  .btn { height: 36px; padding: 0 16px; border: none; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; transition: background 0.12s, color 0.12s, opacity 0.12s; white-space: nowrap; }
+  .btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+  /* Primary */
+  .primary         { background: #4400B3; color: #fff; }
+  .primary:hover   { background: #340088; }
+  .primary:active  { background: #270065; }
+  .primary.focus   { background: #4400B3; outline: 2px solid #4400B3; outline-offset: 2px; }
+  .primary.disabled{ background: #E7E7E7; color: #999; cursor: not-allowed; }
+
+  /* Ghost */
+  .ghost           { background: transparent; color: #4400B3; border: 1px solid #4400B3; }
+  .ghost:hover     { background: #EFE5FF; }
+  .ghost:active    { background: #D9C1FF; }
+  .ghost.focus     { outline: 2px solid #4400B3; outline-offset: 2px; }
+  .ghost.disabled  { color: #999; border-color: #E7E7E7; cursor: not-allowed; background: transparent; }
+
+  /* Ghost error */
+  .gerror          { background: transparent; color: #CC0000; border: 1px solid #CC0000; }
+  .gerror:hover    { background: #FFE0E0; }
+  .gerror:active   { background: #FFC0C0; }
+  .gerror.disabled { color: #999; border-color: #E7E7E7; cursor: not-allowed; }
+
+  /* Icon button */
+  .icon-btn { width: 36px; height: 36px; padding: 0; background: transparent; color: #4400B3; border: 1px solid #E7E7E7; display: flex; align-items: center; justify-content: center; }
+  .icon-btn:hover  { background: #EFE5FF; border-color: #4400B3; }
+  .icon-btn:active { background: #D9C1FF; }
+  .icon-btn.focus  { outline: 2px solid #4400B3; outline-offset: 2px; }
+  .icon-btn.disabled { color: #999; border-color: #E7E7E7; cursor: not-allowed; }
+</style>
+</head>
+<body>
+<div class="grid">
+  <!-- Header -->
+  <div class="th lbl"></div>
+  <div class="th">Default</div>
+  <div class="th">Hover</div>
+  <div class="th">Active</div>
+  <div class="th">Focus</div>
+  <div class="th">Disabled</div>
+
+  <!-- Primary -->
+  <div class="row-lbl">Primary</div>
+  <div class="cell"><button class="btn primary">Azione</button></div>
+  <div class="cell"><button class="btn primary" style="background:#340088">Azione</button></div>
+  <div class="cell"><button class="btn primary" style="background:#270065">Azione</button></div>
+  <div class="cell"><button class="btn primary focus">Azione</button></div>
+  <div class="cell"><button class="btn primary disabled" disabled>Azione</button></div>
+
+  <!-- Ghost -->
+  <div class="row-lbl">Ghost</div>
+  <div class="cell"><button class="btn ghost">Azione</button></div>
+  <div class="cell"><button class="btn ghost" style="background:#EFE5FF">Azione</button></div>
+  <div class="cell"><button class="btn ghost" style="background:#D9C1FF">Azione</button></div>
+  <div class="cell"><button class="btn ghost focus">Azione</button></div>
+  <div class="cell"><button class="btn ghost disabled" disabled>Azione</button></div>
+
+  <!-- Ghost error -->
+  <div class="row-lbl">Ghost Error</div>
+  <div class="cell"><button class="btn gerror">Elimina</button></div>
+  <div class="cell"><button class="btn gerror" style="background:#FFE0E0">Elimina</button></div>
+  <div class="cell"><button class="btn gerror" style="background:#FFC0C0">Elimina</button></div>
+  <div class="cell"><button class="btn gerror" style="outline:2px solid #CC0000;outline-offset:2px">Elimina</button></div>
+  <div class="cell"><button class="btn gerror disabled" disabled>Elimina</button></div>
+
+  <!-- Icon -->
+  <div class="row-lbl">Icon</div>
+  <div class="cell">
+    <button class="btn icon-btn"><svg viewBox="0 0 24 24"><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+  </div>
+  <div class="cell">
+    <button class="btn icon-btn" style="background:#EFE5FF;border-color:#4400B3"><svg viewBox="0 0 24 24"><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+  </div>
+  <div class="cell">
+    <button class="btn icon-btn" style="background:#D9C1FF"><svg viewBox="0 0 24 24"><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+  </div>
+  <div class="cell">
+    <button class="btn icon-btn focus"><svg viewBox="0 0 24 24"><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+  </div>
+  <div class="cell">
+    <button class="btn icon-btn disabled" disabled style="color:#999"><svg viewBox="0 0 24 24"><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+  </div>
+</div>
+</body>
+</html>

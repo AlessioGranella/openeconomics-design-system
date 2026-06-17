@@ -1,0 +1,101 @@
+<!-- @dsCard group="Colors" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: #fff; padding: 20px; box-sizing: border-box; }
+  .stack { width: 700px; display: flex; flex-direction: column; gap: 10px; }
+  .row {
+    display: grid;
+    grid-template-columns: 90px repeat(6, 1fr);
+    gap: 3px;
+    align-items: center;
+  }
+  .name {
+    font-family: var(--oe-font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .sw {
+    height: 40px;
+    border-radius: var(--oe-radius-xs);
+    font-family: var(--oe-font-mono);
+    font-size: 12px;
+    color: rgba(255,255,255,0.85);
+    padding: 4px 6px;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    display: flex; align-items: flex-end;
+  }
+  .head {
+    font-family: var(--oe-font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--oe-gray-500);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="stack">
+  <div class="row">
+    <div></div>
+    <div class="head">400</div>
+    <div class="head">500</div>
+    <div class="head">600</div>
+    <div class="head">700</div>
+    <div class="head">800</div>
+    <div class="head">900</div>
+  </div>
+  <div class="row">
+    <div class="name">Magenta</div>
+    <div class="sw" style="background:#FF8DFF;color:#600060">FF8DFF</div>
+    <div class="sw" style="background:#FF4EFF;color:#600060">FF4EFF</div>
+    <div class="sw" style="background:#FF00FF">FF00FF</div>
+    <div class="sw" style="background:#C300C3">C300C3</div>
+    <div class="sw" style="background:#920092">920092</div>
+    <div class="sw" style="background:#600060">600060</div>
+  </div>
+  <div class="row">
+    <div class="name">Blu</div>
+    <div class="sw" style="background:#6161FF">6161FF</div>
+    <div class="sw" style="background:#3A3AFF">3A3AFF</div>
+    <div class="sw" style="background:#0000FF">0000FF</div>
+    <div class="sw" style="background:#0000A1">0000A1</div>
+    <div class="sw" style="background:#000068">000068</div>
+    <div class="sw" style="background:#000035">000035</div>
+  </div>
+  <div class="row">
+    <div class="name">Yellow</div>
+    <div class="sw" style="background:#FFF751;color:#403E00">FFF751</div>
+    <div class="sw" style="background:#FFF300;color:#403E00">FFF300</div>
+    <div class="sw" style="background:#F4E900;color:#403E00">F4E900</div>
+    <div class="sw" style="background:#595700">595700</div>
+    <div class="sw" style="background:#403E00">403E00</div>
+    <div class="sw" style="background:#262500">262500</div>
+  </div>
+  <div class="row">
+    <div class="name">Green</div>
+    <div class="sw" style="background:#3FFFA5;color:#002D18">3FFFA5</div>
+    <div class="sw" style="background:#00FF88;color:#002D18">00FF88</div>
+    <div class="sw" style="background:#00E279;color:#002D18">00E279</div>
+    <div class="sw" style="background:#00542D">00542D</div>
+    <div class="sw" style="background:#003F22">003F22</div>
+    <div class="sw" style="background:#002D18">002D18</div>
+  </div>
+  <div class="row">
+    <div class="name">Cyan</div>
+    <div class="sw" style="background:#83FFFF;color:#003535">83FFFF</div>
+    <div class="sw" style="background:#61FFFF;color:#003535">61FFFF</div>
+    <div class="sw" style="background:#00FFFF;color:#003535">00FFFF</div>
+    <div class="sw" style="background:#005B5B">005B5B</div>
+    <div class="sw" style="background:#004646">004646</div>
+    <div class="sw" style="background:#003535">003535</div>
+  </div>
+</div>
+</body>
+</html>

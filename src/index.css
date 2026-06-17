@@ -1,0 +1,14 @@
+/* Token + font canonici del design system OpenEconomics.
+   styles/ contiene i file REALI (qui vivono); sito ed Eni li raggiungono via symlink. */
+@import "./styles/colors_and_type.css";
+
+html, body {
+  margin: 0;
+  background: var(--oe-bg);
+}
+#root {
+  min-height: 100vh;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
