@@ -41,7 +41,28 @@ export default function GridLayout() {
       </p>
 
       <Demo
-        title="Griglia desktop — 12 colonne"
+        title="Utility .oe-grid — pronta all'uso (live)"
+        description="Classi del design system: .oe-grid + .oe-col-N. Ridimensiona la finestra per vedere 12 → 8 → 4 colonne."
+        code={`<div class="oe-grid">
+  <div class="oe-col-8">…</div>
+  <div class="oe-col-4">…</div>
+  <div class="oe-col-6">…</div>
+  <div class="oe-col-6">…</div>
+  <div class="oe-col-3">…</div>
+  <div class="oe-col-3">…</div>
+  <div class="oe-col-3">…</div>
+  <div class="oe-col-3">…</div>
+</div>`}
+      >
+        <div className="oe-grid dx-gridcells">
+          {[8, 4, 6, 6, 3, 3, 3, 3].map((n, i) => (
+            <div key={i} className={`oe-col-${n}`}><span>oe-col-{n}</span></div>
+          ))}
+        </div>
+      </Demo>
+
+      <Demo
+        title="Schema colonne — desktop (12)"
         description={`Contenuto entro ${grid.max}px, gutter ${grid.gutter}px tra le colonne.`}
       >
         <ColumnGrid cols={grid.cols.xl} />

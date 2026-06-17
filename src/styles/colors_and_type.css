@@ -224,6 +224,52 @@
 }
 
 /* -----------------------------------------------------------------------
+   Grid system — utility concreta (da Figma)
+   12 colonne ≥1200px · 8 colonne 768–1199px · 4 colonne <768px.
+   Gutter, margine e larghezza max presi dai token --oe-grid-*.
+   Uso:
+     <div class="oe-grid">
+       <div class="oe-col-8"> … </div>
+       <div class="oe-col-4"> … </div>
+     </div>
+   ----------------------------------------------------------------------- */
+.oe-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));   /* desktop: 12 col */
+  gap: var(--oe-grid-gutter);                          /* 24px */
+  max-width: var(--oe-grid-max);                       /* 1440px */
+  margin-inline: auto;
+  padding-inline: var(--oe-grid-margin);               /* 12px */
+  width: 100%;
+  box-sizing: border-box;
+}
+/* span colonne — default desktop (12) */
+.oe-col-1  { grid-column: span 1; }
+.oe-col-2  { grid-column: span 2; }
+.oe-col-3  { grid-column: span 3; }
+.oe-col-4  { grid-column: span 4; }
+.oe-col-5  { grid-column: span 5; }
+.oe-col-6  { grid-column: span 6; }
+.oe-col-7  { grid-column: span 7; }
+.oe-col-8  { grid-column: span 8; }
+.oe-col-9  { grid-column: span 9; }
+.oe-col-10 { grid-column: span 10; }
+.oe-col-11 { grid-column: span 11; }
+.oe-col-12 { grid-column: span 12; }
+
+/* Tablet: 8 colonne (768–1199px). Gli span > 8 diventano a piena riga. */
+@media (max-width: 1199.98px) {
+  .oe-grid { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+  .oe-col-9, .oe-col-10, .oe-col-11, .oe-col-12 { grid-column: span 8; }
+}
+
+/* Mobile: 4 colonne (<768px). Ogni elemento occupa l'intera riga. */
+@media (max-width: 767.98px) {
+  .oe-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  [class*="oe-col-"] { grid-column: span 4; }
+}
+
+/* -----------------------------------------------------------------------
    RULE: Minimum font size is 12px — no text in the system goes below this.
    All font-size declarations must be >= 12px. Enforced by convention.
    ----------------------------------------------------------------------- */

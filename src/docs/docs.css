@@ -164,6 +164,16 @@
 .dx-layout-demo__full { background: var(--oe-bluette-050); padding: 8px; }
 .dx-layout-demo__inner { background: var(--oe-bluette-200); padding: 24px; text-align: center; font-family: var(--oe-font-mono); font-size: 13px; color: var(--oe-bluette-900); }
 
+/* ---- Grid utility demo (celle .oe-col-*) ------------------------------- */
+.dx-gridcells { padding-inline: 0; }
+.dx-gridcells > div {
+  background: var(--oe-bluette-050);
+  border-top: 3px solid var(--oe-bluette-700);
+  min-height: 56px;
+  display: flex; align-items: center; justify-content: center;
+}
+.dx-gridcells > div span { font-family: var(--oe-font-mono); font-size: 11px; color: var(--oe-bluette-700); }
+
 /* ---- Grid visualization ------------------------------------------------ */
 .dx-gridviz { display: grid; width: 100%; }
 .dx-gridviz__col {

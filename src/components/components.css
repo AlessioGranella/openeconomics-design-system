@@ -1,6 +1,8 @@
 /* =========================================================================
    OpenEconomics — Stili dei componenti canonici
    Dipende dai token in styles/colors_and_type.css
+   Spacing: SEMPRE via var(--oe-space-*) (scala 4px). Niente px hardcoded
+   per padding/gap/margin. Font-size e bordi seguono le rispettive scale.
    ========================================================================= */
 
 /* ---- Button ------------------------------------------------------------ */
@@ -13,14 +15,14 @@
   line-height: 1;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--oe-space-xs);               /* 8 */
   transition: background var(--oe-dur-fast) var(--oe-ease),
               color var(--oe-dur-fast) var(--oe-ease),
               border-color var(--oe-dur-fast) var(--oe-ease);
 }
-.oe-btn--sm { font-size: 14px; padding: 8px 14px; }
-.oe-btn--md { font-size: 16px; padding: 12px 20px; }
-.oe-btn--lg { font-size: 18px; padding: 16px 28px; }
+.oe-btn--sm { font-size: 14px; padding: var(--oe-space-xs) var(--oe-space-s); }   /* 8 · 16 */
+.oe-btn--md { font-size: 16px; padding: var(--oe-space-3) var(--oe-space-5); }    /* 12 · 20 */
+.oe-btn--lg { font-size: 18px; padding: var(--oe-space-s) var(--oe-space-l); }    /* 16 · 32 */
 
 .oe-btn--primary { background: var(--oe-bluette-700); color: #fff; }
 .oe-btn--primary:hover { background: var(--oe-bluette-900); }
@@ -41,7 +43,7 @@
   font-size: 13px;
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  padding: 6px 10px;
+  padding: var(--oe-space-xs) var(--oe-space-3);   /* 8 · 12 */
   display: inline-block;
   line-height: 1;
 }
@@ -50,7 +52,7 @@
 .oe-tag-chip--lime    { color: #000; background: var(--oe-lime-400); }
 
 /* ---- KPI Card ---------------------------------------------------------- */
-.oe-kpi { padding: 24px; border: 1px solid var(--oe-gray-200); }
+.oe-kpi { padding: var(--oe-space-m); border: 1px solid var(--oe-gray-200); }   /* 24 */
 .oe-kpi--dark { background: var(--oe-bluette-900); border-color: rgba(255,255,255,0.14); }
 .oe-kpi__value {
   font-family: var(--oe-font-sans);
@@ -67,7 +69,7 @@
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  margin-top: 12px;
+  margin-top: var(--oe-space-3);          /* 12 */
   color: var(--oe-gray-700);
 }
 .oe-kpi--dark .oe-kpi__label { color: rgba(255,255,255,0.7); }
@@ -83,8 +85,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 20px 4px;
+  gap: var(--oe-space-s);                 /* 16 */
+  padding: var(--oe-space-5) var(--oe-space-xxs);   /* 20 · 4 */
   text-align: left;
   font-family: var(--oe-font-sans);
   font-weight: 500;
@@ -98,7 +100,7 @@
   line-height: 1;
 }
 .oe-accordion__body {
-  padding: 0 4px 20px;
+  padding: 0 var(--oe-space-xxs) var(--oe-space-5);   /* 0 · 4 · 20 */
   font-family: var(--oe-font-sans);
   font-weight: 300;
   font-size: 18px;
