@@ -257,16 +257,23 @@
 .oe-col-11 { grid-column: span 11; }
 .oe-col-12 { grid-column: span 12; }
 
-/* Tablet: 8 colonne (768–1199px). Gli span > 8 diventano a piena riga. */
+/* Tablet: 8 colonne (768–1199px). Gli span > 8 diventano a piena riga.
+   Span specifici per questa fascia: .oe-col-m-1 … .oe-col-m-8 */
 @media (max-width: 1199.98px) {
   .oe-grid { grid-template-columns: repeat(8, minmax(0, 1fr)); }
   .oe-col-9, .oe-col-10, .oe-col-11, .oe-col-12 { grid-column: span 8; }
+  .oe-col-m-1 { grid-column: span 1; } .oe-col-m-2 { grid-column: span 2; }
+  .oe-col-m-3 { grid-column: span 3; } .oe-col-m-4 { grid-column: span 4; }
+  .oe-col-m-5 { grid-column: span 5; } .oe-col-m-6 { grid-column: span 6; }
+  .oe-col-m-7 { grid-column: span 7; } .oe-col-m-8 { grid-column: span 8; }
 }
 
-/* Mobile: 4 colonne (<768px). Ogni elemento occupa l'intera riga. */
+/* Mobile: 4 colonne (<768px). Default a piena riga; override con .oe-col-s-1…4 */
 @media (max-width: 767.98px) {
   .oe-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   [class*="oe-col-"] { grid-column: span 4; }
+  .oe-col-s-1 { grid-column: span 1; } .oe-col-s-2 { grid-column: span 2; }
+  .oe-col-s-3 { grid-column: span 3; } .oe-col-s-4 { grid-column: span 4; }
 }
 
 /* -----------------------------------------------------------------------
