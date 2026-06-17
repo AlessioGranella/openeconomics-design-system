@@ -22,8 +22,9 @@
   align-self: start;
   height: 100vh;
   overflow-y: auto;
-  background: var(--oe-bluette-900);
-  color: #fff;
+  background: var(--oe-gray-100);
+  color: var(--oe-gray-800);
+  border-right: 1px solid var(--oe-gray-200);
   padding: 28px 22px;
   display: flex;
   flex-direction: column;
@@ -33,7 +34,7 @@
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  color: #fff;
+  color: var(--oe-gray-800);
   margin-bottom: 32px;
 }
 .dx-brand__mark {
@@ -53,25 +54,25 @@
   text-transform: uppercase;
   font-size: 11px;
   letter-spacing: 0.08em;
-  color: var(--oe-lime-400);
+  color: var(--oe-gray-600);
   margin-bottom: 10px;
 }
 .dx-nav__link {
   display: block;
-  color: rgba(255,255,255,0.8);
+  color: var(--oe-gray-700);
   text-decoration: none;
   font-family: var(--oe-font-sans);
   font-size: 15px;
   padding: 7px 0;
-  border-left: 2px solid transparent;
+  border-left: 3px solid transparent;
   padding-left: 12px;
   transition: color .14s, border-color .14s;
 }
-.dx-nav__link:hover { color: #fff; border-left-color: var(--oe-lime-400); }
+.dx-nav__link:hover { color: var(--oe-bluette-700); border-left-color: var(--oe-bluette-700); }
 .dx-sidebar__foot {
   font-family: var(--oe-font-mono);
   font-size: 11px;
-  color: rgba(255,255,255,0.4);
+  color: var(--oe-gray-500);
   margin-top: 24px;
 }
 
