@@ -163,6 +163,32 @@
 .dx-layout-demo__full { background: var(--oe-bluette-050); padding: 8px; }
 .dx-layout-demo__inner { background: var(--oe-bluette-200); padding: 24px; text-align: center; font-family: var(--oe-font-mono); font-size: 13px; color: var(--oe-bluette-900); }
 
+/* ---- Grid visualization ------------------------------------------------ */
+.dx-gridviz { display: grid; width: 100%; }
+.dx-gridviz__col {
+  background: var(--oe-bluette-100);
+  border-top: 3px solid var(--oe-bluette-700);
+  min-height: 72px;
+  display: flex; align-items: flex-start; justify-content: center;
+  padding-top: 8px;
+}
+.dx-gridviz__num { font-family: var(--oe-font-mono); font-size: 12px; color: var(--oe-bluette-700); }
+
+/* ---- Breakpoint bar ---------------------------------------------------- */
+.dx-bp-bar { height: 16px; background: var(--oe-lime-500); flex: none; min-width: 2px; }
+
+/* ---- Table ------------------------------------------------------------- */
+.dx-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.dx-table th, .dx-table td {
+  text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--oe-gray-200);
+}
+.dx-table th {
+  font-family: var(--oe-font-mono); text-transform: uppercase; font-size: 11px;
+  letter-spacing: 0.04em; color: var(--oe-gray-700); background: var(--oe-gray-100);
+}
+.dx-table td { color: var(--oe-fg-soft); }
+.dx-table tbody tr:last-child td { border-bottom: none; }
+
 /* ---- Icon gallery ------------------------------------------------------ */
 .dx-icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(108px, 1fr)); gap: 12px; margin-top: 18px; }
 .dx-icon {

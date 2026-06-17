@@ -2,6 +2,7 @@ import GettingStarted from './sections/GettingStarted'
 import Colors from './sections/Colors'
 import Typography from './sections/Typography'
 import SpacingLayout from './sections/SpacingLayout'
+import GridLayout from './sections/GridLayout'
 import DataViz from './sections/DataViz'
 import Icons from './sections/Icons'
 import Components from './sections/Components'
@@ -15,7 +16,8 @@ const nav = [
     items: [
       { id: 'colori', label: 'Colore' },
       { id: 'tipografia', label: 'Tipografia' },
-      { id: 'spacing', label: 'Spacing & Layout' },
+      { id: 'spacing', label: 'Spacing' },
+      { id: 'grid', label: 'Griglia & Breakpoint' },
       { id: 'dataviz', label: 'Data Visualization' },
       { id: 'icone', label: 'Iconografia' },
     ],
@@ -60,6 +62,7 @@ export default function App() {
           <Colors />
           <Typography />
           <SpacingLayout />
+          <GridLayout />
           <DataViz />
           <Icons />
           <Catalog />
