@@ -38,7 +38,11 @@ export default function App() {
     <div className="dx-shell">
       <aside className="dx-sidebar">
         <a className="dx-brand" href="#intro">
-          <span className="dx-brand__mark">OE</span>
+          <span className="dx-brand__mark" aria-label="OpenEconomics">
+            <svg viewBox="0 0 80 81" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+              <path d="M39.7979 0C17.817 0 0 17.9241 0 40.0386C0 62.1532 17.817 80.0849 39.7979 80.0849C61.779 80.0849 79.6108 62.1606 79.6108 40.0386C79.6108 17.9166 61.7937 0 39.7979 0ZM63.2876 63.6825H16.3156V16.4173H63.2802V63.6899L63.2876 63.6825Z" fill="currentColor"/>
+            </svg>
+          </span>
           <span className="dx-brand__txt">Design System</span>
         </a>
         <nav className="dx-nav">

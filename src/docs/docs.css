@@ -38,13 +38,13 @@
   margin-bottom: 32px;
 }
 .dx-brand__mark {
-  font-family: var(--oe-font-serif);
-  font-size: 22px;
-  background: var(--oe-lime-400);
-  color: #000;
+  background: var(--oe-white);
+  color: var(--oe-black);
   width: 38px; height: 38px;
+  border: 1px solid var(--oe-gray-200);
   display: grid; place-items: center;
 }
+.dx-brand__mark svg { width: 22px; height: 22px; display: block; }
 .dx-brand__txt { font-family: var(--oe-font-mono); text-transform: uppercase; font-size: 13px; letter-spacing: 0.04em; }
 
 .dx-nav { flex: 1; }
