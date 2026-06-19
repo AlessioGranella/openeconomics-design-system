@@ -205,6 +205,52 @@
   --oe-dur-slow:    420ms; /* @kind other */
 }
 
+/* =========================================================================
+   TEMA CIVIQA — stesso design system, accento in blu elettrico Civiqa.
+   Civiqa = OpenEconomics con l'accento rimappato: font, spaziatura, griglia
+   e TUTTI i componenti restano identici, ma l'accento (Bluette + Lime)
+   diventa blu Civiqa. Si applica mettendo class="theme-civiqa" su qualsiasi
+   contenitore (di norma <body> o la root del progetto); ogni componente che
+   usa i token accento eredita il blu in automatico, senza modifiche.
+   ----------------------------------------------------------------------- */
+.theme-civiqa {
+  /* Rampa Bluette → Blu Civiqa (l'accento primario diventa blu elettrico).
+     I token semantici (--oe-accent, --oe-link, --oe-bg-dark…) derivano da
+     questi via var(), quindi si rimappano da soli. */
+  --oe-bluette-900: var(--cv-blu-900);
+  --oe-bluette-800: var(--cv-blu-800);
+  --oe-bluette-700: var(--cv-blu-600);   /* accento primario */
+  --oe-bluette-600: var(--cv-blu-600);
+  --oe-bluette-500: var(--cv-blu-500);
+  --oe-bluette-400: var(--cv-blu-400);
+  --oe-bluette-300: var(--cv-blu-300);
+  --oe-bluette-200: var(--cv-blu-200);
+  --oe-bluette-100: var(--cv-blu-100);
+  --oe-bluette-050: var(--cv-blu-050);
+
+  /* Civiqa non usa il Lime: l'accento "pop" diventa blu. */
+  --oe-lime-400: var(--cv-blu-600);
+  --oe-lime-500: var(--cv-blu-700);
+  --oe-lime-600: var(--cv-blu-700);
+  --oe-pop:      var(--cv-blu-600);
+
+  /* unico hex non derivato dalla rampa */
+  --oe-bg-mid: var(--cv-blu-500);
+}
+/* Correzioni di contrasto dove il Lime aveva un ruolo che il blu non replica:
+   A) Lime come RIEMPIMENTO con testo nero (superfici chiare) → testo bianco.
+   B) Lime come TESTO/accento su fondo SCURO → blu chiaro (--cv-blu-200),
+      perché il blu pieno sparirebbe sul blu scuro. */
+.theme-civiqa .oe-btn--accent,
+.theme-civiqa .oe-btn--accent:hover,
+.theme-civiqa .oe-tag-chip--lime { color: var(--oe-white); }
+
+.theme-civiqa .oe-tag-chip--on-dark,
+.theme-civiqa .oe-kpi--dark .oe-kpi__value,
+.theme-civiqa .oe-footer__disclaimer-label,
+.theme-civiqa .oe-footer__link:hover,
+.theme-civiqa .oe-footer__link:focus-visible { color: var(--cv-blu-200); }
+
 /* -----------------------------------------------------------------------
    Layout utilities
    ----------------------------------------------------------------------- */

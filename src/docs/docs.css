@@ -94,6 +94,17 @@
 }
 .dx-callout strong { color: var(--cv-blu-700); }
 .dx-civiqa-logo { height: 44px; width: auto; display: block; }
+.dx-themecompare { display: grid; grid-template-columns: 1fr 1fr; gap: 0; width: 100%; }
+.dx-themecol { padding: var(--oe-space-m); display: flex; flex-direction: column; gap: var(--oe-space-s); }
+.dx-themecol:first-child { border-right: 1px solid var(--oe-gray-200); }
+.dx-themecol__tag {
+  font-family: var(--oe-font-mono); font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.04em; color: var(--oe-gray-500);
+}
+@media (max-width: 767.98px) {
+  .dx-themecompare { grid-template-columns: 1fr; }
+  .dx-themecol:first-child { border-right: 0; border-bottom: 1px solid var(--oe-gray-200); }
+}
 .dx-note code, .dx-lead code, .dx-card code {
   font-family: var(--oe-font-mono); font-size: 0.88em;
   background: var(--oe-bluette-050); color: var(--oe-bluette-700); padding: 1px 6px;

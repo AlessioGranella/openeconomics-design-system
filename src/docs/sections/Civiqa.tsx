@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { Scale } from '../ui/Swatch'
 import Demo from '../ui/Demo'
-import { CiviqaWordmark } from '../../components'
+import { CiviqaWordmark, Button, Tag, KpiCard } from '../../components'
 
 const bluSteps = [
   { step: '900', hex: '#000035' }, { step: '800', hex: '#000068' }, { step: '700', hex: '#0000A1' },
@@ -28,11 +28,46 @@ export default function Civiqa() {
       <span className="oe-eyebrow">Brand di prodotto</span>
       <h2>Civiqa</h2>
       <p className="dx-lead">
-        Civiqa è un brand di prodotto che vive dentro questo design system come sezione a sé.
-        L'accento primario è una scala di <strong>blu elettrico</strong> (token namespacati{' '}
-        <code>--cv-*</code>, così convivono senza collidere con i <code>--oe-*</code> di OpenEconomics).
-        Spigolo vivo come tutto il sistema.
+        Civiqa <strong>è</strong> il design system di OpenEconomics: stessi font, stessa spaziatura,
+        stessa griglia e gli stessi componenti (card, checkbox, input…). Cambia una cosa sola —
+        <strong> l'accento, che diventa blu elettrico Civiqa</strong>.
       </p>
+
+      <h3>Tema — accento blu su tutto il sistema</h3>
+      <p className="dx-note">
+        Si attiva con la classe <code>.theme-civiqa</code> su un contenitore (di norma{' '}
+        <code>&lt;body&gt;</code> o la root del progetto): ogni componente che usa i token accento
+        eredita il blu in automatico, senza modifiche. Gli stessi componenti, a confronto:
+      </p>
+      <Demo
+        title="OpenEconomics vs Civiqa (stesso componente)"
+        description="A sinistra il tema OpenEconomics, a destra lo stesso markup dentro .theme-civiqa."
+        code={`<body class="theme-civiqa">
+  <!-- gli stessi componenti del DS: l'accento diventa blu Civiqa -->
+  <button class="oe-btn oe-btn--primary">Scopri di più</button>
+</body>`}
+      >
+        <div className="dx-themecompare">
+          {[false, true].map((civiqa) => (
+            <div className={civiqa ? 'theme-civiqa dx-themecol' : 'dx-themecol'} key={String(civiqa)}>
+              <span className="dx-themecol__tag">{civiqa ? 'theme-civiqa' : 'OpenEconomics'}</span>
+              <div className="dx-row">
+                <Button variant="primary">Scopri di più</Button>
+                <Button variant="accent">Parla con noi</Button>
+                <Button variant="secondary">Dettagli</Button>
+              </div>
+              <div className="dx-row">
+                <Tag>Impatto</Tag>
+                <Tag tone="lime">Sonar</Tag>
+                <a href="#civiqa" style={{ color: 'var(--oe-link)', fontWeight: 500 }}>Link accento →</a>
+              </div>
+              <div style={{ maxWidth: 220 }}>
+                <KpiCard value={300} prefix="+" suffix=" Mld €" label="Investimenti analizzati" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </Demo>
 
       <h3>Logo</h3>
       <Demo
