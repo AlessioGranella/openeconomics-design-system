@@ -132,7 +132,7 @@ export default function Civiqa() {
       <h3>Iconografia</h3>
       <Demo
         title="Stile icone"
-        description="Outline a tratto uniforme, bianco su quadrato blu scuro (--cv-blu-900). Riquadro 56px, glifo 28px."
+        description="Outline a tratto uniforme, tratto --cv-blu-100 (#D5D5FF) su quadrato --cv-blu-800 (#000068). Riquadro 56px, glifo 28px."
       >
         <div className="dx-row">
           {Object.entries(icons).map(([name, paths]) => (

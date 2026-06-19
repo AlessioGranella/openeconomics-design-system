@@ -287,7 +287,8 @@
 /* ---- Civiqa · Icon tile ----------------------------------------------- */
 .cv-icon {
   width: 56px; height: 56px; display: grid; place-items: center;
-  background: var(--cv-blu-900); color: var(--oe-white);
+  background: var(--cv-blu-800);   /* #000068 */
+  color: var(--cv-blu-100);        /* #D5D5FF */
 }
 .cv-icon svg { width: 28px; height: 28px; display: block; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
