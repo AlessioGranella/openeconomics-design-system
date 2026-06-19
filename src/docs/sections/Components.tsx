@@ -1,5 +1,5 @@
 import Demo from '../ui/Demo'
-import { Button, Tag, KpiCard, Accordion, FigureLabel } from '../../components'
+import { Button, Tag, KpiCard, Accordion, FigureLabel, Wordmark } from '../../components'
 
 export default function Components() {
   return (
@@ -91,6 +91,21 @@ export default function Components() {
       >
         <FigureLabel kind="GRAFICO" index={1} title="Impatto sul PIL" />
         <FigureLabel kind="TABELLA" index={2} title="Investimenti per area" />
+      </Demo>
+
+      <Demo
+        title="Logo (Wordmark)"
+        description="Logotipo OpenEconomics in currentColor: nero su chiaro, bianco su scuro. Per il marchio Civiqa: CiviqaWordmark."
+        code={`import { Wordmark } from '@/components'
+
+<Wordmark style={{ height: 40 }} />`}
+      >
+        <div className="dx-row">
+          <Wordmark style={{ height: 36, color: 'var(--oe-black)' }} />
+        </div>
+        <div className="dx-row dx-row--dark">
+          <Wordmark style={{ height: 36, color: '#fff' }} />
+        </div>
       </Demo>
     </section>
   )

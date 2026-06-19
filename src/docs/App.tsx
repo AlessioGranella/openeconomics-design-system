@@ -12,8 +12,6 @@ import DashboardTables from './sections/DashboardTables'
 import CardsNav from './sections/CardsNav'
 import Footers from './sections/Footers'
 import Civiqa from './sections/Civiqa'
-import Catalog from './sections/Catalog'
-import { catalog } from './catalog'
 
 const nav = [
   { group: 'Inizio', items: [{ id: 'intro', label: 'Introduzione' }] },
@@ -28,25 +26,18 @@ const nav = [
       { id: 'icone', label: 'Iconografia' },
     ],
   },
-  // Un gruppo per ogni famiglia del catalogo, con un link per ciascun componente
-  ...catalog.map((g) => ({
-    group: g.title,
-    items: g.items.map((it) => ({ id: `comp-${it.file}`, label: it.label })),
-  })),
-  { group: 'Componenti UI', items: [
-    { id: 'form-input', label: 'Form & Input' },
-    { id: 'data-display', label: 'Tabelle & dati' },
-    { id: 'dash-tables', label: 'Tabelle dashboard' },
-    { id: 'cards-nav', label: 'Card & Navigazione' },
-    { id: 'footer', label: 'Footer' },
-  ] },
-  { group: 'Brand di prodotto', items: [
-    { id: 'civiqa', label: 'Civiqa' },
-  ] },
-  { group: 'Altro', items: [
-    { id: 'prototipi', label: 'Prototipi' },
-    { id: 'componenti', label: 'Componenti React' },
-  ] },
+  {
+    group: 'Componenti',
+    items: [
+      { id: 'componenti', label: 'Primitive React' },
+      { id: 'cards-nav', label: 'Card & Navigazione' },
+      { id: 'form-input', label: 'Form & Input' },
+      { id: 'data-display', label: 'Tabelle & dati' },
+      { id: 'dash-tables', label: 'Tabelle dashboard' },
+      { id: 'footer', label: 'Footer' },
+    ],
+  },
+  { group: 'Brand di prodotto', items: [{ id: 'civiqa', label: 'Civiqa' }] },
 ]
 
 export default function App() {
@@ -73,7 +64,7 @@ export default function App() {
             </div>
           ))}
         </nav>
-        <div className="dx-sidebar__foot">v0.1 · © OpenEconomics</div>
+        <div className="dx-sidebar__foot">v0.2 · © OpenEconomics</div>
       </aside>
 
       <main className="dx-main">
@@ -85,14 +76,13 @@ export default function App() {
           <GridLayout />
           <DataViz />
           <Icons />
-          <Catalog />
+          <Components />
+          <CardsNav />
           <FormsInputs />
           <DataDisplay />
           <DashboardTables />
-          <CardsNav />
           <Footers />
           <Civiqa />
-          <Components />
         </div>
       </main>
     </div>
