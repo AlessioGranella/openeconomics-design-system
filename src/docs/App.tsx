@@ -6,6 +6,7 @@ import GridLayout from './sections/GridLayout'
 import DataViz from './sections/DataViz'
 import Icons from './sections/Icons'
 import Components from './sections/Components'
+import Footers from './sections/Footers'
 import Catalog from './sections/Catalog'
 import { catalog } from './catalog'
 
@@ -28,6 +29,7 @@ const nav = [
     items: g.items.map((it) => ({ id: `comp-${it.file}`, label: it.label })),
   })),
   { group: 'Altro', items: [
+    { id: 'footer', label: 'Footer' },
     { id: 'prototipi', label: 'Prototipi' },
     { id: 'componenti', label: 'Componenti React' },
   ] },
@@ -70,6 +72,7 @@ export default function App() {
           <DataViz />
           <Icons />
           <Catalog />
+          <Footers />
           <Components />
         </div>
       </main>
