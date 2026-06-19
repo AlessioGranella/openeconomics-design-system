@@ -221,3 +221,108 @@
   .oe-footer--analisi .oe-footer__tagline { font-size: 22px; max-width: 32ch; }
   .oe-footer__bottom { flex-direction: column; align-items: flex-start; }
 }
+
+/* =========================================================================
+   CIVIQA — componenti del brand di prodotto (namespace .cv-*)
+   Accento blu elettrico --cv-blu-600. Spigolo vivo come tutto il sistema.
+   ========================================================================= */
+
+/* ---- Civiqa · Chip ----------------------------------------------------- */
+.cv-chip {
+  display: inline-flex; align-items: center; gap: var(--oe-space-xs);
+  font-family: var(--oe-font-mono); text-transform: uppercase;
+  font-size: 13px; font-weight: 500; letter-spacing: 0.04em; line-height: 1;
+  padding: var(--oe-space-xs) var(--oe-space-3);             /* 8 · 12 */
+  background: var(--cv-blu-100); color: var(--cv-blu-700); border: 0;
+}
+.cv-chip::before { content: ""; width: 7px; height: 7px; background: currentColor; flex: none; }
+.cv-chip--active { background: var(--cv-blu-600); color: var(--oe-white); }
+
+/* ---- Civiqa · Button --------------------------------------------------- */
+.cv-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--oe-space-xs);
+  font-family: var(--oe-font-mono); text-transform: uppercase; letter-spacing: 0.04em;
+  font-size: 14px; font-weight: 500; line-height: 1;
+  padding: var(--oe-space-3) var(--oe-space-5);              /* 12 · 20 */
+  border: 1px solid transparent; cursor: pointer;
+  transition: background var(--oe-dur-fast) var(--oe-ease),
+              color var(--oe-dur-fast) var(--oe-ease),
+              border-color var(--oe-dur-fast) var(--oe-ease);
+}
+.cv-btn--primary { background: var(--cv-blu-600); color: var(--oe-white); }
+.cv-btn--primary:hover { background: var(--cv-blu-700); }
+.cv-btn--dark { background: var(--cv-blu-900); color: var(--oe-white); }
+.cv-btn--dark:hover { background: var(--cv-blu-800); }
+.cv-btn--outline { background: transparent; color: var(--cv-blu-600); border-color: var(--cv-blu-600); }
+.cv-btn--outline:hover { background: var(--cv-blu-050); }
+.cv-btn--tint { background: var(--cv-blu-100); color: var(--cv-blu-700); }
+.cv-btn--tint:hover { background: var(--cv-blu-200); }
+.cv-btn--link {
+  background: transparent; border: 0; padding: var(--oe-space-xs) 0;
+  font-family: var(--oe-font-sans); text-transform: none; letter-spacing: normal;
+  font-size: 15px; color: var(--cv-blu-600);
+}
+.cv-btn--link:hover { text-decoration: underline; }
+/* outline chiaro su fondi blu scuri (footer) */
+.cv-btn--ghost-light { background: transparent; color: var(--oe-white); border-color: rgba(255, 255, 255, 0.5); }
+.cv-btn--ghost-light:hover { border-color: var(--oe-white); }
+
+/* ---- Civiqa · Top nav (menu) ------------------------------------------ */
+.cv-nav {
+  display: flex; align-items: center; gap: var(--oe-space-l);
+  background: var(--oe-white); border: 1px solid var(--oe-gray-200);
+  padding: var(--oe-space-s) var(--oe-space-l);
+}
+.cv-nav__logo { height: 26px; width: auto; color: var(--oe-black); display: block; }
+.cv-nav__links { display: flex; gap: var(--oe-space-l); margin-left: var(--oe-space-xl); }
+.cv-nav__link {
+  font-family: var(--oe-font-sans); font-size: 15px; color: var(--oe-gray-900);
+  text-decoration: none; padding: var(--oe-space-xxs) 0;
+  border-bottom: 2px solid transparent; transition: border-color var(--oe-dur-fast) var(--oe-ease);
+}
+.cv-nav__link:hover, .cv-nav__link.is-active { border-bottom-color: var(--cv-blu-600); }
+.cv-nav__oe { margin-left: auto; font-family: var(--oe-font-sans); font-size: 15px; color: var(--oe-gray-900); text-decoration: none; }
+.cv-nav__oe:hover { color: var(--cv-blu-600); }
+
+/* ---- Civiqa · Icon tile ----------------------------------------------- */
+.cv-icon {
+  width: 56px; height: 56px; display: grid; place-items: center;
+  background: var(--cv-blu-900); color: var(--oe-white);
+}
+.cv-icon svg { width: 28px; height: 28px; display: block; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---- Civiqa · Footer --------------------------------------------------- */
+.cv-footer {
+  background: var(--cv-blu-900); color: var(--oe-white); font-family: var(--oe-font-sans);
+  padding: var(--oe-space-2xl) var(--oe-space-xl) var(--oe-space-l);
+}
+.cv-footer__inner { max-width: var(--oe-grid-max); margin-inline: auto; }
+.cv-footer__logo { height: 56px; width: auto; color: var(--oe-white); display: block; margin-bottom: var(--oe-space-xl); }
+.cv-footer__top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: var(--oe-space-xl); padding-bottom: var(--oe-space-xl); }
+.cv-footer__cols { display: flex; gap: var(--oe-space-3xl); }
+.cv-footer__col { display: flex; flex-direction: column; gap: var(--oe-space-s); }
+.cv-footer__link { color: var(--oe-white); text-decoration: none; font-size: 15px; }
+.cv-footer__link:hover { color: var(--cv-blu-200); }
+.cv-footer__cta { display: flex; flex-direction: column; gap: var(--oe-space-s); align-items: flex-start; }
+.cv-footer__rule { border: 0; border-top: 1px solid rgba(255, 255, 255, 0.22); margin: 0; }
+.cv-footer__mid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: var(--oe-space-xl); padding: var(--oe-space-l) 0; align-items: start; }
+.cv-footer__tagline { font-family: var(--oe-font-serif); font-size: 26px; line-height: 1.15; color: var(--oe-white); margin: 0; max-width: 22ch; }
+.cv-footer__addr { font-size: 13px; line-height: 1.5; color: rgba(255, 255, 255, 0.82); }
+.cv-footer__social { display: flex; gap: var(--oe-space-s); margin-top: var(--oe-space-m); }
+.cv-footer__social a { width: 32px; height: 32px; display: grid; place-items: center; background: var(--oe-white); color: var(--cv-blu-900); }
+.cv-footer__bottom { display: flex; flex-wrap: wrap; align-items: center; gap: var(--oe-space-m); padding-top: var(--oe-space-m); font-size: 13px; color: rgba(255, 255, 255, 0.82); }
+.cv-footer__legal { display: flex; gap: var(--oe-space-l); }
+.cv-footer__legal a { color: rgba(255, 255, 255, 0.82); text-decoration: none; }
+.cv-footer__legal a:hover { color: var(--oe-white); }
+.cv-footer__lang { margin-left: auto; display: flex; gap: var(--oe-space-xs); }
+.cv-footer__lang a { color: rgba(255, 255, 255, 0.6); text-decoration: none; }
+.cv-footer__lang a.is-active { color: var(--oe-white); text-decoration: underline; }
+
+@media (max-width: 767.98px) {
+  .cv-footer__top, .cv-footer__mid { grid-template-columns: 1fr; gap: var(--oe-space-l); }
+  .cv-footer__cols { flex-direction: column; gap: var(--oe-space-l); }
+  .cv-nav { flex-wrap: wrap; }
+  .cv-nav__links { margin-left: 0; }
+  .cv-footer__bottom { flex-direction: column; align-items: flex-start; }
+  .cv-footer__lang { margin-left: 0; }
+}
