@@ -249,7 +249,9 @@
 .theme-civiqa .oe-kpi--dark .oe-kpi__value,
 .theme-civiqa .oe-footer__disclaimer-label,
 .theme-civiqa .oe-footer__link:hover,
-.theme-civiqa .oe-footer__link:focus-visible { color: var(--cv-blu-200); }
+.theme-civiqa .oe-footer__link:focus-visible,
+.theme-civiqa .oe-metrics__range { color: var(--cv-blu-200); }
+.theme-civiqa .oe-metrics__title svg { stroke: var(--cv-blu-200); }
 
 /* -----------------------------------------------------------------------
    Layout utilities

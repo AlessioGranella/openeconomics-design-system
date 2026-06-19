@@ -8,6 +8,7 @@ import Icons from './sections/Icons'
 import Components from './sections/Components'
 import FormsInputs from './sections/FormsInputs'
 import DataDisplay from './sections/DataDisplay'
+import DashboardTables from './sections/DashboardTables'
 import CardsNav from './sections/CardsNav'
 import Footers from './sections/Footers'
 import Civiqa from './sections/Civiqa'
@@ -35,6 +36,7 @@ const nav = [
   { group: 'Componenti UI', items: [
     { id: 'form-input', label: 'Form & Input' },
     { id: 'data-display', label: 'Tabelle & dati' },
+    { id: 'dash-tables', label: 'Tabelle dashboard' },
     { id: 'cards-nav', label: 'Card & Navigazione' },
     { id: 'footer', label: 'Footer' },
   ] },
@@ -86,6 +88,7 @@ export default function App() {
           <Catalog />
           <FormsInputs />
           <DataDisplay />
+          <DashboardTables />
           <CardsNav />
           <Footers />
           <Civiqa />
