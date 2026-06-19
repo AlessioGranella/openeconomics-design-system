@@ -7,6 +7,7 @@ import DataViz from './sections/DataViz'
 import Icons from './sections/Icons'
 import Components from './sections/Components'
 import Footers from './sections/Footers'
+import Civiqa from './sections/Civiqa'
 import Catalog from './sections/Catalog'
 import { catalog } from './catalog'
 
@@ -28,6 +29,9 @@ const nav = [
     group: g.title,
     items: g.items.map((it) => ({ id: `comp-${it.file}`, label: it.label })),
   })),
+  { group: 'Brand di prodotto', items: [
+    { id: 'civiqa', label: 'Civiqa' },
+  ] },
   { group: 'Altro', items: [
     { id: 'footer', label: 'Footer' },
     { id: 'prototipi', label: 'Prototipi' },
@@ -73,6 +77,7 @@ export default function App() {
           <Icons />
           <Catalog />
           <Footers />
+          <Civiqa />
           <Components />
         </div>
       </main>

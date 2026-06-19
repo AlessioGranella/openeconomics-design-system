@@ -94,6 +94,17 @@
   --oe-cyan-400: #83FFFF;     --oe-cyan-500: #61FFFF;     --oe-cyan-600: #00FFFF;
   --oe-cyan-700: #005B5B;     --oe-cyan-800: #004646;     --oe-cyan-900: #003535;
 
+  /* =======================================================================
+     CIVIQA — brand di prodotto (namespace --cv-*).
+     Accento primario: scala Blu elettrico (--cv-blu-600 #0000FF).
+     Convive con il brand OpenEconomics; non sovrascrive i --oe-*.
+     ======================================================================= */
+  --cv-blu-900: #000035;  --cv-blu-800: #000068;  --cv-blu-700: #0000A1;
+  --cv-blu-600: #0000FF;  --cv-blu-500: #3A3AFF;  --cv-blu-400: #6161FF;
+  --cv-blu-300: #9696FF;  --cv-blu-200: #B6B6FF;  --cv-blu-100: #D5D5FF;
+  --cv-blu-050: #F1F1FF;
+  --cv-accent: var(--cv-blu-600);   /* primario Civiqa */
+
   /* === Semantic tokens === */
   --oe-bg:          var(--oe-white);
   --oe-bg-elev:     var(--oe-gray-100);
