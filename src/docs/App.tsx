@@ -6,6 +6,9 @@ import GridLayout from './sections/GridLayout'
 import DataViz from './sections/DataViz'
 import Icons from './sections/Icons'
 import Components from './sections/Components'
+import FormsInputs from './sections/FormsInputs'
+import DataDisplay from './sections/DataDisplay'
+import CardsNav from './sections/CardsNav'
 import Footers from './sections/Footers'
 import Civiqa from './sections/Civiqa'
 import Catalog from './sections/Catalog'
@@ -29,11 +32,16 @@ const nav = [
     group: g.title,
     items: g.items.map((it) => ({ id: `comp-${it.file}`, label: it.label })),
   })),
+  { group: 'Componenti UI', items: [
+    { id: 'form-input', label: 'Form & Input' },
+    { id: 'data-display', label: 'Tabelle & dati' },
+    { id: 'cards-nav', label: 'Card & Navigazione' },
+    { id: 'footer', label: 'Footer' },
+  ] },
   { group: 'Brand di prodotto', items: [
     { id: 'civiqa', label: 'Civiqa' },
   ] },
   { group: 'Altro', items: [
-    { id: 'footer', label: 'Footer' },
     { id: 'prototipi', label: 'Prototipi' },
     { id: 'componenti', label: 'Componenti React' },
   ] },
@@ -76,6 +84,9 @@ export default function App() {
           <DataViz />
           <Icons />
           <Catalog />
+          <FormsInputs />
+          <DataDisplay />
+          <CardsNav />
           <Footers />
           <Civiqa />
           <Components />
