@@ -52,7 +52,7 @@
 .oe-tag-chip--lime    { color: #000; background: var(--oe-lime-400); }
 
 /* ---- KPI Card ---------------------------------------------------------- */
-.oe-kpi { padding: var(--oe-space-m); border: 1px solid var(--oe-gray-200); }   /* 24 */
+.oe-kpi { background: var(--oe-white); padding: var(--oe-space-m); border: 1px solid var(--oe-gray-200); }   /* 24 */
 .oe-kpi--dark { background: var(--oe-bluette-900); border-color: rgba(255,255,255,0.14); }
 .oe-kpi__value {
   font-family: var(--oe-font-sans);
