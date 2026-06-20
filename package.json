@@ -1,22 +1,45 @@
 {
   "name": "oe-design-system",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "description": "OpenEconomics Design System — token, componenti e UI kit (libreria consultabile)",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlessioGranella/openeconomics-design-system.git"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": "./src/components/index.ts",
+    "./components": "./src/components/index.ts",
+    "./tokens": "./src/tokens.ts",
+    "./tokens.css": "./src/styles/colors_and_type.css",
+    "./components.css": "./src/components/components.css"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
   },
-  "dependencies": {
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
   },
   "devDependencies": {
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
     "typescript": "~6.0.2",
     "vite": "^8.0.12"
   }

@@ -35,17 +35,38 @@ npm run dev      # apre la pagina-libreria in locale
 npm run build    # build statico (dist/) — base relativa, deployabile ovunque
 ```
 
-## Usare il design system in un nuovo progetto
+## Installazione & versioni
+
+Nei progetti **pinna una versione** (così gli aggiornamenti non rompono nulla a sorpresa):
+
+```bash
+npm i github:AlessioGranella/openeconomics-design-system#v0.2.0
+```
+
+La libreria espone un'**API di consumo** stabile (campo `exports`); il pacchetto si chiama `oe-design-system`:
 
 ```ts
-// token CSS (in index.css)
-@import "<path>/design-system/src/styles/colors_and_type.css";
+// token CSS (in index.css / entry del progetto)
+import 'oe-design-system/tokens.css'
+import 'oe-design-system/components.css'   // se usi le classi .oe-* / .cv-*
 
 // token JS per i grafici
-import { chartSeries, color, formatNumber } from '.../design-system/src/tokens'
+import { chartSeries, color, formatNumber } from 'oe-design-system/tokens'
 
-// componenti
-import { Button, KpiCard, Tag } from '.../design-system/src/components'
+// componenti React
+import { Button, KpiCard, Tag, Footer } from 'oe-design-system/components'
+```
+
+> Brand **Civiqa**: aggiungi `class="theme-civiqa"` sulla root → l'accento diventa blu su tutti i componenti.
+> Le versioni sono elencate nel [CHANGELOG](./CHANGELOG.md). `react`/`react-dom` sono `peerDependencies` (li porta il progetto).
+
+### In sviluppo, dentro `Operativa/` (senza pinnare)
+
+Per i progetti nello stesso workspace puoi ancora agganciare i file via percorso/symlink (vedi sotto), così le modifiche al DS si riflettono subito.
+
+```ts
+@import "<path>/design-system/src/styles/colors_and_type.css";
+import { Button } from '.../design-system/src/components'
 ```
 
 ## Riferimenti brand
