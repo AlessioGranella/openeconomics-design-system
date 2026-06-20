@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react'
 
-type Variant = 'primary' | 'secondary' | 'accent' | 'ghost'
+type Variant = 'primary' | 'secondary' | 'accent' | 'ghost' | 'inverse'
 type Size = 'sm' | 'md' | 'lg'
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -15,6 +15,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
  * - accent:    Lime pieno, testo nero (call to action ad alta energia)
  * - secondary: bordo Bluette, testo Bluette (azione secondaria)
  * - ghost:     solo testo Bluette
+ * - inverse:   sfondo bianco, testo accento (per fondi accento/scuri)
  */
 export default function Button({
   variant = 'primary',

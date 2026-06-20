@@ -495,6 +495,54 @@
 }
 .oe-client-strip span { font-family: var(--oe-font-serif); font-size: 22px; color: var(--oe-black); letter-spacing: 0.01em; }
 
+/* =========================================================================
+   UI BLOCKS — sezioni intere composte dai componenti (stile "Tailwind UI").
+   Helper di layout; il contenuto riusa .oe-* / componenti. Tematizzabili
+   sotto .theme-civiqa.
+   ========================================================================= */
+
+/* Bottone inverso: bianco su fondi accento/scuri (testo accento) */
+.oe-btn--inverse { background: var(--oe-white); color: var(--oe-accent); }
+.oe-btn--inverse:hover { background: var(--oe-accent-soft); }
+
+/* ---- Hero -------------------------------------------------------------- */
+.oe-hero { display: flex; flex-direction: column; gap: var(--oe-space-m); padding: var(--oe-space-3xl) 0; max-width: 64ch; }
+.oe-hero__title { font-family: var(--oe-font-serif); font-size: clamp(40px, 6vw, 72px); line-height: 1.05; letter-spacing: -0.01em; color: var(--oe-gray-900); margin: 0; text-wrap: balance; }
+.oe-hero__lead { font-size: 20px; font-weight: 300; line-height: 1.5; color: var(--oe-fg-soft); margin: 0; max-width: 56ch; }
+.oe-hero__actions { display: flex; gap: var(--oe-space-s); flex-wrap: wrap; margin-top: var(--oe-space-xs); }
+
+/* ---- Stats band (numeri su fondo scuro) ------------------------------- */
+.oe-stats { background: var(--oe-bg-dark); color: var(--oe-white); padding: var(--oe-space-2xl) var(--oe-space-xl); }
+.oe-stats__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--oe-space-xl); max-width: var(--oe-grid-max); margin-inline: auto; }
+.oe-stat__num { font-family: var(--oe-font-sans); font-size: 48px; font-weight: 500; line-height: 1; font-variant-numeric: tabular-nums; color: var(--oe-white); }
+.oe-stat__label { font-family: var(--oe-font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--oe-bluette-200); margin-top: var(--oe-space-xs); }
+
+/* ---- CTA band (fondo accento) ----------------------------------------- */
+.oe-cta { background: var(--oe-bg-accent); color: var(--oe-white); padding: var(--oe-space-2xl) var(--oe-space-xl); display: flex; align-items: center; justify-content: space-between; gap: var(--oe-space-l); flex-wrap: wrap; }
+.oe-cta__title { font-family: var(--oe-font-serif); font-size: clamp(28px, 3.5vw, 40px); line-height: 1.1; color: var(--oe-white); margin: 0; max-width: 26ch; }
+.oe-cta__text { color: rgba(255, 255, 255, 0.85); max-width: 48ch; margin: var(--oe-space-xs) 0 0; }
+
+/* ---- Report header ---------------------------------------------------- */
+.oe-report-head { display: flex; flex-direction: column; gap: var(--oe-space-s); padding-bottom: var(--oe-space-l); border-bottom: 1px solid var(--oe-gray-200); }
+.oe-report-head__title { font-family: var(--oe-font-serif); font-size: clamp(32px, 4vw, 48px); line-height: 1.1; color: var(--oe-gray-900); margin: 0; text-wrap: balance; }
+.oe-report-head__meta { display: flex; flex-wrap: wrap; gap: var(--oe-space-m); font-family: var(--oe-font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--oe-gray-500); }
+
+/* ---- Panel (contenitore per grafici/contenuti dashboard) -------------- */
+.oe-panel { background: var(--oe-white); border: 1px solid var(--oe-gray-200); padding: var(--oe-space-m); display: flex; flex-direction: column; gap: var(--oe-space-s); }
+.oe-panel__head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--oe-space-s); }
+.oe-panel__label { font-family: var(--oe-font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--oe-accent); }
+.oe-panel__title { font-family: var(--oe-font-sans); font-size: 17px; font-weight: 500; color: var(--oe-gray-800); margin: 2px 0 0; }
+.oe-panel__chart { aspect-ratio: 16 / 9; background: var(--oe-gray-100); display: grid; place-items: center; color: var(--oe-gray-500); font-family: var(--oe-font-mono); font-size: 12px; }
+
+/* ---- App shell (dashboard) -------------------------------------------- */
+.oe-shell { display: grid; grid-template-columns: 240px 1fr; min-height: 460px; border: 1px solid var(--oe-gray-200); overflow: hidden; }
+.oe-shell__main { display: flex; flex-direction: column; min-width: 0; }
+.oe-shell__content { flex: 1; padding: var(--oe-space-l); background: var(--oe-gray-100); container-type: inline-size; overflow: auto; }
+@media (max-width: 767.98px) {
+  .oe-shell { grid-template-columns: 1fr; }
+  .oe-cta { flex-direction: column; align-items: flex-start; }
+}
+
 /* ---- Dashboard topbar ------------------------------------------------- */
 .oe-topbar {
   display: flex; align-items: center; gap: var(--oe-space-m);

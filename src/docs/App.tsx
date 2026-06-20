@@ -13,6 +13,9 @@ import DataDisplay from './sections/DataDisplay'
 import DashboardTables from './sections/DashboardTables'
 import CardsNav from './sections/CardsNav'
 import Footers from './sections/Footers'
+import BlocksSite from './sections/BlocksSite'
+import BlocksReport from './sections/BlocksReport'
+import BlocksDashboard from './sections/BlocksDashboard'
 import Civiqa from './sections/Civiqa'
 
 const nav = [
@@ -39,6 +42,14 @@ const nav = [
       { id: 'data-display', label: 'Tabelle & dati' },
       { id: 'dash-tables', label: 'Tabelle dashboard' },
       { id: 'footer', label: 'Footer' },
+    ],
+  },
+  {
+    group: 'UI Blocks',
+    items: [
+      { id: 'blocks-site', label: 'Sito & landing' },
+      { id: 'blocks-report', label: 'Report & analisi' },
+      { id: 'blocks-dashboard', label: 'Dashboard' },
     ],
   },
   { group: 'Brand di prodotto', items: [{ id: 'civiqa', label: 'Civiqa' }] },
@@ -88,6 +99,9 @@ export default function App() {
           <DataDisplay />
           <DashboardTables />
           <Footers />
+          <BlocksSite />
+          <BlocksReport />
+          <BlocksDashboard />
           <Civiqa />
         </div>
       </main>
