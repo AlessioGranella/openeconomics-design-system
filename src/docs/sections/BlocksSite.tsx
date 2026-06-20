@@ -18,7 +18,7 @@ export default function BlocksSite() {
         title="Hero"
         description="Eyebrow + titolo serif + lead + azioni."
         code={`<section class="oe-hero">
-  <span class="oe-eyebrow">Analisi d'impatto</span>
+  <div><span class="oe-tag-chip oe-tag-chip--default">Analisi d'impatto</span></div>
   <h1 class="oe-hero__title">Trasformiamo dati complessi in decisioni con cui rischiare capitale e policy.</h1>
   <p class="oe-hero__lead">Soluzioni integrate per l'analisi socioeconomica e la gestione di finanziamenti pubblici.</p>
   <div class="oe-hero__actions">
@@ -28,7 +28,7 @@ export default function BlocksSite() {
 </section>`}
       >
         <section className="oe-hero">
-          <span className="oe-eyebrow">Analisi d'impatto</span>
+          <div><Tag>Analisi d'impatto</Tag></div>
           <h1 className="oe-hero__title">Trasformiamo dati complessi in decisioni solide.</h1>
           <p className="oe-hero__lead">Soluzioni integrate per l'analisi socioeconomica e la gestione di finanziamenti pubblici.</p>
           <div className="oe-hero__actions">
