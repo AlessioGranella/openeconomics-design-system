@@ -477,6 +477,24 @@
 .oe-dashnav__item:hover { color: var(--oe-accent); }
 .oe-dashnav__item.is-active { color: var(--oe-accent); border-left-color: var(--oe-accent); font-weight: 500; }
 
+/* ---- Slogan (lockup su fondo scuro) ---------------------------------- */
+.oe-slogan {
+  background: var(--oe-bg-dark); color: var(--oe-white);
+  padding: var(--oe-space-xl) var(--oe-space-2xl);
+  display: flex; flex-direction: column; gap: var(--oe-space-m);
+}
+.oe-slogan__src { font-family: var(--oe-font-mono); font-size: 13px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--oe-bluette-200); }
+.oe-slogan__text { font-family: var(--oe-font-serif); font-size: 36px; line-height: 1.1; letter-spacing: -0.005em; text-wrap: balance; max-width: 580px; color: var(--oe-white); margin: 0; }
+
+/* ---- Client strip (loghi clienti, monocromatici) --------------------- */
+.oe-client-strip {
+  display: flex; align-items: center; justify-content: space-around; flex-wrap: wrap;
+  gap: var(--oe-space-l); background: var(--oe-white);
+  padding: var(--oe-space-l) var(--oe-space-m);
+  border-top: 1px solid var(--oe-gray-200); border-bottom: 1px solid var(--oe-gray-200);
+}
+.oe-client-strip span { font-family: var(--oe-font-serif); font-size: 22px; color: var(--oe-black); letter-spacing: 0.01em; }
+
 /* ---- Dashboard topbar ------------------------------------------------- */
 .oe-topbar {
   display: flex; align-items: center; gap: var(--oe-space-m);

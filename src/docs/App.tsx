@@ -5,6 +5,8 @@ import SpacingLayout from './sections/SpacingLayout'
 import GridLayout from './sections/GridLayout'
 import DataViz from './sections/DataViz'
 import Icons from './sections/Icons'
+import Elevation from './sections/Elevation'
+import Brand from './sections/Brand'
 import Components from './sections/Components'
 import FormsInputs from './sections/FormsInputs'
 import DataDisplay from './sections/DataDisplay'
@@ -24,8 +26,10 @@ const nav = [
       { id: 'grid', label: 'Griglia & Breakpoint' },
       { id: 'dataviz', label: 'Data Visualization' },
       { id: 'icone', label: 'Iconografia' },
+      { id: 'elevation', label: 'Elevation & Radii' },
     ],
   },
+  { group: 'Brand', items: [{ id: 'brand', label: 'Logo, slogan, clienti' }] },
   {
     group: 'Componenti',
     items: [
@@ -76,6 +80,8 @@ export default function App() {
           <GridLayout />
           <DataViz />
           <Icons />
+          <Elevation />
+          <Brand />
           <Components />
           <CardsNav />
           <FormsInputs />
