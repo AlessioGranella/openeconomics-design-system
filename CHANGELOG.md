@@ -9,6 +9,15 @@ Installazione di una versione fissa (consigliata nei progetti):
 npm i github:AlessioGranella/openeconomics-design-system#v0.2.0
 ```
 
+## [0.4.0] — 2026-06-20
+
+### Added
+- **KpiCard**: props opzionali `icon` (icona sopra il valore) e `note` (descrizione sotto
+  l'etichetta) — per le card di sintesi nei report. Additivo, retrocompatibile.
+
+### Notes
+- Emerso ricostruendo il progetto "Eni Analisi v2" sull'ultima versione del DS.
+
 ## [0.3.0] — 2026-06-20
 
 Refactor architetturale dei token (Fase 2): nessun cambiamento visivo.
@@ -71,6 +80,7 @@ Prima versione versionata con API di consumo stabile.
 - UI kit consultabile iniziale: prima versione della pagina-libreria + token e font di base,
   deploy su GitHub Pages.
 
+[0.4.0]: https://github.com/AlessioGranella/openeconomics-design-system/releases/tag/v0.4.0
 [0.3.0]: https://github.com/AlessioGranella/openeconomics-design-system/releases/tag/v0.3.0
 [0.2.0]: https://github.com/AlessioGranella/openeconomics-design-system/releases/tag/v0.2.0
 [0.1.0]: https://github.com/AlessioGranella/openeconomics-design-system/releases/tag/v0.1.0

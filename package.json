@@ -1,7 +1,7 @@
 {
   "name": "oe-design-system",
   "private": true,
-  "version": "0.3.0",
+  "version": "0.4.0",
   "type": "module",
   "description": "OpenEconomics Design System — token, componenti e UI kit (libreria consultabile)",
   "license": "UNLICENSED",

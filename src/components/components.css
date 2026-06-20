@@ -73,6 +73,11 @@
   color: var(--oe-gray-700);
 }
 .oe-kpi--dark .oe-kpi__label { color: rgba(255,255,255,0.7); }
+.oe-kpi__icon { width: 36px; height: 36px; margin-bottom: var(--oe-space-s); color: var(--oe-accent); }
+.oe-kpi__icon img, .oe-kpi__icon svg { width: 100%; height: 100%; display: block; }
+.oe-kpi--dark .oe-kpi__icon { color: var(--oe-on-dark-accent); }
+.oe-kpi__note { font-family: var(--oe-font-sans); font-weight: 300; font-size: 13px; line-height: 1.45; color: var(--oe-fg-soft); margin: var(--oe-space-s) 0 0; }
+.oe-kpi--dark .oe-kpi__note { color: rgba(255,255,255,0.72); }
 
 /* ---- Accordion --------------------------------------------------------- */
 .oe-accordion { border-top: 1px solid var(--oe-gray-200); }
