@@ -60,6 +60,8 @@ import { Button, KpiCard, Tag, Footer } from 'oe-design-system/components'
 > Brand **Civiqa**: aggiungi `class="theme-civiqa"` sulla root → l'accento diventa blu su tutti i componenti.
 > Le versioni sono elencate nel [CHANGELOG](./CHANGELOG.md). `react`/`react-dom` sono `peerDependencies` (li porta il progetto).
 
+**Sito versionato:** la libreria online pubblica l'ultima versione alla root e uno snapshot per ogni release in sottocartella (`/v0.3.0/`, `/v0.2.0/`…); il **selettore di versione** in alto nella sidebar permette di navigarle.
+
 ### In sviluppo, dentro `Operativa/` (senza pinnare)
 
 Per i progetti nello stesso workspace puoi ancora agganciare i file via percorso/symlink (vedi sotto), così le modifiche al DS si riflettono subito.
