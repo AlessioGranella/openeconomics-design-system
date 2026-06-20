@@ -55,6 +55,13 @@ Componente `Footer` con prop `variant`:
 - `standard` — brand + copyright + link legali.
 - `analisi` — in più la colonna "Condizioni d'uso" con disclaimer (per report/documenti di analisi).
 
+## UI Blocks
+
+Sezioni intere già composte (stile "Tailwind UI"), da copiare, nella sezione "UI Blocks" della libreria — costruite combinando i componenti, tematizzabili sotto `.theme-civiqa`. Helper: `.oe-hero`, `.oe-stats/.oe-stat`, `.oe-cta` (+ `Button variant="inverse"`), `.oe-report-head`, `.oe-panel`, `.oe-shell`.
+- **Sito:** hero, logo cloud, feature grid, stats band, CTA band, FAQ.
+- **Report:** header report, sintesi KPI, grafico+commento, tabella, disclaimer (Footer "analisi").
+- **Dashboard:** app shell (sidebar+topbar+contenuti), barra filtri+tabella.
+
 ## Civiqa — pezzi specifici
 
 Oltre al tema `.theme-civiqa`, esistono componenti Civiqa-specifici dal Figma del brand (classi `.cv-*` in `components.css`, mostrati nella sezione "Civiqa" della libreria): `.cv-chip`, `.cv-btn` (varianti `--primary/--dark/--outline/--tint/--link/--ghost-light`), `.cv-nav`, `.cv-footer`, `.cv-icon` (icone outline, tratto `--cv-blu-100` su quadrato `--cv-blu-800`).
