@@ -41,8 +41,8 @@ I due brand condividono TUTTO (font, spaziatura, griglia, componenti: card, chec
 - **Stili componenti:** `src/components/components.css` — usa SEMPRE `var(--oe-space-*)` per padding/gap/margin (scala 4px), niente px hardcoded.
 - **Componenti React:** `src/components/` (Button, Tag, KpiCard, Accordion, FigureLabel, Footer, Wordmark, CiviqaWordmark) + barrel `index.ts`.
 - **Componenti via classe CSS** (in `components.css`, demo nelle sezioni "Componenti UI" della libreria): Card (`.oe-card`, `--feature`), Form & input (`.oe-field/.oe-label/.oe-input/.oe-select/.oe-textarea/.oe-check/.oe-switch/.oe-search`), Tabella (`.oe-table`, `--numeric`, `.oe-table__wrap`), Tabs (`.oe-tabs/.oe-tab`), Badge stato (`.oe-badge--success/--warning/--danger/--info/--neutral`), Paginazione (`.oe-pagination/.oe-page`), Filtri (`.oe-segment`), Header sito (`.oe-header`), Nav dashboard (`.oe-dashnav`), Topbar dashboard (`.oe-topbar`). Tabelle dashboard: CapEx (`.oe-table--capex`), KPI editabile (`.oe-table__cat` + `.oe-input--cell` + `.oe-table__actions`), Moltiplicatori (`.oe-metrics`), Recap (`.oe-recap`). Tutti usano `--oe-accent`, quindi si tematizzano sotto `.theme-civiqa`. (Chart → costruito per progetto con `tokens.ts` chartSeries; Map → libreria di mapping per progetto.)
-- **Pagina-libreria / UI kit:** `src/docs/` (sezioni in `src/docs/sections/`, incluse `Footers.tsx` e `Civiqa.tsx`).
-- **Kit Figma (snapshot consultabile):** `public/kit/` (anteprime componenti, icone, loghi). Asset Civiqa in `public/civiqa/`.
+- **Pagina-libreria:** `src/docs/` (sezioni in `src/docs/sections/`). È fatta SOLO di componenti reali con anteprima dal vivo + codice — niente anteprime Figma. Niente `Catalog`/iframe.
+- **Kit Figma:** `public/kit/` resta come riferimento di design ma NON è mostrato nella libreria (tranne le icone reali in `assets/icons/`). Asset Civiqa in `public/civiqa/`.
 
 ## Griglia e layout
 
