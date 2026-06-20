@@ -61,11 +61,17 @@ Prima versione versionata con API di consumo stabile.
 - Chip-kicker **sopra h1/h2 sempre lime**.
 - Logo bianco su scuro / nero su chiaro, mai grayscale.
 
-## [0.1.0] — 2026-06
+## [0.1.0] — 2026-06-17
 
-- UI kit consultabile iniziale: foundations (colori, tipografia, spacing, griglia),
-  token unificati (`--oe-*`), utility `.oe-grid`, deploy su GitHub Pages.
+- Foundations consolidate (colori, tipografia, spacing, **griglia** `.oe-grid` responsive +
+  container query), token unificati (`--oe-*`), sidebar libreria chiara, marchio OE.
+
+## [0.0.0] — 2026-06-17
+
+- UI kit consultabile iniziale: prima versione della pagina-libreria + token e font di base,
+  deploy su GitHub Pages.
 
 [0.3.0]: https://github.com/AlessioGranella/openeconomics-design-system/releases/tag/v0.3.0
 [0.2.0]: https://github.com/AlessioGranella/openeconomics-design-system/releases/tag/v0.2.0
-[0.1.0]: https://github.com/AlessioGranella/openeconomics-design-system
+[0.1.0]: https://github.com/AlessioGranella/openeconomics-design-system/releases/tag/v0.1.0
+[0.0.0]: https://github.com/AlessioGranella/openeconomics-design-system/releases/tag/v0.0.0
