@@ -47,6 +47,19 @@
 .dx-brand__mark svg { width: 22px; height: 22px; display: block; }
 .dx-brand__txt { font-family: var(--oe-font-mono); text-transform: uppercase; font-size: 13px; letter-spacing: 0.04em; }
 
+/* ---- Version switcher -------------------------------------------------- */
+.dx-version { margin: -16px 0 28px; }
+.dx-version__label { display: block; font-family: var(--oe-font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--oe-gray-500); margin-bottom: 6px; }
+.dx-version__field { position: relative; }
+.dx-version__select {
+  appearance: none; -webkit-appearance: none; width: 100%;
+  font-family: var(--oe-font-mono); font-size: 13px; color: var(--oe-gray-800);
+  background: var(--oe-white); border: 1px solid var(--oe-gray-200); border-radius: 0;
+  padding: 7px 28px 7px 10px; cursor: pointer;
+}
+.dx-version__select:focus-visible { outline: none; border-color: var(--oe-accent); }
+.dx-version__chevron { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--oe-gray-500); font-size: 11px; }
+
 .dx-nav { flex: 1; }
 .dx-nav__group { margin-bottom: 26px; }
 .dx-nav__title {

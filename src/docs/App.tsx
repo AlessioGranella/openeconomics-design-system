@@ -12,6 +12,7 @@ import FormsInputs from './sections/FormsInputs'
 import DataDisplay from './sections/DataDisplay'
 import DashboardTables from './sections/DashboardTables'
 import CardsNav from './sections/CardsNav'
+import VersionSwitcher from './ui/VersionSwitcher'
 import Footers from './sections/Footers'
 import BlocksSite from './sections/BlocksSite'
 import BlocksReport from './sections/BlocksReport'
@@ -67,6 +68,7 @@ export default function App() {
           </span>
           <span className="dx-brand__txt">Design System</span>
         </a>
+        <VersionSwitcher />
         <nav className="dx-nav">
           {nav.map((g) => (
             <div className="dx-nav__group" key={g.group}>

@@ -3,6 +3,7 @@ name: Deploy design system to GitHub Pages
 on:
   push:
     branches: [main]
+    tags: ['v*']
   workflow_dispatch:
 
 permissions:
@@ -19,14 +20,44 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # serve tutta la storia + i tag
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+
+      # 1) Ultima versione (main) → root del sito
       - run: npm ci
       - run: npm run build
+      - run: |
+          rm -rf site && mkdir -p site
+          cp -r dist/* site/
+
+      # 2) Ogni release taggata → sottocartella /vX.Y.Z/
+      - run: |
+          set -e
+          for tag in $(git tag -l 'v*' | sort -V); do
+            echo "::group::Build $tag"
+            rm -rf ".ver/$tag"
+            git worktree add --detach ".ver/$tag" "$tag"
+            ( cd ".ver/$tag" && npm ci && npm run build )
+            mkdir -p "site/$tag"
+            cp -r ".ver/$tag/dist/"* "site/$tag/"
+            git worktree remove --force ".ver/$tag"
+            echo "::endgroup::"
+          done
+
+      # 3) Indice delle versioni (consumato dal selettore nella libreria)
+      - run: |
+          latest=$(git tag -l 'v*' | sort -V | tail -1)
+          vers=$(git tag -l 'v*' | sort -rV | jq -R . | jq -s -c .)
+          printf '{"latest":"%s","versions":%s}\n' "$latest" "$vers" > site/versions.json
+          echo "versions.json:" && cat site/versions.json
+
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: site
 
   deploy:
     needs: build
