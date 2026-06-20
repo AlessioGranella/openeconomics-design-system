@@ -30,6 +30,7 @@ I due brand condividono TUTTO (font, spaziatura, griglia, componenti: card, chec
 - **Fondo bianco vero** `#FFFFFF` — mai cream/sand/beige.
 - **Numeri in locale IT** (migliaia `.`, decimale `,`, sempre `useGrouping: "always"` — altrimenti i numeri a 4 cifre non hanno il separatore).
 - **Chip/tag:** mono uppercase, niente icone né frecce dentro il chip (eccezione: i chip Civiqa `.cv-chip` hanno un quadratino/pixel iniziale, parte dell'identità).
+- **Chip sopra un titolo h1/h2 = SEMPRE lime** (`<Tag tone="lime">` / `.oe-tag-chip--lime`). Il chip-kicker sopra un h1/h2 (hero, sezioni) è lime, mai default/bluette. Sotto `.theme-civiqa` diventa blu con testo bianco (automatico). Gli altri chip restano liberi.
 - **Logo** piccolo, alto contrasto (nero o bianco pieno), mai in scala di grigi, mai l'elemento più prominente.
 - **Mai generare immagini AI senza conferma esplicita dell'utente**; no stock generici, render irrealistici, B/N artistico.
 - **Contrasto WCAG**: body ≥ 4.5:1, large ≥ 3:1.
