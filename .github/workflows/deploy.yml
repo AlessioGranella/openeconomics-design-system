@@ -35,24 +35,27 @@ jobs:
           cp -r dist/* site/
 
       # 2) Ogni release taggata → sottocartella /vX.Y.Z/
+      #    (resiliente: una build vecchia che fallisce viene saltata, non rompe il deploy)
       - run: |
-          set -e
           for tag in $(git tag -l 'v*' | sort -V); do
             echo "::group::Build $tag"
             rm -rf ".ver/$tag"
-            git worktree add --detach ".ver/$tag" "$tag"
-            ( cd ".ver/$tag" && npm ci && npm run build )
-            mkdir -p "site/$tag"
-            cp -r ".ver/$tag/dist/"* "site/$tag/"
-            git worktree remove --force ".ver/$tag"
+            if git worktree add --detach ".ver/$tag" "$tag" \
+               && ( cd ".ver/$tag" && npm ci && npm run build ); then
+              mkdir -p "site/$tag"
+              cp -r ".ver/$tag/dist/"* "site/$tag/"
+            else
+              echo "::warning::Build di $tag fallita — versione saltata"
+            fi
+            git worktree remove --force ".ver/$tag" 2>/dev/null || true
             echo "::endgroup::"
           done
 
-      # 3) Indice delle versioni (consumato dal selettore nella libreria)
+      # 3) Indice delle versioni (solo quelle effettivamente costruite)
       - run: |
           latest=$(git tag -l 'v*' | sort -V | tail -1)
-          vers=$(git tag -l 'v*' | sort -rV | jq -R . | jq -s -c .)
-          printf '{"latest":"%s","versions":%s}\n' "$latest" "$vers" > site/versions.json
+          built=$(ls -d site/v*/ 2>/dev/null | sed 's#site/##; s#/##' | sort -rV | jq -R . | jq -s -c .)
+          printf '{"latest":"%s","versions":%s}\n' "$latest" "${built:-[]}" > site/versions.json
           echo "versions.json:" && cat site/versions.json
 
       - uses: actions/upload-pages-artifact@v3
