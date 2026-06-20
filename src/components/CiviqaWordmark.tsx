@@ -1,22 +1,23 @@
-interface CiviqaWordmarkProps {
-  className?: string
+import type { SVGProps } from 'react'
+
+interface CiviqaWordmarkProps extends SVGProps<SVGSVGElement> {
   title?: string
 }
 
 /**
  * Logotipo Civiqa (quadrato/pixel + lettering "CIVIQA").
  * Usa `currentColor`: eredita il colore dal contenitore — nero su chiaro,
- * bianco su fondi Blu scuri.
+ * bianco su fondi Blu scuri. Accetta className/style e props SVG.
  */
-export default function CiviqaWordmark({ className, title = 'Civiqa' }: CiviqaWordmarkProps) {
+export default function CiviqaWordmark({ title = 'Civiqa', ...rest }: CiviqaWordmarkProps) {
   return (
     <svg
-      className={className}
       viewBox="0 0 729.25 218.53"
       fill="currentColor"
       role="img"
       aria-label={title}
       xmlns="http://www.w3.org/2000/svg"
+      {...rest}
     >
       <rect y="38.8" width="89.62" height="89.62" />
       <path d="M207.64,159.73c-14.52,0-26.92-3.19-37.18-9.57-10.27-6.38-18.15-15.29-23.65-26.73-5.5-11.44-8.25-24.78-8.25-40.04s2.89-28.56,8.69-39.93c5.79-11.36,13.97-20.2,24.53-26.51,10.56-6.3,22.95-9.46,37.18-9.46,12.9,0,24.38,2.94,34.43,8.8,10.04,5.87,17.63,14.08,22.77,24.64l-22.22,8.14c-3.23-6.3-7.96-11.29-14.19-14.96-6.24-3.67-13.53-5.5-21.89-5.5-7.92,0-15.15,2.09-21.67,6.27-6.53,4.18-11.7,10.38-15.51,18.59-3.82,8.22-5.72,18.19-5.72,29.92s1.83,21.71,5.5,29.92c3.67,8.21,8.83,14.49,15.51,18.81,6.67,4.33,14.19,6.49,22.55,6.49,5.57,0,10.67-.77,15.29-2.31s8.72-3.85,12.32-6.93c3.59-3.08,6.49-6.82,8.69-11.22l22.22,8.14c-5.43,10.71-13.35,18.96-23.76,24.75-10.42,5.8-22.3,8.69-35.64,8.69Z" />

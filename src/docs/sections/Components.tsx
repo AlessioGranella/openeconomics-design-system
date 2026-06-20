@@ -95,16 +95,21 @@ export default function Components() {
 
       <Demo
         title="Logo (Wordmark)"
-        description="Logotipo OpenEconomics in currentColor: nero su chiaro, bianco su scuro. Per il marchio Civiqa: CiviqaWordmark."
+        description="currentColor: eredita il colore del contenitore — nero su chiaro, bianco su scuro. Su fondi scuri imposta color: #fff (o usalo dentro una sezione scura)."
         code={`import { Wordmark } from '@/components'
 
-<Wordmark style={{ height: 40 }} />`}
+// chiaro
+<Wordmark style={{ height: 36 }} />
+// scuro
+<div style={{ background: 'var(--oe-bluette-900)', color: '#fff' }}>
+  <Wordmark style={{ height: 36 }} />
+</div>`}
       >
         <div className="dx-row">
           <Wordmark style={{ height: 36, color: 'var(--oe-black)' }} />
         </div>
         <div className="dx-row dx-row--dark">
-          <Wordmark style={{ height: 36, color: '#fff' }} />
+          <Wordmark style={{ height: 36 }} />
         </div>
       </Demo>
     </section>

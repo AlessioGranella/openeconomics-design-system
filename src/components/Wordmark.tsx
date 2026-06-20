@@ -1,22 +1,24 @@
-interface WordmarkProps {
-  className?: string
+import type { SVGProps } from 'react'
+
+interface WordmarkProps extends SVGProps<SVGSVGElement> {
   title?: string
 }
 
 /**
  * Logotipo OpenEconomics (wordmark completo: monogramma "O" + lettering).
- * Usa `currentColor`, quindi eredita il colore dal contenitore — bianco su
- * fondi scuri (footer/sezioni Bluette), nero su fondi chiari.
+ * Usa `currentColor`, quindi eredita il colore dal contenitore — nero su
+ * fondi chiari, **bianco su fondi scuri**. Accetta `className`, `style` e
+ * tutte le props SVG (es. per impostare height/color).
  */
-export default function Wordmark({ className, title = 'OpenEconomics' }: WordmarkProps) {
+export default function Wordmark({ title = 'OpenEconomics', ...rest }: WordmarkProps) {
   return (
     <svg
-      className={className}
       viewBox="0 0 1789 226"
       fill="currentColor"
       role="img"
       aria-label={title}
       xmlns="http://www.w3.org/2000/svg"
+      {...rest}
     >
       <path d="M90.6,9.5c-49,0-88.7,39.8-88.7,89c0,49.1,39.7,89,88.7,89s88.7-39.8,88.7-89C179.3,49.3,139.6,9.5,90.6,9.5z M38.2,151V46h104.6v105H38.2z" />
       <path d="M199.5,226V57H221l5.6,19.3c2.6-4.6,5.9-8.6,10-11.8c4.1-3.3,8.7-5.7,13.8-7.4s10.7-2.6,16.6-2.6c10.1,0,19.3,2.7,27.6,8c8.4,5.3,15,12.9,20,22.9c4.9,9.9,7.4,21.8,7.4,35.7s-2.5,25.9-7.4,36c-4.9,9.9-11.6,17.6-20,22.9c-8.4,5.1-17.6,7.7-27.6,7.7c-6,0-11.5-0.9-16.6-2.6c-5.1-1.7-9.7-4.2-13.8-7.4c-4.1-3.4-7.4-7.4-10-12.1V226H199.5z M259.1,165.1c9.9,0,17.9-3.9,24-11.6c6.3-7.7,9.5-18.6,9.5-32.6s-3.2-24.9-9.5-32.6c-6.1-7.7-14.2-11.6-24-11.6c-9.9,0-18,3.7-24.3,11c-6.1,7.4-9.2,18.3-9.2,32.9c0,14.4,3.1,25.4,9.2,33.1C241.1,161.4,249.2,165.1,259.1,165.1z" />
