@@ -58,6 +58,24 @@ jobs:
           printf '{"latest":"%s","versions":%s}\n' "$latest" "${built:-[]}" > site/versions.json
           echo "versions.json:" && cat site/versions.json
 
+      # 4) Selettore di versione fluttuante: iniettato SOLO nelle versioni che
+      #    NON hanno già il selettore integrato (gli snapshot vecchi), così da
+      #    ogni versione si può comunque navigare verso le altre.
+      - run: |
+          cp .github/site/version-nav.js site/version-nav.js
+          snippet='<script defer src="/openeconomics-design-system/version-nav.js"></script>'
+          for f in $(find site -name index.html); do
+            dir=$(dirname "$f")
+            if grep -rqs "dx-version-select" "$dir"/assets/*.js; then
+              echo "skip (selettore integrato) → $f"
+            elif grep -q "version-nav.js" "$f"; then
+              echo "già presente → $f"
+            else
+              sed -i "s#</body>#$snippet</body>#" "$f"
+              echo "iniettato → $f"
+            fi
+          done
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
