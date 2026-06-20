@@ -67,6 +67,14 @@ Sezioni intere già composte (stile "Tailwind UI"), da copiare, nella sezione "U
 
 Oltre al tema `.theme-civiqa`, esistono componenti Civiqa-specifici dal Figma del brand (classi `.cv-*` in `components.css`, mostrati nella sezione "Civiqa" della libreria): `.cv-chip`, `.cv-btn` (varianti `--primary/--dark/--outline/--tint/--link/--ghost-light`), `.cv-nav`, `.cv-footer`, `.cv-icon` (icone outline, tratto `--cv-blu-100` su quadrato `--cv-blu-800`).
 
+## Token semantici (REGOLA architetturale)
+
+I componenti usano **solo token semantici**, mai i colori brand diretti (`--oe-bluette-*`/`--oe-lime-*`). Così un brand = un set di token e il tema non ha override per-componente.
+- Accento: `--oe-accent`, `--oe-accent-strong` (hover/scuro), `--oe-accent-soft` (tinta), `--oe-accent-border`, `--oe-accent-on` (testo su accento).
+- "Pop": `--oe-pop` (riempimento), `--oe-pop-strong` (hover), `--oe-pop-on` (testo sul pop).
+- Su fondo scuro: `--oe-on-dark-accent` (accento come TESTO su scuro), `--oe-on-dark-muted` (testo attenuato), `--oe-bg-dark` (fondo scuro).
+Quando aggiungi un componente, usa questi (più i grigi/neutri e lo spacing) — niente colori brand hardcoded.
+
 ## Aggiungere componenti
 
-Token e utility additivi e retrocompatibili: non rompere i `--oe-*` esistenti. Quando aggiungi un componente, riusa i token (spigolo vivo, font, spacing, accento del brand attivo) invece di reinventare stili.
+Token e utility additivi e retrocompatibili: non rompere i `--oe-*` esistenti. Riusa i token semantici sopra (spigolo vivo, font, spacing) invece di reinventare stili.

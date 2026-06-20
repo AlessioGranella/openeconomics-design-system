@@ -119,9 +119,15 @@
   --oe-fg-inverse:  var(--oe-white);
 
   --oe-accent:        var(--oe-bluette-700);   /* primary brand accent */
-  --oe-accent-strong: var(--oe-bluette-900);
-  --oe-accent-soft:   var(--oe-bluette-050);
-  --oe-pop:           var(--oe-lime-400);      /* electric lime */
+  --oe-accent-strong: var(--oe-bluette-900);   /* hover / dark sections */
+  --oe-accent-soft:   var(--oe-bluette-050);   /* tinte / sfondi soft */
+  --oe-accent-border: var(--oe-bluette-200);   /* bordi accento (chip, ecc.) */
+  --oe-accent-on:     var(--oe-white);         /* testo/icone SU riempimento accento */
+  --oe-pop:           var(--oe-lime-400);      /* "pop" come RIEMPIMENTO (lime) */
+  --oe-pop-strong:    var(--oe-lime-500);      /* hover del pop */
+  --oe-pop-on:        var(--oe-black);         /* testo SU riempimento pop */
+  --oe-on-dark-accent:var(--oe-lime-400);      /* accento come TESTO su fondo scuro */
+  --oe-on-dark-muted: var(--oe-bluette-200);   /* testo attenuato su fondo scuro accento */
 
   --oe-stroke:        var(--oe-black);
   --oe-stroke-soft:   var(--oe-gray-300);
@@ -228,30 +234,23 @@
   --oe-bluette-100: var(--cv-blu-100);
   --oe-bluette-050: var(--cv-blu-050);
 
-  /* Civiqa non usa il Lime: l'accento "pop" diventa blu. */
+  /* Token semantici "pop"/accento — Civiqa non usa il Lime.
+     I componenti usano questi token, quindi NON servono override per-componente:
+     - pop = riempimento (blu); pop-on = testo sul pop (bianco, per contrasto);
+     - on-dark-accent = accento come testo su fondo scuro → blu CHIARO, perché
+       il blu pieno sparirebbe sul blu scuro. */
+  --oe-pop:           var(--cv-blu-600);
+  --oe-pop-strong:    var(--cv-blu-700);
+  --oe-pop-on:        var(--oe-white);
+  --oe-on-dark-accent: var(--cv-blu-200);
+  /* lime diretto (usi esterni) → blu, per sicurezza */
   --oe-lime-400: var(--cv-blu-600);
   --oe-lime-500: var(--cv-blu-700);
   --oe-lime-600: var(--cv-blu-700);
-  --oe-pop:      var(--cv-blu-600);
 
   /* unico hex non derivato dalla rampa */
   --oe-bg-mid: var(--cv-blu-500);
 }
-/* Correzioni di contrasto dove il Lime aveva un ruolo che il blu non replica:
-   A) Lime come RIEMPIMENTO con testo nero (superfici chiare) → testo bianco.
-   B) Lime come TESTO/accento su fondo SCURO → blu chiaro (--cv-blu-200),
-      perché il blu pieno sparirebbe sul blu scuro. */
-.theme-civiqa .oe-btn--accent,
-.theme-civiqa .oe-btn--accent:hover,
-.theme-civiqa .oe-tag-chip--lime { color: var(--oe-white); }
-
-.theme-civiqa .oe-tag-chip--on-dark,
-.theme-civiqa .oe-kpi--dark .oe-kpi__value,
-.theme-civiqa .oe-footer__disclaimer-label,
-.theme-civiqa .oe-footer__link:hover,
-.theme-civiqa .oe-footer__link:focus-visible,
-.theme-civiqa .oe-metrics__range { color: var(--cv-blu-200); }
-.theme-civiqa .oe-metrics__title svg { stroke: var(--cv-blu-200); }
 
 /* -----------------------------------------------------------------------
    Layout utilities

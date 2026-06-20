@@ -9,6 +9,23 @@ Installazione di una versione fissa (consigliata nei progetti):
 npm i github:AlessioGranella/openeconomics-design-system#v0.2.0
 ```
 
+## [0.3.0] — 2026-06-20
+
+Refactor architetturale dei token (Fase 2): nessun cambiamento visivo.
+
+### Added
+- **Layer di token semantici**: `--oe-accent-border`, `--oe-accent-on`, `--oe-pop-strong`,
+  `--oe-pop-on`, `--oe-on-dark-accent`, `--oe-on-dark-muted`. I componenti ora usano SOLO
+  token semantici (mai `--oe-bluette-*`/`--oe-lime-*` diretti).
+
+### Changed
+- **Tema `.theme-civiqa` rimappa solo token**: rimossi tutti gli override per-componente
+  (i fix di contrasto sul lime). Aggiungere/cambiare un brand = solo un set di token.
+
+### Notes
+- Output visivo invariato in entrambi i brand (verificato). Cambiamento additivo e
+  retrocompatibile sui token `--oe-*`.
+
 ## [0.2.0] — 2026-06-20
 
 Prima versione versionata con API di consumo stabile.
@@ -49,5 +66,6 @@ Prima versione versionata con API di consumo stabile.
 - UI kit consultabile iniziale: foundations (colori, tipografia, spacing, griglia),
   token unificati (`--oe-*`), utility `.oe-grid`, deploy su GitHub Pages.
 
+[0.3.0]: https://github.com/AlessioGranella/openeconomics-design-system/releases/tag/v0.3.0
 [0.2.0]: https://github.com/AlessioGranella/openeconomics-design-system/releases/tag/v0.2.0
 [0.1.0]: https://github.com/AlessioGranella/openeconomics-design-system
