@@ -12,6 +12,9 @@ npm i github:AlessioGranella/openeconomics-design-system#v0.2.0
 ## [Unreleased]
 
 ### Added
+- **Immagini**: nuova sezione della libreria (Brand → Immagini) con 34 mappe a griglia di
+  quadratini in stile Civiqa (Europa, Italia, Piemonte, comune; aree evidenziate in blu Civiqa,
+  blu scuro e lime), download SVG/PNG per ciascuna e zip completo.
 - **Icone**: 4 nuove icone nel set (`programmazione`, `progettazione-documento`,
   `finanziamento`, `approfondimento`), stesso formato 524 · fondo Bluette 900.
 - **Declinazioni colore** per le 4 nuove icone: `-bluette-lime` (fondo Bluette `#4400B3`,

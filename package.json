@@ -25,12 +25,13 @@
     "./components.css": "./src/components/components.css"
   },
   "scripts": {
-    "predev": "npm run icons:zip",
+    "predev": "npm run icons:zip && npm run maps:zip",
     "dev": "vite",
-    "prebuild": "npm run icons:zip",
+    "prebuild": "npm run icons:zip && npm run maps:zip",
     "build": "vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
+    "maps:zip": "cd public/kit/assets && rm -f mappe.zip && zip -qrX mappe.zip mappe -x 'mappe/.DS_Store'",
     "icons:zip": "cd public/kit/assets && rm -f icons.zip && zip -qrX icons.zip icons -x 'icons/index.html' 'icons/.DS_Store'"
   },
   "peerDependencies": {

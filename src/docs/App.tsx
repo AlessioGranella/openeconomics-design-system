@@ -7,6 +7,7 @@ import DataViz from './sections/DataViz'
 import Icons from './sections/Icons'
 import Elevation from './sections/Elevation'
 import Brand from './sections/Brand'
+import Images from './sections/Images'
 import Components from './sections/Components'
 import FormsInputs from './sections/FormsInputs'
 import DataDisplay from './sections/DataDisplay'
@@ -33,7 +34,13 @@ const nav = [
       { id: 'elevation', label: 'Elevation & Radii' },
     ],
   },
-  { group: 'Brand', items: [{ id: 'brand', label: 'Logo, slogan, clienti' }] },
+  {
+    group: 'Brand',
+    items: [
+      { id: 'brand', label: 'Logo, slogan, clienti' },
+      { id: 'immagini', label: 'Immagini' },
+    ],
+  },
   {
     group: 'Componenti',
     items: [
@@ -95,6 +102,7 @@ export default function App() {
           <Icons />
           <Elevation />
           <Brand />
+          <Images />
           <Components />
           <CardsNav />
           <FormsInputs />

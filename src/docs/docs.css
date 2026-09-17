@@ -288,3 +288,13 @@
   .dx-scale__row { grid-template-columns: repeat(5, 1fr); }
   .dx-cat-grid, .dx-proto-grid { grid-template-columns: 1fr; }
 }
+
+/* Immagini: griglia mappe con download SVG/PNG */
+.dx-map-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 16px; margin-top: 16px; }
+.dx-map { margin: 0; border: 1px solid var(--oe-gray-200); background: var(--oe-white); }
+.dx-map img { display: block; width: 100%; height: auto; }
+.dx-map__cap { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 8px 12px; border-top: 1px solid var(--oe-gray-200); }
+.dx-map__name { font-size: 12px; color: var(--oe-gray-600); }
+.dx-map__dl { display: flex; gap: 12px; flex-shrink: 0; }
+.dx-map__dl a { font-family: var(--oe-font-mono); font-size: 12px; text-transform: uppercase; color: var(--oe-accent); text-decoration: none; }
+.dx-map__dl a:hover, .dx-map__dl a:focus-visible { text-decoration: underline; }
