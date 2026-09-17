@@ -9,6 +9,18 @@ Installazione di una versione fissa (consigliata nei progetti):
 npm i github:AlessioGranella/openeconomics-design-system#v0.2.0
 ```
 
+## [Unreleased]
+
+### Added
+- **Icone**: 4 nuove icone nel set (`programmazione`, `progettazione-documento`,
+  `finanziamento`, `approfondimento`), stesso formato 524 · fondo Bluette 900.
+- **Declinazioni colore** per le 4 nuove icone: `-bluette-lime` (fondo Bluette `#4400B3`,
+  icona Lime) e `-lime` (fondo Lime `#B9FF69`, icona Bluette). `programmazione` (calendario con lente) e `finanziamento` usano il
+  nuovo disegno (`finanziamento`: cerchio aperto con €).
+- **Download icone** nella libreria: clic su un'icona scarica l'SVG; pulsante
+  "Scarica tutte le icone (.zip)". Lo zip è generato da `npm run icons:zip`
+  (eseguito in automatico prima di `dev` e `build`).
+
 ## [0.4.0] — 2026-06-20
 
 ### Added

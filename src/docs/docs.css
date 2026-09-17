@@ -240,8 +240,16 @@
   display: flex; flex-direction: column; align-items: center; gap: 10px;
   text-align: center;
 }
+.dx-icon { color: inherit; text-decoration: none; cursor: pointer; }
+.dx-icon:hover { border-color: var(--oe-accent); }
+.dx-icon:focus-visible { outline: 2px solid var(--oe-accent); outline-offset: 2px; }
 .dx-icon img { width: 28px; height: 28px; }
 .dx-icon__name { font-family: var(--oe-font-mono); font-size: 10px; color: var(--oe-gray-600); word-break: break-word; line-height: 1.3; }
+.dx-icon__dl { font-family: var(--oe-font-mono); font-size: 12px; text-transform: uppercase; color: var(--oe-accent); opacity: 0; }
+.dx-icon:hover .dx-icon__dl, .dx-icon:focus-visible .dx-icon__dl { opacity: 1; }
+@media (hover: none) { .dx-icon__dl { opacity: 1; } }
+.dx-icon-subhead { margin-top: 32px; }
+.dx-icon-download, .dx-icon-download:hover { color: var(--oe-accent-on); text-decoration: none; }
 
 /* ---- Catalog ----------------------------------------------------------- */
 .dx-cat-group { margin-top: 8px; }

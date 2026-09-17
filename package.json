@@ -25,10 +25,13 @@
     "./components.css": "./src/components/components.css"
   },
   "scripts": {
+    "predev": "npm run icons:zip",
     "dev": "vite",
+    "prebuild": "npm run icons:zip",
     "build": "vite build",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "icons:zip": "cd public/kit/assets && rm -f icons.zip && zip -qrX icons.zip icons -x 'icons/index.html' 'icons/.DS_Store'"
   },
   "peerDependencies": {
     "react": ">=18",
