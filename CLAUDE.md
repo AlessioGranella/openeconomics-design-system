@@ -27,6 +27,8 @@ I due brand condividono TUTTO (font, spaziatura, griglia, componenti: card, chec
 - **Spigolo vivo ovunque** — `border-radius: 0`, nessuna eccezione.
 - **Due accenti per brand soli.** OE: Bluette + Lime. Civiqa: scala Blu (`--cv-blu-*`, primario `#0000FF`). Le palette data-viz (magenta, blu, giallo, verde, ciano) sono SOLO per i grafici (2–3 colori max), mai come palette di brand.
 - **Tipografia:** Hedvig Letters Serif per H1/voce; **Atkinson Hyperlegible Next** per il testo; **Atkinson Hyperlegible Mono** per dati/tag/valute (uppercase). Mai testo sotto i **12px**.
+- **Testo corrente a fascia piena.** Paragrafi, lead, note ed elenchi occupano tutta la larghezza del contenitore: **mai un `max-width` in `ch`**. Se il passaggio è lungo e la riga diventa difficile da seguire si usa **`.oe-text-2col`** (due colonne, una sola sotto 768px), non una colonna più stretta. Il testo dentro una colonna di griglia è già contenuto dalla colonna.
+- **Mai il corsivo** in analisi, report e landing di studi: né nel testo, né in note, didascalie o disclaimer. L'enfasi si fa con il peso (600), con l'accento o con un chip.
 - **Fondo bianco vero** `#FFFFFF` — mai cream/sand/beige.
 - **Numeri in locale IT** (migliaia `.`, decimale `,`, sempre `useGrouping: "always"` — altrimenti i numeri a 4 cifre non hanno il separatore).
 - **Chip/tag:** mono uppercase, niente icone né frecce dentro il chip (eccezione: i chip Civiqa `.cv-chip` hanno un quadratino/pixel iniziale, parte dell'identità).
@@ -41,7 +43,7 @@ I due brand condividono TUTTO (font, spaziatura, griglia, componenti: card, chec
 - **Token in JS** (grafici/dashboard): `src/tokens.ts` — specchio dei `--oe-*`. Tenerlo allineato al CSS.
 - **Stili componenti:** `src/components/components.css` — usa SEMPRE `var(--oe-space-*)` per padding/gap/margin (scala 4px), niente px hardcoded.
 - **Componenti React:** `src/components/` (Button, Tag, KpiCard, Accordion, FigureLabel, Footer, Wordmark, CiviqaWordmark) + barrel `index.ts`.
-- **Componenti via classe CSS** (in `components.css`, demo nelle sezioni "Componenti UI" della libreria): Card (`.oe-card`, `--feature`), Form & input (`.oe-field/.oe-label/.oe-input/.oe-select/.oe-textarea/.oe-check/.oe-switch/.oe-search`), Tabella (`.oe-table`, `--numeric`, `.oe-table__wrap`), Tabs (`.oe-tabs/.oe-tab`), Badge stato (`.oe-badge--success/--warning/--danger/--info/--neutral`), Paginazione (`.oe-pagination/.oe-page`), Filtri (`.oe-segment`), Header sito (`.oe-header`), Nav dashboard (`.oe-dashnav`), Topbar dashboard (`.oe-topbar`). Tabelle dashboard: CapEx (`.oe-table--capex`), KPI editabile (`.oe-table__cat` + `.oe-input--cell` + `.oe-table__actions`), Moltiplicatori (`.oe-metrics`), Recap (`.oe-recap`). Slogan (`.oe-slogan`), Client strip (`.oe-client-strip`). Tutti usano `--oe-accent`, quindi si tematizzano sotto `.theme-civiqa`. La libreria copre tutte le schede del kit Figma (foundation via Foundations, logo/slogan/clienti via Brand, elevation+radii via Elevation, componenti via Componenti). Restano solo Chart (→ `tokens.ts` chartSeries) e Map (→ libreria per progetto), che non sono componenti statici.
+- **Componenti via classe CSS** (in `components.css`, demo nelle sezioni "Componenti UI" della libreria): Card (`.oe-card`, `--feature`), Note (`.oe-note`, varianti `--lime` e `--grey`), Form & input (`.oe-field/.oe-label/.oe-input/.oe-select/.oe-textarea/.oe-check/.oe-switch/.oe-search`), Tabella (`.oe-table`, `--numeric`, `.oe-table__wrap`), Tabs (`.oe-tabs/.oe-tab`), Badge stato (`.oe-badge--success/--warning/--danger/--info/--neutral`), Paginazione (`.oe-pagination/.oe-page`), Filtri (`.oe-segment`), Header sito (`.oe-header`), Nav dashboard (`.oe-dashnav`), Topbar dashboard (`.oe-topbar`). Tabelle dashboard: CapEx (`.oe-table--capex`), KPI editabile (`.oe-table__cat` + `.oe-input--cell` + `.oe-table__actions`), Moltiplicatori (`.oe-metrics`), Recap (`.oe-recap`). Slogan (`.oe-slogan`), Client strip (`.oe-client-strip`). Tutti usano `--oe-accent`, quindi si tematizzano sotto `.theme-civiqa`. La libreria copre tutte le schede del kit Figma (foundation via Foundations, logo/slogan/clienti via Brand, elevation+radii via Elevation, componenti via Componenti). Restano solo Chart (→ `tokens.ts` chartSeries) e Map (→ libreria per progetto), che non sono componenti statici.
 - **Pagina-libreria:** `src/docs/` (sezioni in `src/docs/sections/`). È fatta SOLO di componenti reali con anteprima dal vivo + codice — niente anteprime Figma. Niente `Catalog`/iframe.
 - **Kit Figma:** `public/kit/` resta come riferimento di design ma NON è mostrato nella libreria (tranne le icone reali in `assets/icons/`). Asset Civiqa in `public/civiqa/`.
 
@@ -58,8 +60,10 @@ Componente `Footer` con prop `variant`:
 
 ## UI Blocks
 
-Sezioni intere già composte (stile "Tailwind UI"), da copiare, nella sezione "UI Blocks" della libreria — costruite combinando i componenti, tematizzabili sotto `.theme-civiqa`. Helper: `.oe-hero`, `.oe-stats/.oe-stat`, `.oe-cta` (+ `Button variant="inverse"`), `.oe-report-head`, `.oe-panel`, `.oe-shell`.
+Sezioni intere già composte (stile "Tailwind UI"), da copiare, nella sezione "UI Blocks" della libreria — costruite combinando i componenti, tematizzabili sotto `.theme-civiqa`. Helper: `.oe-hero`, `.oe-hero-analisi`, `.oe-stats/.oe-stat`, `.oe-cta` (+ `Button variant="inverse"`), `.oe-report-head`, `.oe-panel`, `.oe-shell`.
 - **Sito:** hero, logo cloud, feature grid, stats band, CTA band, FAQ.
+- **Hero Analisi** (`.oe-hero-analisi`): hero delle landing di studi e analisi — chip «Caso studio» (cliente) o «Studio indipendente» (OpenEconomics), logo del cliente in alto a destra, titolo, sottotitolo facoltativo e un set CHIUSO di cinque indicatori: tipo di analisi, modello/metodologia, fonti, anno di riferimento, ultimo aggiornamento. Chiedere sempre quale dei due chip prima di impostare la pagina.
+- **Caso studio:** impianto completo della pagina (dieci fasce) — template in `progetti/_template-caso-studio/`. Le sezioni interne alternano bianco e grigio; **le sezioni di nota metodologica hanno sempre fondo bluette-050** (`--oe-bg-tint`, classe `.band--nota`): è il colore che distingue questo tipo di sezione e non entra nell'alternanza.
 - **Report:** header report, sintesi KPI, grafico+commento, tabella, disclaimer (Footer "analisi").
 - **Dashboard:** app shell (sidebar+topbar+contenuti), barra filtri+tabella.
 
@@ -71,7 +75,7 @@ Oltre al tema `.theme-civiqa`, esistono componenti Civiqa-specifici dal Figma de
 
 I componenti usano **solo token semantici**, mai i colori brand diretti (`--oe-bluette-*`/`--oe-lime-*`). Così un brand = un set di token e il tema non ha override per-componente.
 - Accento: `--oe-accent`, `--oe-accent-strong` (hover/scuro), `--oe-accent-soft` (tinta), `--oe-accent-border`, `--oe-accent-on` (testo su accento).
-- "Pop": `--oe-pop` (riempimento), `--oe-pop-strong` (hover), `--oe-pop-on` (testo sul pop).
+- "Pop": `--oe-pop` (riempimento), `--oe-pop-strong` (hover), `--oe-pop-on` (testo sul pop), `--oe-pop-rule` (filetti e segni grafici sul pop: Bluette su OE, bianco su Civiqa dove il pop è già blu).
 - Su fondo scuro: `--oe-on-dark-accent` (accento come TESTO su scuro), `--oe-on-dark-muted` (testo attenuato), `--oe-bg-dark` (fondo scuro).
 Quando aggiungi un componente, usa questi (più i grigi/neutri e lo spacing) — niente colori brand hardcoded.
 

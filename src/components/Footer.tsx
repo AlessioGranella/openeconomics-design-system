@@ -35,7 +35,7 @@ const DEFAULT_DISCLAIMER =
   'fonte. Le informazioni sono fornite a scopo puramente informativo e non implicano ' +
   'alcuna garanzia o impegno da parte di OpenEconomics. Le analisi economiche contenute ' +
   'nel documento sono state elaborate sulla base di fonti pubbliche autorevoli e ' +
-  "fornitori di dati specialistici, con l'obiettivo di offrire una valutazione " +
+  "fornitori di dati specialistici, e sono state realizzate con l\u2019obiettivo di offrire una valutazione " +
   'professionale, oggettiva e prudenziale in linea con le prassi metodologiche di ' +
   'comparto. Al documento e ai suoi contenuti si applicano il copyright e le norme in ' +
   'materia di protezione dei dati personali.'

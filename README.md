@@ -74,3 +74,6 @@ import { Button } from '.../design-system/src/components'
 ## Riferimenti brand
 
 Specifiche complete in `../Contesto/BRAND_OpenEconomics.md` e `../Contesto/CONTESTO_OpenEconomics.md`.
+
+Norma di stile per i **post social** (caroselli LinkedIn, infografiche, card editoriali):
+[`SOCIAL.md`](./SOCIAL.md).

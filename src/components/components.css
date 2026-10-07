@@ -51,15 +51,88 @@
 .oe-tag-chip--on-dark { color: var(--oe-on-dark-accent); border: 1px solid rgba(255,255,255,0.25); }
 .oe-tag-chip--lime    { color: var(--oe-pop-on); background: var(--oe-pop); }
 
+/* ---- Note / callout ----------------------------------------------------
+   Nota di lettura accanto a dati e grafici. Due varianti: lime piena e grigia
+   con filetto lime. Il filetto verticale è l'unica eccezione sanzionata alla
+   regola sui bordi laterali colorati (vale solo per questo componente). */
+.oe-note {
+  position: relative;
+  max-width: none;          /* è un pannello: non eredita il cap di riga dei paragrafi */
+  font-family: var(--oe-font-sans);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.55;
+  padding: var(--oe-space-m) var(--oe-space-l) var(--oe-space-m) var(--oe-space-xl);
+}
+.oe-note::before {
+  content: "";
+  position: absolute;
+  left: var(--oe-space-m); top: var(--oe-space-m); bottom: var(--oe-space-m);
+  width: 4px;
+}
+.oe-note p { margin: 0; max-width: none; }
+.oe-note p + p { margin-top: var(--oe-space-s); }
+.oe-note strong, .oe-note b { font-weight: 600; }
+
+/* lime piena: filetto Bluette (bianco sotto Civiqa, dove il pop è già blu) */
+.oe-note--lime { background: var(--oe-pop); color: var(--oe-pop-on); }
+.oe-note--lime::before { background: var(--oe-pop-rule); }
+
+/* grigia con filetto lime */
+.oe-note--grey { background: var(--oe-bg-elev); color: var(--oe-fg); }
+.oe-note--grey::before { background: var(--oe-pop); }
+
 /* ---- KPI Card ---------------------------------------------------------- */
 .oe-kpi { background: var(--oe-white); padding: var(--oe-space-m); border: 1px solid var(--oe-gray-200); }   /* 24 */
 .oe-kpi--dark { background: var(--oe-bg-dark); border-color: rgba(255,255,255,0.14); }
+/* tutte le card KPI reagiscono al passaggio del mouse e al focus */
+.oe-kpi {
+  cursor: default;
+  transition: background var(--oe-dur-fast) var(--oe-ease),
+              border-color var(--oe-dur-fast) var(--oe-ease),
+              color var(--oe-dur-fast) var(--oe-ease);
+}
+/* variante "flip": a riposo mostra il dato, al passaggio lo sostituisce con la
+   descrizione dentro la card stessa (niente tooltip fuori dal riquadro). */
+.oe-kpi--flip { position: relative; overflow: hidden; }
+.oe-kpi--flip > *:not(.oe-kpi__tip) {
+  transition: opacity var(--oe-dur-fast) var(--oe-ease);
+}
+.oe-kpi__tip {
+  position: absolute; inset: 0; margin: 0;
+  display: flex; align-items: center;
+  padding: var(--oe-space-m);
+  font-family: var(--oe-font-sans); font-weight: 300;
+  font-size: 13px; line-height: 1.45; color: var(--oe-white);
+  opacity: 0; visibility: hidden;
+  transition: opacity var(--oe-dur-fast) var(--oe-ease);
+}
+.oe-kpi--flip:hover > *:not(.oe-kpi__tip),
+.oe-kpi--flip:focus-visible > *:not(.oe-kpi__tip) { opacity: 0; }
+.oe-kpi--flip:hover .oe-kpi__tip,
+.oe-kpi--flip:focus-visible .oe-kpi__tip { opacity: 1; visibility: visible; }
+
+/* hover/focus: la card va in negativo su Bluette 900 */
+.oe-kpi:hover, .oe-kpi:focus-visible {
+  background: var(--oe-bg-dark);
+  border-color: var(--oe-bg-dark);
+  color: var(--oe-white);
+}
+.oe-kpi:hover .oe-kpi__value,
+.oe-kpi:focus-visible .oe-kpi__value,
+.oe-kpi:hover .oe-kpi__label,
+.oe-kpi:focus-visible .oe-kpi__label,
+.oe-kpi:hover .oe-kpi__unit,
+.oe-kpi:focus-visible .oe-kpi__unit,
+.oe-kpi:hover .oe-kpi__note,
+.oe-kpi:focus-visible .oe-kpi__note { color: var(--oe-white); }
 .oe-kpi__value {
-  font-family: var(--oe-font-sans);
-  font-weight: 600;
+  font-family: var(--oe-font-serif);   /* numero display → Hedvig */
+  font-weight: 400;
   font-size: 48px;
   line-height: 1;
   letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
   color: var(--oe-accent);
 }
 .oe-kpi--dark .oe-kpi__value { color: var(--oe-on-dark-accent); }
@@ -76,6 +149,16 @@
 .oe-kpi__icon { width: 36px; height: 36px; margin-bottom: var(--oe-space-s); color: var(--oe-accent); }
 .oe-kpi__icon img, .oe-kpi__icon svg { width: 100%; height: 100%; display: block; }
 .oe-kpi--dark .oe-kpi__icon { color: var(--oe-on-dark-accent); }
+/* variante "titolata": etichetta sopra, numero, unità — forma richiesta per le
+   landing di analisi (titolo → numero → valuta). */
+.oe-kpi--titled { display: flex; flex-direction: column; }
+.oe-kpi--titled .oe-kpi__label { order: -1; margin-top: 0; margin-bottom: var(--oe-space-xs); }
+.oe-kpi__unit {
+  font-family: var(--oe-font-mono); font-size: 13px; text-transform: uppercase;
+  letter-spacing: 0.02em; color: var(--oe-fg-soft); margin-top: var(--oe-space-xs);
+}
+.oe-kpi--dark .oe-kpi__unit { color: rgba(255,255,255,0.7); }
+
 .oe-kpi__note { font-family: var(--oe-font-sans); font-weight: 300; font-size: 13px; line-height: 1.45; color: var(--oe-fg-soft); margin: var(--oe-space-s) 0 0; }
 .oe-kpi--dark .oe-kpi__note { color: rgba(255,255,255,0.72); }
 
@@ -123,7 +206,8 @@
   background: var(--oe-bg-dark);
   color: var(--oe-white);
   font-family: var(--oe-font-sans);
-  padding: var(--oe-space-2xl) var(--oe-space-xl) var(--oe-space-l);   /* 48 · 40 · 32 */
+  padding-block: var(--oe-space-2xl) var(--oe-space-l);   /* 48 · 32 */
+  padding-inline: var(--oe-band-pad);                     /* allineato al contenitore */
 }
 .oe-footer__inner {
   max-width: var(--oe-grid-max);                /* 1440 */
@@ -276,7 +360,8 @@
 .cv-nav {
   display: flex; align-items: center; gap: var(--oe-space-l);
   background: var(--oe-white); border: 1px solid var(--oe-gray-200);
-  padding: var(--oe-space-s) var(--oe-space-l);
+  padding-block: var(--oe-space-s);
+  padding-inline: var(--oe-band-pad);   /* allineato al contenitore di pagina */
 }
 .cv-nav__logo { height: 26px; width: auto; color: var(--oe-black); display: block; }
 .cv-nav__links { display: flex; gap: var(--oe-space-l); margin-left: var(--oe-space-xl); }
@@ -516,14 +601,103 @@
 .oe-hero__lead { font-size: 20px; font-weight: 300; line-height: 1.5; color: var(--oe-fg-soft); margin: 0; max-width: 56ch; }
 .oe-hero__actions { display: flex; gap: var(--oe-space-s); flex-wrap: wrap; margin-top: var(--oe-space-xs); }
 
+/* ---- Hero Analisi (UI Block) ------------------------------------------
+   Hero delle landing di studi e analisi. La fascia è full-bleed: sfondo,
+   immagine e velo stanno qui, il contenuto va in un .oe-container interno.
+   Struttura: riga alta (chip + logo cliente) · titolo · sottotitolo
+   facoltativo · indicatori (set chiuso di cinque). */
+.oe-hero-analisi {
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: 92svh; display: flex; align-items: center;
+  background: var(--oe-bg-dark); color: var(--oe-white);
+  padding-block: var(--oe-space-11) var(--oe-space-12);
+}
+.oe-hero-analisi__media { position: absolute; inset: 0; z-index: -2; }
+.oe-hero-analisi__media img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center 62%;
+  transform: scale(1.06); animation: oe-hero-analisi-in 18s ease-out forwards;
+}
+@keyframes oe-hero-analisi-in { from { transform: scale(1.12); } to { transform: scale(1); } }
+/* velo pieno in Bluette 900 sopra l'immagine: colore di brand uniforme su tutta
+   la fascia, la fotografia resta leggibile sotto */
+.oe-hero-analisi::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: color-mix(in srgb, var(--oe-bg-dark) 86%, transparent);
+}
+/* riga alta: chip a sinistra, logo del cliente a destra */
+.oe-hero-analisi__top {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--oe-space-m); margin-bottom: var(--oe-space-l);
+}
+.oe-hero-analisi__client { max-height: 46px; width: auto; flex: 0 0 auto; }
+.oe-hero-analisi__client--invert { filter: brightness(0) invert(1); }
+.oe-hero-analisi__title {
+  font-family: var(--oe-font-serif); font-weight: 400;
+  font-size: clamp(40px, 6.2vw, 76px); line-height: 1.04; letter-spacing: -0.01em;
+  margin: 0 0 var(--oe-space-m); max-width: 19ch; color: var(--oe-white); text-wrap: balance;
+}
+.oe-hero-analisi__sub {
+  font-size: clamp(18px, 2vw, 22px); line-height: 1.45; font-weight: 300;
+  color: rgba(255, 255, 255, 0.88); max-width: 60ch; margin: 0;
+}
+/* indicatori: set chiuso — tipo di analisi · modello/metodologia · fonti ·
+   anno di riferimento · ultimo aggiornamento. Si omettono quelli mancanti. */
+.oe-hero-analisi__meta {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: var(--oe-space-m); margin: var(--oe-space-xl) 0 0;
+  padding-top: var(--oe-space-m); border-top: 1px solid rgba(255, 255, 255, 0.24);
+}
+.oe-hero-analisi__meta dt {
+  font-family: var(--oe-font-mono); font-size: 13px; text-transform: uppercase;
+  letter-spacing: 0.04em; color: var(--oe-on-dark-accent); margin-bottom: 6px;
+}
+.oe-hero-analisi__meta dd { margin: 0; font-size: 16px; color: var(--oe-white); }
+.oe-hero-analisi__cue {
+  position: absolute; left: 50%; transform: translateX(-50%); bottom: 22px; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 6px; margin: 0;
+  font-family: var(--oe-font-mono); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(255, 255, 255, 0.72);
+}
+.oe-hero-analisi__cue span {
+  display: block; width: 1px; height: 26px; background: var(--oe-pop);
+  animation: oe-hero-analisi-cue 2.4s ease-in-out infinite;
+}
+@keyframes oe-hero-analisi-cue {
+  0%, 100% { opacity: 0.25; transform: scaleY(0.4); transform-origin: top; }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+@media (max-width: 767.98px) {
+  .oe-hero-analisi { min-height: 88svh; padding-block: var(--oe-space-9) var(--oe-space-10); }
+  .oe-hero-analisi__media img { object-position: center 58%; }
+  .oe-hero-analisi__top { margin-bottom: var(--oe-space-m); gap: var(--oe-space-s); }
+  .oe-hero-analisi__client { max-height: 30px; }
+  .oe-hero-analisi__title { font-size: clamp(30px, 8.4vw, 44px); max-width: none; margin-bottom: var(--oe-space-s); }
+  .oe-hero-analisi__sub { font-size: 17px; }
+  .oe-hero-analisi__meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--oe-space-s) var(--oe-space-m);
+    margin-top: var(--oe-space-l); padding-top: var(--oe-space-s);
+  }
+  .oe-hero-analisi__meta dd { font-size: 15px; }
+  .oe-hero-analisi__cue { display: none; }
+}
+@media (max-width: 440px) {
+  .oe-hero-analisi__meta { grid-template-columns: 1fr; gap: var(--oe-space-s); }
+  .oe-hero-analisi__top { flex-direction: column; align-items: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .oe-hero-analisi__media img { animation: none; transform: none; }
+  .oe-hero-analisi__cue span { animation: none; }
+}
+
 /* ---- Stats band (numeri su fondo scuro) ------------------------------- */
-.oe-stats { background: var(--oe-bg-dark); color: var(--oe-white); padding: var(--oe-space-2xl) var(--oe-space-xl); }
+.oe-stats { background: var(--oe-bg-dark); color: var(--oe-white); padding-block: var(--oe-space-2xl); padding-inline: var(--oe-band-pad); }
 .oe-stats__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--oe-space-xl); max-width: var(--oe-grid-max); margin-inline: auto; }
-.oe-stat__num { font-family: var(--oe-font-sans); font-size: 48px; font-weight: 500; line-height: 1; font-variant-numeric: tabular-nums; color: var(--oe-white); }
+.oe-stat__num { font-family: var(--oe-font-serif); font-size: 48px; font-weight: 400; line-height: 1; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; color: var(--oe-white); }
 .oe-stat__label { font-family: var(--oe-font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--oe-on-dark-muted); margin-top: var(--oe-space-xs); }
 
 /* ---- CTA band (fondo accento) ----------------------------------------- */
-.oe-cta { background: var(--oe-bg-accent); color: var(--oe-white); padding: var(--oe-space-2xl) var(--oe-space-xl); display: flex; align-items: center; justify-content: space-between; gap: var(--oe-space-l); flex-wrap: wrap; }
+.oe-cta { background: var(--oe-bg-accent); color: var(--oe-white); padding-block: var(--oe-space-2xl); padding-inline: var(--oe-band-pad); display: flex; align-items: center; justify-content: space-between; gap: var(--oe-space-l); flex-wrap: wrap; }
 .oe-cta__title { font-family: var(--oe-font-serif); font-size: clamp(28px, 3.5vw, 40px); line-height: 1.1; color: var(--oe-white); margin: 0; max-width: 26ch; }
 .oe-cta__text { color: rgba(255, 255, 255, 0.85); max-width: 48ch; margin: var(--oe-space-xs) 0 0; }
 
@@ -600,7 +774,7 @@
 .oe-recap__row:last-of-type { border-bottom: 0; }
 .oe-recap__label { font-family: var(--oe-font-sans); font-size: 13px; color: var(--oe-fg-soft); flex: 1; }
 .oe-recap__value { font-family: var(--oe-font-sans); font-size: 14px; font-weight: 700; color: var(--oe-black); white-space: nowrap; font-variant-numeric: tabular-nums; }
-.oe-recap__note { font-size: 12px; color: var(--oe-gray-600); padding: var(--oe-space-xs) var(--oe-space-s); border-top: 1px solid var(--oe-gray-200); font-style: italic; }
+.oe-recap__note { font-size: 12px; color: var(--oe-gray-600); padding: var(--oe-space-xs) var(--oe-space-s); border-top: 1px solid var(--oe-gray-200); }   /* niente corsivo: vedi The No-Italics Rule */
 
 /* ---- Pannello metriche (es. moltiplicatori): header accento + righe ---- */
 .oe-metrics { background: var(--oe-white); border: 1px solid var(--oe-gray-200); }

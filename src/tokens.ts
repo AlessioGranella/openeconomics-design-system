@@ -88,6 +88,9 @@ export const chartSeries = [
   dataviz.blu[600],
 ] as const
 
+/* `serif` è anche il font dei NUMERI DISPLAY (KPI, stat, big number di grafici e hero):
+   vedi .oe-num--display in colors_and_type.css. I numeri in linea, nelle tabelle e nei
+   dati fitti restano in `sans` tabulare. */
 export const font = {
   serif: '"Hedvig Letters Serif", "Source Serif Pro", Georgia, serif',
   sans: '"Atkinson Hyperlegible Next", -apple-system, "Helvetica Neue", Arial, sans-serif',
@@ -105,10 +108,13 @@ export const spacing = {
 
 export const radius = 0 // sistema a spigolo vivo: tutti i raggi sono 0
 
+/* Contenitore unico di pagina: header, hero, sezioni, CTA e footer allineano
+   il contenuto a `maxWidth` con margine `pagePad`. Le fasce restano full-bleed. */
 export const layout = {
-  maxWidth: 1760,
-  pagePad: 80,
-  pagePadMobile: 24,
+  maxWidth: 1440,
+  pagePad: 32,
+  pagePadMobile: 16,
+  canvasWidth: 1760,   // solo riferimento: canvas Figma 1920 − 80 ×2
   colGap: 40,
 } as const
 
@@ -116,7 +122,7 @@ export const layout = {
 export const grid = {
   max: 1440,
   gutter: 24,
-  margin: 12,
+  margin: 32,   // = layout.pagePad, così griglia e contenitore hanno lo stesso bordo
   cols: { xl: 12, l: 12, m: 8, s: 4 },
 } as const
 
@@ -130,6 +136,10 @@ export const breakpoint = {
 
 /** Dimensione minima testo nel sistema: nessun testo sotto i 12px. */
 export const minFontSize = 12
+
+/* Font dei numeri, per i grafici disegnati a mano (SVG/canvas):
+   numeri display → font.serif; assi, etichette fitte e tabelle → font.sans. */
+export const numberFont = { display: font.serif, data: font.sans } as const
 
 /* Formattazione numeri: IT con raggruppamento migliaia "." e decimale ",".
    Usare sempre useGrouping:"always" (vedi nota design system). */

@@ -126,6 +126,7 @@
   --oe-pop:           var(--oe-lime-400);      /* "pop" come RIEMPIMENTO (lime) */
   --oe-pop-strong:    var(--oe-lime-500);      /* hover del pop */
   --oe-pop-on:        var(--oe-black);         /* testo SU riempimento pop */
+  --oe-pop-rule:      var(--oe-accent);        /* filetti e segni grafici SU riempimento pop */
   --oe-on-dark-accent:var(--oe-lime-400);      /* accento come TESTO su fondo scuro */
   --oe-on-dark-muted: var(--oe-bluette-200);   /* testo attenuato su fondo scuro accento */
 
@@ -169,7 +170,7 @@
   /* === Grid system (from Figma) === */
   --oe-grid-max:     1440px;  /* max container width */
   --oe-grid-gutter:   24px;  /* fixed column gap    */
-  --oe-grid-margin:   12px;  /* outer margin each side */
+  --oe-grid-margin:   var(--oe-page-pad);  /* = margine del contenitore, così i bordi coincidono */
   --oe-grid-cols-xl:    12; /* @kind other */
   --oe-grid-cols-l:     12; /* @kind other */
   --oe-grid-cols-m:      8; /* @kind other */
@@ -180,11 +181,18 @@
   --oe-bp-l:    992px;
   --oe-bp-m:    768px;
 
-  /* === Layout === */
-  --oe-max-width:     1760px;     /* canvas inner width (1920 - 80 ×2) */
-  --oe-page-pad:      80px;
-  --oe-page-pad-mob:  24px;
+  /* === Layout ===
+     CONTENITORE UNICO: ogni fascia — header, hero, sezioni, CTA, footer —
+     allinea il proprio contenuto a --oe-max-width con margine --oe-page-pad.
+     Lo sfondo della fascia resta full-bleed; il cap sta sul wrapper interno. */
+  --oe-max-width:     1440px;     /* = --oe-grid-max: unica larghezza di pagina */
+  --oe-page-pad:      32px;       /* margine laterale del contenuto */
+  --oe-page-pad-mob:  16px;
+  --oe-canvas-width:  1760px;     /* solo riferimento: canvas Figma 1920 − 80 ×2 */
   --oe-col-gap:       40px;
+  /* Padding orizzontale di una fascia full-bleed senza wrapper interno:
+     tiene il contenuto sulla stessa colonna di .oe-container. */
+  --oe-band-pad: max(var(--oe-page-pad), calc((100% - var(--oe-max-width)) / 2 + var(--oe-page-pad)));
 
   /* === Radii === sharp-corner system, all 0 */
   --oe-radius-xs: 0px;
@@ -242,6 +250,7 @@
   --oe-pop:           var(--cv-blu-600);
   --oe-pop-strong:    var(--cv-blu-700);
   --oe-pop-on:        var(--oe-white);
+  --oe-pop-rule:      var(--oe-white);   /* su pop blu il bluette sparirebbe */
   --oe-on-dark-accent: var(--cv-blu-200);
   /* lime diretto (usi esterni) → blu, per sicurezza */
   --oe-lime-400: var(--cv-blu-600);
@@ -265,12 +274,16 @@
      </section>
 */
 .oe-container {
-  max-width: var(--oe-max-width);   /* 1760px */
+  max-width: var(--oe-max-width);     /* 1440px */
   margin-inline: auto;
-  padding-inline: var(--oe-page-pad); /* 80px each side */
+  padding-inline: var(--oe-page-pad); /* 32px each side (16 sotto 768) */
   width: 100%;
   box-sizing: border-box;
 }
+
+/* Una .oe-grid dentro il contenitore non ri-applica cap e margine:
+   le colonne restano allineate al contenitore della pagina. */
+.oe-container > .oe-grid, .oe-container .oe-grid { max-width: none; padding-inline: 0; }
 
 /* Narrower reading column (long-form text, articles) */
 .oe-container--text {
@@ -324,6 +337,10 @@
   .oe-col-m-3 { grid-column: span 3; } .oe-col-m-4 { grid-column: span 4; }
   .oe-col-m-5 { grid-column: span 5; } .oe-col-m-6 { grid-column: span 6; }
   .oe-col-m-7 { grid-column: span 7; } .oe-col-m-8 { grid-column: span 8; }
+}
+
+@media (max-width: 767.98px) {
+  :root { --oe-page-pad: var(--oe-page-pad-mob); }
 }
 
 /* Mobile: 4 colonne (<768px). Default a piena riga; override con .oe-col-s-1…4 */
@@ -486,7 +503,8 @@ p, .oe-body {
 }
 
 /* 2. Figure pre-title / numbering for charts, maps and tables
-      e.g. GRAFICO 1 · TABELLA 1 · MAPPA 1 — mono Medium 500, 12px, uppercase, black */
+      e.g. GRAFICO 1 · TABELLA 1 · MAPPA 1 — mono Medium 500, 12px, uppercase,
+      SEMPRE sull'accento (bluette; blu Civiqa sotto .theme-civiqa). */
 .oe-figure-label {
   font-family: var(--oe-font-mono);
   font-weight: 500;
@@ -494,10 +512,21 @@ p, .oe-body {
   line-height: 1.2;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--oe-black);
+  color: var(--oe-accent);
 }
+/* su fondo scuro l'accento come testo diventa lime/azzurro */
+.oe-hero-analisi .oe-figure-label,
+.band--dark .oe-figure-label,
+.oe-stats .oe-figure-label { color: var(--oe-on-dark-accent); }
 
-/* === Numbers === always Atkinson Hyperlegible Next (sans), tabular.
+/* === Numbers ===
+   Two registers:
+     display (KPI, stat band, cifra in hero, il numero-titolo di un grafico) → Hedvig
+       Letters Serif, classe .oe-num--display (o i componenti .oe-kpi__value /
+       .oe-stat__num, già serif). Soglia indicativa: 28px;
+     tutto il resto — etichette di valore sulle barre, tick degli assi, classifiche,
+       tabelle, numeri in linea → Atkinson Hyperlegible Next tabulare, classe .oe-num.
+   Tag, unità e valute restano in Atkinson Mono uppercase.
    Formatting by locale:
      IT (default) → thousands separator "." · decimal separator ","  e.g. 1.234.567,89
      EN           → thousands separator "," · decimal separator "."  e.g. 1,234,567.89
@@ -514,6 +543,34 @@ p, .oe-body {
 }
 .oe-num.on-light, .oe-num.on-lime { color: var(--oe-black); }
 .oe-num.on-dark { color: var(--oe-white); }
+
+/* Numero display — Hedvig serif. Solo sopra i ~28px (KPI, stat, hero, numero-titolo
+   di un grafico): se è a corpo di lettura è un dato e resta in Atkinson.
+   Hedvig ha il solo peso 400: non applicare font-weight maggiori (il browser
+   sintetizzerebbe il grassetto). */
+.oe-num--display {
+  font-family: var(--oe-font-serif);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Testo corrente su due colonne — REGOLA «fascia piena».
+   Il testo corrente non si cappa mai a una misura (niente max-width in ch): occupa
+   tutta la larghezza del contenitore. Quando un passaggio è lungo e la riga diventa
+   difficile da seguire, lo si divide in due colonne con questa utility, che riporta
+   la misura a una lunghezza leggibile senza lasciare mezza fascia vuota.
+   Sotto i 768px torna a colonna unica. */
+.oe-text-2col {
+  columns: 2;
+  column-gap: var(--oe-space-2xl);
+}
+.oe-text-2col > * { max-width: none; }
+.oe-text-2col > *:last-child { margin-bottom: 0; }
+@media (max-width: 767.98px) {
+  .oe-text-2col { columns: 1; }
+}
 
 /* Links */
 a, .oe-link {

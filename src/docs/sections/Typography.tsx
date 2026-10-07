@@ -42,13 +42,43 @@ export default function Typography() {
       </Demo>
 
       <Demo
-        title="Mono: tag, figure label, numeri"
-        description="Il mono è riservato a chip/tag e numerazione figure. I numeri usano cifre tabulari e locale IT (1.234.567,89)."
+        title="Mono: tag e figure label"
+        description="Il mono è riservato a chip/tag, unità e numerazione figure."
       >
         <div className="dx-type-specimen">
           <span className="oe-tag">CATEGORIA</span>
           <div className="oe-figure-label">GRAFICO 1 · Impatto sul PIL</div>
-          <div className="oe-num" style={{ fontSize: 32, color: 'var(--oe-bluette-700)' }}>1.234.567,89</div>
+        </div>
+      </Demo>
+
+      <Demo
+        title="Misura del testo: fascia piena, due colonne"
+        description="REGOLA. Il testo corrente non si cappa mai a una misura: paragrafi, lead, note ed elenchi occupano tutta la larghezza del contenitore (max-width:none, niente 70ch). Un testo che si ferma a metà fascia lascia la pagina sbilanciata. Quando il passaggio è lungo e la riga diventa difficile da seguire, si divide in due colonne con .oe-text-2col — sotto i 768px torna a colonna unica. Il testo dentro una colonna di griglia (card, lato stretto di .cols) è già contenuto dalla colonna e non ha bisogno di cap."
+        code={`<div class="oe-text-2col">
+  <p>Primo paragrafo lungo…</p>
+  <p>Secondo paragrafo…</p>
+</div>`}
+      >
+        <div className="oe-text-2col">
+          <p className="oe-body">
+            Il testo corrente occupa tutta la fascia. Quando il passaggio è lungo, due colonne
+            riportano la riga a una lunghezza che l'occhio segue senza perdere il capo, invece di
+            accorciare la colonna e lasciare metà pagina vuota.
+          </p>
+          <p className="oe-body" style={{ marginBottom: 0 }}>
+            La stessa regola vale per lead, note ed elenchi puntati: nessun cap in ch. Sotto i
+            768px le colonne diventano una sola e l'ordine di lettura resta quello del markup.
+          </p>
+        </div>
+      </Demo>
+
+      <Demo
+        title="Numeri: display e dati"
+        description="I numeri grandi (KPI, stat, hero, valori nei grafici) sono in Hedvig — .oe-num--display. I numeri in linea, nelle tabelle e nei dati fitti restano in Atkinson Next tabulare — .oe-num. Locale IT (1.234.567,89)."
+      >
+        <div className="dx-type-specimen">
+          <div className="oe-num--display" style={{ fontSize: 56, color: 'var(--oe-bluette-700)' }}>11,8</div>
+          <div className="oe-num" style={{ fontSize: 18, color: 'var(--oe-fg-soft)' }}>1.234.567,89</div>
         </div>
       </Demo>
     </section>

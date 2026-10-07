@@ -18,6 +18,8 @@ import Footers from './sections/Footers'
 import BlocksSite from './sections/BlocksSite'
 import BlocksReport from './sections/BlocksReport'
 import BlocksDashboard from './sections/BlocksDashboard'
+import BlocksHeroAnalisi from './sections/BlocksHeroAnalisi'
+import BlocksCaseStudy from './sections/BlocksCaseStudy'
 import Civiqa from './sections/Civiqa'
 
 const nav = [
@@ -58,6 +60,8 @@ const nav = [
       { id: 'blocks-site', label: 'Sito & landing' },
       { id: 'blocks-report', label: 'Report & analisi' },
       { id: 'blocks-dashboard', label: 'Dashboard' },
+      { id: 'blocks-hero-analisi', label: 'Hero Analisi' },
+      { id: 'blocks-case-study', label: 'Caso studio' },
     ],
   },
   { group: 'Brand di prodotto', items: [{ id: 'civiqa', label: 'Civiqa' }] },
@@ -112,6 +116,8 @@ export default function App() {
           <BlocksSite />
           <BlocksReport />
           <BlocksDashboard />
+          <BlocksHeroAnalisi />
+          <BlocksCaseStudy />
           <Civiqa />
         </div>
       </main>
