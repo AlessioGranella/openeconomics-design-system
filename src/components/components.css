@@ -162,6 +162,35 @@
 .oe-kpi__note { font-family: var(--oe-font-sans); font-weight: 300; font-size: 13px; line-height: 1.45; color: var(--oe-fg-soft); margin: var(--oe-space-s) 0 0; }
 .oe-kpi--dark .oe-kpi__note { color: rgba(255,255,255,0.72); }
 
+/* Griglia delle card KPI (executive summary e sintesi di sezione).
+   Sei colonne, poi 3 · 2 · 1: le card si incolonnano sempre, non si schiacciano. */
+.oe-kpis { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--oe-space-s); }
+.oe-kpis--3 { grid-template-columns: repeat(3, 1fr); }
+.oe-kpis--2 { grid-template-columns: repeat(2, 1fr); }
+/* le etichette su due righe non devono sfalsare i numeri */
+.oe-kpis .oe-kpi--titled .oe-kpi__label { min-height: 2.6em; }
+/* la card che ospita la spiegazione al suo interno ha bisogno di un'altezza minima,
+   altrimenti la griglia balla quando il testo compare */
+.oe-kpis .oe-kpi--flip { min-height: 196px; }
+@media (max-width: 1199.98px) { .oe-kpis { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 899.98px)  { .oe-kpis--3 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)     { .oe-kpis { grid-template-columns: repeat(2, 1fr); }
+                                .oe-kpis--2 { grid-template-columns: 1fr; } }
+@media (max-width: 480px)     { .oe-kpis, .oe-kpis--3, .oe-kpis--2 { grid-template-columns: 1fr; }
+                                .oe-kpis .oe-kpi--flip { min-height: 150px; } }
+
+/* ---- Fasce di pagina ---------------------------------------------------
+   Le sezioni di una landing di analisi alternano bianco e grigio. Le uniche
+   eccezioni sono le fasce scure (hero, «consegnato») e la nota metodologica,
+   che ha sempre fondo bluette-050 e non entra nell'alternanza. */
+.oe-band { padding: var(--oe-space-3xl) 0; }
+.oe-band--tight { padding: var(--oe-space-2xl) 0; }
+.oe-band--elev { background: var(--oe-bg-elev); }
+.oe-band--nota { background: var(--oe-bg-tint); }
+.oe-band--dark { background: var(--oe-bg-dark); color: var(--oe-white); }
+.oe-band--dark h2, .oe-band--dark h3, .oe-band--dark p, .oe-band--dark li { color: var(--oe-white); }
+@media (max-width: 767.98px) { .oe-band { padding: var(--oe-space-2xl) 0; } }
+
 /* ---- Accordion --------------------------------------------------------- */
 .oe-accordion { border-top: 1px solid var(--oe-gray-200); }
 .oe-accordion__item { border-bottom: 1px solid var(--oe-gray-200); }

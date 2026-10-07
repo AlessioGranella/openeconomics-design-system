@@ -22,6 +22,14 @@ npm i github:AlessioGranella/openeconomics-design-system#v0.5.0
   etichetta su due righe.
 - **`.oe-text-2col`**: utility per il testo corrente su due colonne (una sola sotto 768px),
   strumento della nuova *Full-Band Text Rule*.
+- **UI Blocks → Executive Summary**: la fascia di sintesi che segue la hero in ogni landing di
+  studio — chip lime, griglia `.oe-kpis` e card KPI che al passaggio del mouse scoprono la
+  spiegazione. Nuova utility `.oe-kpis` (6 → 3 → 2 → 1 colonne).
+- **UI Blocks → Nota metodologica**: la fascia su fondo bluette-050, con la regola fissa del
+  colore, il testo su due colonne e il «Scopri di più» richiudibile. Nuove utility di fascia
+  `.oe-band` (`--tight`, `--elev`, `--nota`, `--dark`).
+- **UI Blocks → Footer Analisi**: la chiusura obbligata delle landing di studio, in React
+  (`<Footer variant="analisi" />`) e in HTML statico per i casi studio esportati.
 - **`SOCIAL.md`**: norma di stile per i post social codificata dai formati approvati.
   Censisce i **cinque formati in uso** (carosello 4:5 e 1:1, infografica singola, card
   editoriale, infografica animata) con tela, export, estensione e regole di consegna;

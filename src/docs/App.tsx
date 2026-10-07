@@ -19,6 +19,9 @@ import BlocksSite from './sections/BlocksSite'
 import BlocksReport from './sections/BlocksReport'
 import BlocksDashboard from './sections/BlocksDashboard'
 import BlocksHeroAnalisi from './sections/BlocksHeroAnalisi'
+import BlocksExecutiveSummary from './sections/BlocksExecutiveSummary'
+import BlocksNotaMetodologica from './sections/BlocksNotaMetodologica'
+import BlocksFooterAnalisi from './sections/BlocksFooterAnalisi'
 import BlocksCaseStudy from './sections/BlocksCaseStudy'
 import Civiqa from './sections/Civiqa'
 
@@ -61,6 +64,9 @@ const nav = [
       { id: 'blocks-report', label: 'Report & analisi' },
       { id: 'blocks-dashboard', label: 'Dashboard' },
       { id: 'blocks-hero-analisi', label: 'Hero Analisi' },
+      { id: 'blocks-executive-summary', label: 'Executive Summary' },
+      { id: 'blocks-nota-metodologica', label: 'Nota metodologica' },
+      { id: 'blocks-footer-analisi', label: 'Footer Analisi' },
       { id: 'blocks-case-study', label: 'Caso studio' },
     ],
   },
@@ -117,6 +123,9 @@ export default function App() {
           <BlocksReport />
           <BlocksDashboard />
           <BlocksHeroAnalisi />
+          <BlocksExecutiveSummary />
+          <BlocksNotaMetodologica />
+          <BlocksFooterAnalisi />
           <BlocksCaseStudy />
           <Civiqa />
         </div>

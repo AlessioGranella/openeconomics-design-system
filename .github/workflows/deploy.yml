@@ -3,8 +3,12 @@ name: Deploy design system to GitHub Pages
 on:
   push:
     branches: [main]
-    tags: ['v*']
   workflow_dispatch:
+
+# Nota: i tag NON sono un trigger. L'ambiente github-pages accetta il deploy solo
+# da main, quindi un push di tag faceva fallire il job «deploy» e, per via della
+# concurrency, cancellava la build buona partita da main. Le versioni taggate
+# finiscono comunque nel sito: il job qui sotto le ricostruisce tutte a ogni push.
 
 permissions:
   contents: read
