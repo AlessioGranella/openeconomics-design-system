@@ -31,7 +31,11 @@ export default function GettingStarted() {
 import { chartSeries, color, formatNumber } from '.../design-system/src/tokens'
 
 // 3. Componenti
-import { Button, KpiCard, Tag } from '.../design-system/src/components'`}</code></pre>
+import { Button, KpiCard, Tag } from '.../design-system/src/components'
+
+// 4. Grafici (11 tipi, vedi Componenti → Grafici)
+import '.../design-system/src/charts/oe-charts.js'   // poi OECharts.render(el, spec)
+// in una pagina statica: <script src="ds-kit/oe-charts.js" defer></script>`}</code></pre>
       <p className="dx-note">
         Suggerimento: per i prossimi asset valuteremo un alias <code>@oe</code> o un pacchetto condiviso,
         così gli import restano corti e stabili.

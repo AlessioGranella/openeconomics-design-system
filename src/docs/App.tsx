@@ -11,6 +11,7 @@ import Images from './sections/Images'
 import Components from './sections/Components'
 import FormsInputs from './sections/FormsInputs'
 import DataDisplay from './sections/DataDisplay'
+import Charts from './sections/Charts'
 import DashboardTables from './sections/DashboardTables'
 import CardsNav from './sections/CardsNav'
 import VersionSwitcher from './ui/VersionSwitcher'
@@ -53,6 +54,7 @@ const nav = [
       { id: 'cards-nav', label: 'Card & Navigazione' },
       { id: 'form-input', label: 'Form & Input' },
       { id: 'data-display', label: 'Tabelle & dati' },
+      { id: 'grafici', label: 'Grafici' },
       { id: 'dash-tables', label: 'Tabelle dashboard' },
       { id: 'footer', label: 'Footer' },
     ],
@@ -117,6 +119,7 @@ export default function App() {
           <CardsNav />
           <FormsInputs />
           <DataDisplay />
+          <Charts />
           <DashboardTables />
           <Footers />
           <BlocksSite />

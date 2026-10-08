@@ -6,8 +6,43 @@ Tutte le modifiche rilevanti al design system. Formato basato su
 Installazione di una versione fissa (consigliata nei progetti):
 
 ```bash
-npm i github:AlessioGranella/openeconomics-design-system#v0.5.0
+npm i github:AlessioGranella/openeconomics-design-system#v0.6.0
 ```
+
+## [0.6.0] — 2026-10-08
+
+### Added
+- **Componente Grafici** (`src/charts/oe-charts.js`, export `./charts`): motore grafici del
+  design system, senza dipendenze, SVG a runtime, funziona anche da `file://`. Monta ogni
+  `[data-oe-chart]` leggendo `window.OE_DATA`; da codice `OECharts.render(el, spec)` e
+  `OECharts.mount(root, dati)`. **Undici tipi**: `hbars` (anche `mode:'grouped'`),
+  `columns`, `line`, `compare`, `waterfall`, `donut`, `map`, `grid`, `treemap`, `sunburst`,
+  `sankey`. Tooltip a mouse, tocco e tastiera, legenda attiva, controlli segmentati per
+  cambiare vista (`views` + `data` + `controlLabel`), numeri in locale it-IT.
+  - **Nuovi tipi**: `columns` (colonne verticali raggruppate o impilate, asse a valori tondi),
+    `line` (linee o aree su categorie ordinate, guida verticale con tutte le serie),
+    `sankey` (flussi origine → destinazione, voci minori raccolte in «Altri»),
+    `sunburst` (ruota a due livelli con totale al centro, nata per il caso studio RFI 2025).
+  - **Opzioni nate su RFI 2025**: `map.rankTop` (classifica limitata, es. 20 province su 107),
+    `grid.parts` / `rowH` / `maxR` e intestazioni orizzontali quando le colonne sono larghe,
+    `treemap` con viste, `donut.colors`; «Altro» riconosciuto e messo in grigio da solo.
+- **Token dei grafici** `--oe-chart-*` in `colors_and_type.css` (rampa ordinale 1–3, scala
+  sequenziale 1–7, accento, costo, altro, inchiostro, attenuato, filetto) e `chart` in
+  `tokens.ts`. Il motore li legge sull'elemento del grafico: sotto `.theme-civiqa` i grafici
+  diventano blu Civiqa senza modifiche.
+- **Stili dei grafici** in `components.css`: riquadro `.oe-fig` (+ `__head`, `__title`,
+  `__ctrl`), stati interattivi, mappa con classifica `.oe-map` / `.oe-rank`, tooltip `.oe-tip`,
+  comportamento mobile (larghezza minima e scorrimento). `.fig` / `.fig__*` restano come alias
+  per le pagine fatte prima.
+- **Libreria → Componenti → Grafici**: scheda con anteprima dal vivo e snippet per ognuno
+  degli undici tipi, su dati reali dei casi studio RFI, APA e Difesa e Aerospazio.
+- **`src/charts/tools/geojson_to_paths.py`**: converte un GeoJSON nei `paths` del tipo `map`.
+
+### Fixed
+- **Tema Civiqa sul `<body>`**: i token semantici (`--oe-accent`, `--oe-link`, `--oe-bg-dark`…)
+  erano risolti solo su `:root`, quindi con `.theme-civiqa` su un elemento interno restavano
+  Bluette (es. il controllo segmentato). Il blocco dei token è ora dichiarato anche su
+  `.theme-civiqa`.
 
 ## [0.5.0] — 2026-10-07
 

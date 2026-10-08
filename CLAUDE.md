@@ -43,9 +43,22 @@ I due brand condividono TUTTO (font, spaziatura, griglia, componenti: card, chec
 - **Token in JS** (grafici/dashboard): `src/tokens.ts` — specchio dei `--oe-*`. Tenerlo allineato al CSS.
 - **Stili componenti:** `src/components/components.css` — usa SEMPRE `var(--oe-space-*)` per padding/gap/margin (scala 4px), niente px hardcoded.
 - **Componenti React:** `src/components/` (Button, Tag, KpiCard, Accordion, FigureLabel, Footer, Wordmark, CiviqaWordmark) + barrel `index.ts`.
-- **Componenti via classe CSS** (in `components.css`, demo nelle sezioni "Componenti UI" della libreria): Card (`.oe-card`, `--feature`), Note (`.oe-note`, varianti `--lime` e `--grey`), Form & input (`.oe-field/.oe-label/.oe-input/.oe-select/.oe-textarea/.oe-check/.oe-switch/.oe-search`), Tabella (`.oe-table`, `--numeric`, `.oe-table__wrap`), Tabs (`.oe-tabs/.oe-tab`), Badge stato (`.oe-badge--success/--warning/--danger/--info/--neutral`), Paginazione (`.oe-pagination/.oe-page`), Filtri (`.oe-segment`), Header sito (`.oe-header`), Nav dashboard (`.oe-dashnav`), Topbar dashboard (`.oe-topbar`). Tabelle dashboard: CapEx (`.oe-table--capex`), KPI editabile (`.oe-table__cat` + `.oe-input--cell` + `.oe-table__actions`), Moltiplicatori (`.oe-metrics`), Recap (`.oe-recap`). Slogan (`.oe-slogan`), Client strip (`.oe-client-strip`). Tutti usano `--oe-accent`, quindi si tematizzano sotto `.theme-civiqa`. La libreria copre tutte le schede del kit Figma (foundation via Foundations, logo/slogan/clienti via Brand, elevation+radii via Elevation, componenti via Componenti). Restano solo Chart (→ `tokens.ts` chartSeries) e Map (→ libreria per progetto), che non sono componenti statici.
+- **Componenti via classe CSS** (in `components.css`, demo nelle sezioni "Componenti UI" della libreria): Card (`.oe-card`, `--feature`), Note (`.oe-note`, varianti `--lime` e `--grey`), Form & input (`.oe-field/.oe-label/.oe-input/.oe-select/.oe-textarea/.oe-check/.oe-switch/.oe-search`), Tabella (`.oe-table`, `--numeric`, `.oe-table__wrap`), Tabs (`.oe-tabs/.oe-tab`), Badge stato (`.oe-badge--success/--warning/--danger/--info/--neutral`), Paginazione (`.oe-pagination/.oe-page`), Filtri (`.oe-segment`), Header sito (`.oe-header`), Nav dashboard (`.oe-dashnav`), Topbar dashboard (`.oe-topbar`). Tabelle dashboard: CapEx (`.oe-table--capex`), KPI editabile (`.oe-table__cat` + `.oe-input--cell` + `.oe-table__actions`), Moltiplicatori (`.oe-metrics`), Recap (`.oe-recap`). Slogan (`.oe-slogan`), Client strip (`.oe-client-strip`). Tutti usano `--oe-accent`, quindi si tematizzano sotto `.theme-civiqa`. La libreria copre tutte le schede del kit Figma (foundation via Foundations, logo/slogan/clienti via Brand, elevation+radii via Elevation, componenti via Componenti). I grafici (mappe comprese) sono il componente **Grafici** (sotto).
 - **Pagina-libreria:** `src/docs/` (sezioni in `src/docs/sections/`). È fatta SOLO di componenti reali con anteprima dal vivo + codice — niente anteprime Figma. Niente `Catalog`/iframe.
 - **Kit Figma:** `public/kit/` resta come riferimento di design ma NON è mostrato nella libreria (tranne le icone reali in `assets/icons/`). Asset Civiqa in `public/civiqa/`.
+
+## Grafici (v0.6.0)
+
+Motore `src/charts/oe-charts.js` + stili in `components.css` + token `--oe-chart-*`. **Ogni grafico
+di una pagina OpenEconomics si fa con questo motore**, non con Flourish o Chart.js: undici tipi
+(`hbars`, `columns`, `line`, `compare`, `waterfall`, `donut`, `map`, `grid`, `treemap`,
+`sunburst`, `sankey`), documentati con anteprima e snippet in Componenti → Grafici.
+- Markup: `.oe-fig` > `.oe-fig__head` (`.oe-figure-label` + `.oe-fig__title`) + `<div data-oe-chart="chiave">`;
+  dati in `window.OE_DATA` (file `data.js`, così la pagina va anche da `file://`).
+- Colori: una tinta per grafico (rampa ordinale 3 passi o scala sequenziale 7), magenta solo
+  per i costi, grigio solo per «Altro». Mai esadecimali nel grafico: i token seguono il tema.
+- Se serve un tipo che non c'è, si aggiunge al motore (retrocompatibile) e alla scheda della
+  libreria, non dentro la singola pagina.
 
 ## Griglia e layout
 

@@ -88,6 +88,21 @@ export const chartSeries = [
   dataviz.blu[600],
 ] as const
 
+/* Token dei grafici (v0.6.0) — specchio di --oe-chart-* in colors_and_type.css.
+   Una sola tinta per grafico: rampa ordinale a 3 passi (diretto → indiretto → indotto)
+   o scala sequenziale a 7 passi; magenta solo per i costi, grigio solo per «Altro».
+   Il motore src/charts/oe-charts.js li legge dal CSS (così segue .theme-civiqa). */
+export const chart = {
+  ramp: [bluette[900], bluette[600], bluette[200]],
+  seq: [bluette[50], bluette[100], bluette[200], bluette[400], bluette[600], bluette[700], bluette[900]],
+  accent: bluette[700],
+  cost: dataviz.magenta[700],
+  other: gray[400],
+  ink: '#000000',
+  muted: gray[600],
+  hair: gray[200],
+} as const
+
 /* `serif` è anche il font dei NUMERI DISPLAY (KPI, stat, big number di grafici e hero):
    vedi .oe-num--display in colors_and_type.css. I numeri in linea, nelle tabelle e nei
    dati fitti restano in `sans` tabulare. */

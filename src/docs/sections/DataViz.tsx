@@ -34,7 +34,10 @@ export default function DataViz() {
         davvero la lettura — <strong>massimo 2–3 colori per grafico</strong>.
       </p>
       <p className="dx-note">
-        In codice usa la sequenza pronta <code>chartSeries</code> da <code>tokens.ts</code> per assegnare i colori delle serie.
+        Per i grafici delle pagine usa il componente <a href="#grafici">Grafici</a> (motore{' '}
+        <code>src/charts/oe-charts.js</code>): applica da solo rampa ordinale, scala sequenziale e
+        token <code>--oe-chart-*</code>. In altre librerie (Chart.js, ecc.) usa <code>chart</code> e{' '}
+        <code>chartSeries</code> da <code>tokens.ts</code>.
       </p>
       {palettes.map((p) => (
         <Scale key={p.label} label={p.label} prefix={p.prefix} steps={p.steps} darkFrom={500} />

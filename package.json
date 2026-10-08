@@ -1,7 +1,7 @@
 {
   "name": "oe-design-system",
   "private": true,
-  "version": "0.5.0",
+  "version": "0.6.0",
   "type": "module",
   "description": "OpenEconomics Design System — token, componenti e UI kit (libreria consultabile)",
   "license": "UNLICENSED",
@@ -15,14 +15,16 @@
     "CHANGELOG.md"
   ],
   "sideEffects": [
-    "**/*.css"
+    "**/*.css",
+    "./src/charts/oe-charts.js"
   ],
   "exports": {
     ".": "./src/components/index.ts",
     "./components": "./src/components/index.ts",
     "./tokens": "./src/tokens.ts",
     "./tokens.css": "./src/styles/colors_and_type.css",
-    "./components.css": "./src/components/components.css"
+    "./components.css": "./src/components/components.css",
+    "./charts": "./src/charts/oe-charts.js"
   },
   "scripts": {
     "predev": "npm run icons:zip && npm run maps:zip",
