@@ -12,6 +12,7 @@ import Components from './sections/Components'
 import FormsInputs from './sections/FormsInputs'
 import DataDisplay from './sections/DataDisplay'
 import Charts from './sections/Charts'
+import Notes from './sections/Notes'
 import DashboardTables from './sections/DashboardTables'
 import CardsNav from './sections/CardsNav'
 import VersionSwitcher from './ui/VersionSwitcher'
@@ -22,6 +23,7 @@ import BlocksDashboard from './sections/BlocksDashboard'
 import BlocksHeroAnalisi from './sections/BlocksHeroAnalisi'
 import BlocksExecutiveSummary from './sections/BlocksExecutiveSummary'
 import BlocksNotaMetodologica from './sections/BlocksNotaMetodologica'
+import BlocksCtaAnalisi from './sections/BlocksCtaAnalisi'
 import BlocksFooterAnalisi from './sections/BlocksFooterAnalisi'
 import BlocksCaseStudy from './sections/BlocksCaseStudy'
 import Civiqa from './sections/Civiqa'
@@ -55,6 +57,7 @@ const nav = [
       { id: 'form-input', label: 'Form & Input' },
       { id: 'data-display', label: 'Tabelle & dati' },
       { id: 'grafici', label: 'Grafici' },
+      { id: 'note', label: 'Note' },
       { id: 'dash-tables', label: 'Tabelle dashboard' },
       { id: 'footer', label: 'Footer' },
     ],
@@ -68,6 +71,7 @@ const nav = [
       { id: 'blocks-hero-analisi', label: 'Hero Analisi' },
       { id: 'blocks-executive-summary', label: 'Executive Summary' },
       { id: 'blocks-nota-metodologica', label: 'Nota metodologica' },
+      { id: 'blocks-cta-analisi', label: 'CTA Analisi' },
       { id: 'blocks-footer-analisi', label: 'Footer Analisi' },
       { id: 'blocks-case-study', label: 'Caso studio' },
     ],
@@ -120,6 +124,7 @@ export default function App() {
           <FormsInputs />
           <DataDisplay />
           <Charts />
+          <Notes />
           <DashboardTables />
           <Footers />
           <BlocksSite />
@@ -128,6 +133,7 @@ export default function App() {
           <BlocksHeroAnalisi />
           <BlocksExecutiveSummary />
           <BlocksNotaMetodologica />
+          <BlocksCtaAnalisi />
           <BlocksFooterAnalisi />
           <BlocksCaseStudy />
           <Civiqa />

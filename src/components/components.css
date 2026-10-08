@@ -74,13 +74,19 @@
 .oe-note p + p { margin-top: var(--oe-space-s); }
 .oe-note strong, .oe-note b { font-weight: 600; }
 
-/* lime piena: filetto Bluette (bianco sotto Civiqa, dove il pop è già blu) */
-.oe-note--lime { background: var(--oe-pop); color: var(--oe-pop-on); }
-.oe-note--lime::before { background: var(--oe-pop-rule); }
+/* REGOLA D'USO (v0.6.1): la nota IMPORTANTE è «evidente» (lime), quella non particolarmente
+   importante è «neutra» (grigia). Prima di impaginarla si chiede sempre quale delle due serve.
+   Su una fascia grigia la neutra va su bianco, per non sparire. */
 
-/* grigia con filetto lime */
-.oe-note--grey { background: var(--oe-bg-elev); color: var(--oe-fg); }
-.oe-note--grey::before { background: var(--oe-pop); }
+/* evidente — lime piena, filetto Bluette (bianco sotto Civiqa, dove il pop è già blu) */
+.oe-note--evidente, .oe-note--lime { background: var(--oe-pop); color: var(--oe-pop-on); }
+.oe-note--evidente::before, .oe-note--lime::before { background: var(--oe-pop-rule); }
+
+/* neutra — grigia con filetto lime */
+.oe-note--neutra, .oe-note--grey { background: var(--oe-bg-elev); color: var(--oe-fg); }
+.oe-note--neutra::before, .oe-note--grey::before { background: var(--oe-pop); }
+.oe-band--elev .oe-note--neutra, .oe-band--elev .oe-note--grey,
+.oe-band--nota .oe-note--neutra, .oe-band--nota .oe-note--grey { background: var(--oe-white); }
 
 /* ---- KPI Card ---------------------------------------------------------- */
 .oe-kpi { background: var(--oe-white); padding: var(--oe-space-m); border: 1px solid var(--oe-gray-200); }   /* 24 */
@@ -192,6 +198,45 @@
 @media (max-width: 767.98px) { .oe-band { padding: var(--oe-space-2xl) 0; } }
 
 /* ---- Accordion --------------------------------------------------------- */
+/* «Scopri di più» (.oe-more) — la versione HTML statica dell'accordion, su <details>,
+   per i blocchi di testo densi delle landing di studio (sintesi, metodo, nota metodologica).
+   Riga di apertura a tutta larghezza con segno + / –, filetto sopra e sotto: da aperto si
+   vede sempre dove finisce il contenuto nascosto. Funziona senza JavaScript.
+     <details class="oe-more">
+       <summary>Scopri di più</summary>
+       <div class="oe-more__body"> … </div>
+     </details> */
+.oe-more {
+  margin: var(--oe-space-m) 0;
+  border-top: 1px solid var(--oe-gray-200);
+  border-bottom: 1px solid var(--oe-gray-200);
+}
+.oe-more > summary {
+  list-style: none;
+  display: flex; align-items: center; justify-content: space-between; gap: var(--oe-space-s);
+  min-height: 48px;                                  /* area cliccabile */
+  padding: var(--oe-space-s) var(--oe-space-xxs);
+  cursor: pointer;
+  font-family: var(--oe-font-sans); font-weight: 500; font-size: 16px; line-height: 1.3;
+  color: var(--oe-accent);
+}
+.oe-more > summary::-webkit-details-marker { display: none; }
+.oe-more > summary::after {
+  content: "+"; flex: 0 0 auto;
+  font-family: var(--oe-font-mono); font-size: 24px; line-height: 1; font-weight: 400;
+}
+.oe-more[open] > summary::after { content: "–"; }
+.oe-more > summary:hover { color: var(--oe-accent-strong); }
+.oe-more > summary:focus-visible { outline: 2px solid var(--oe-accent); outline-offset: 2px; }
+.oe-more__body { padding: 0 var(--oe-space-xxs) var(--oe-space-m); }
+.oe-more__body > :last-child { margin-bottom: 0; }
+.oe-more[open] .oe-more__body { animation: oe-more-in .24s cubic-bezier(.2,.7,.2,1); }
+@keyframes oe-more-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+.oe-band--dark .oe-more, .oe-hero-analisi .oe-more { border-color: rgba(255,255,255,.18); }
+.oe-band--dark .oe-more > summary { color: var(--oe-on-dark-accent); }
+@media (prefers-reduced-motion: reduce) { .oe-more[open] .oe-more__body { animation: none; } }
+@media print { .oe-more__body { display: block; } }
+
 .oe-accordion { border-top: 1px solid var(--oe-gray-200); }
 .oe-accordion__item { border-bottom: 1px solid var(--oe-gray-200); }
 .oe-accordion__head {
@@ -848,6 +893,13 @@
   font-family: var(--oe-font-sans); font-weight: 600; font-size: 17px; line-height: 1.35;
   margin: var(--oe-space-xxs) 0 0; color: var(--oe-fg); max-width: none;
 }
+
+/* Regola fissa: il testo sotto un grafico non va MAI su due colonne. Il commento a un
+   grafico si legge di seguito, a fascia piena; .oe-text-2col è solo per il testo lungo
+   che non segue un grafico. Rete di sicurezza: se compare dopo una figura nella stessa
+   fascia, torna a una colonna da solo. */
+.oe-fig ~ .oe-text-2col, .fig ~ .oe-text-2col, .oe-fig ~ .text-2col, .fig ~ .text-2col,
+.oe-fig ~ * .oe-text-2col, .fig ~ * .oe-text-2col { columns: 1; }
 
 /* controllo segmentato che cambia vista */
 .oe-fig__ctrl {

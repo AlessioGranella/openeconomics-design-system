@@ -9,6 +9,32 @@ Installazione di una versione fissa (consigliata nei progetti):
 npm i github:AlessioGranella/openeconomics-design-system#v0.6.0
 ```
 
+## [0.6.1] — 2026-10-08
+
+### Added
+- **«Scopri di più» (`.oe-more`)** come componente in `components.css`: disclosure su `<details>` per
+  i blocchi densi delle landing di studio. Riga di apertura a tutta larghezza (16px, area cliccabile
+  ≥ 48px), segno + / – come l'accordion React, filetto sopra e sotto così da aperto si vede dove
+  finisce il contenuto, comparsa morbida (spenta con `prefers-reduced-motion`). Prima esisteva solo
+  come CSS di pagina, con il comando in mono 12px e nessun confine in basso.
+
+- **UI Blocks → CTA Analisi**: la fascia di invito facoltativa che chiude una landing di studio prima
+  del Footer Analisi (`.oe-cta` + bottone `inverse`): domanda sul caso di chi legge, una riga, un
+  bottone. Nel template caso studio è dentro un `<template>`, da attivare solo se serve.
+
+- **Componente Note**: nuovo componente React `<Note tone="evidente" | "neutra" lead>` e varianti
+  semantiche `.oe-note--evidente` (fondo Lime) e `.oe-note--neutra` (fondo grigio); `--lime` e
+  `--grey` restano come alias. Regola d'uso: la nota importante è evidente, quella non
+  particolarmente importante è neutra, e si chiede sempre quale serve. Scheda propria nella
+  libreria (Componenti → Note). Su fascia grigia o nota metodologica la neutra va su bianco.
+
+### Changed
+- **Corpo testo delle landing di studio a 18px** (paragrafi ed elenchi, interlinea 1,5), applicato
+  nel template caso studio; il `p` del DS resta 22px per gli altri tipi di pagina.
+- **Testo a due colonne mai sotto un grafico**: regola scritta in `colors_and_type.css`, `CLAUDE.md`
+  e `DESIGN.md`; in `components.css` un `.oe-text-2col` che segue un `.oe-fig` nella stessa fascia
+  torna a una colonna da solo.
+
 ## [0.6.0] — 2026-10-08
 
 ### Added

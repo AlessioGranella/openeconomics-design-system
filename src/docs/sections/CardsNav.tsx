@@ -53,35 +53,6 @@ export default function CardsNav() {
         </div>
       </Demo>
 
-      <h3>Note</h3>
-      <Demo
-        title="Nota di lettura"
-        description="Accompagna dati e grafici con la chiave di lettura. Due varianti: lime piena per il messaggio che deve fermare l'occhio, grigia con filetto lime per la nota di contesto. Il lead-in in grassetto dice la conclusione, il resto la motiva."
-        code={`<p class="oe-note oe-note--lime">
-  <strong>Il nucleo fisso domina lo shock.</strong> Le due sole voci variabili
-  rappresentano appena il 19–34% dello shock lordo a seconda dello scenario.
-</p>
-
-<p class="oe-note oe-note--grey">
-  <strong>Come leggere i valori.</strong> Le stime dipendono da proxy e assunzioni
-  esplicitate nella nota metodologica e vanno lette come ordine di grandezza.
-</p>`}
-      >
-        <div style={{ display: 'grid', gap: 'var(--oe-space-s)' }}>
-          <p className="oe-note oe-note--lime">
-            <strong>Il nucleo fisso domina lo shock.</strong> Le due sole voci variabili (spesa
-            turistica e trasferte media) rappresentano appena il 19–34% dello shock lordo a
-            seconda dello scenario: la struttura dell'impatto è quindi in larga parte
-            indipendente dall'incertezza sull'affluenza finale.
-          </p>
-          <p className="oe-note oe-note--grey">
-            <strong>Come leggere i valori.</strong> Le stime dipendono da proxy e assunzioni
-            esplicitate nella nota metodologica e vanno lette come ordine di grandezza, non come
-            misura contabile puntuale.
-          </p>
-        </div>
-      </Demo>
-
       <h3>Header sito</h3>
       <Demo
         title="Top nav marketing"

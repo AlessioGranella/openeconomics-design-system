@@ -53,7 +53,7 @@ export default function Typography() {
 
       <Demo
         title="Misura del testo: fascia piena, due colonne"
-        description="REGOLA. Il testo corrente non si cappa mai a una misura: paragrafi, lead, note ed elenchi occupano tutta la larghezza del contenitore (max-width:none, niente 70ch). Un testo che si ferma a metà fascia lascia la pagina sbilanciata. Quando il passaggio è lungo e la riga diventa difficile da seguire, si divide in due colonne con .oe-text-2col — sotto i 768px torna a colonna unica. Il testo dentro una colonna di griglia (card, lato stretto di .cols) è già contenuto dalla colonna e non ha bisogno di cap."
+        description="REGOLA. Mai sotto un grafico: il testo che commenta un grafico va sempre a una colonna. Il testo corrente non si cappa mai a una misura: paragrafi, lead, note ed elenchi occupano tutta la larghezza del contenitore (max-width:none, niente 70ch). Un testo che si ferma a metà fascia lascia la pagina sbilanciata. Quando il passaggio è lungo e la riga diventa difficile da seguire, si divide in due colonne con .oe-text-2col — sotto i 768px torna a colonna unica. Il testo dentro una colonna di griglia (card, lato stretto di .cols) è già contenuto dalla colonna e non ha bisogno di cap."
         code={`<div class="oe-text-2col">
   <p>Primo paragrafo lungo…</p>
   <p>Secondo paragrafo…</p>

@@ -593,7 +593,9 @@ p, .oe-body {
    tutta la larghezza del contenitore. Quando un passaggio è lungo e la riga diventa
    difficile da seguire, lo si divide in due colonne con questa utility, che riporta
    la misura a una lunghezza leggibile senza lasciare mezza fascia vuota.
-   Sotto i 768px torna a colonna unica. */
+   Sotto i 768px torna a colonna unica.
+   MAI SOTTO UN GRAFICO: il testo che segue un grafico va sempre a una colonna
+   (components.css lo riporta a una colonna da solo dopo .oe-fig). */
 .oe-text-2col {
   columns: 2;
   column-gap: var(--oe-space-2xl);
