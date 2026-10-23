@@ -6,8 +6,18 @@ Tutte le modifiche rilevanti al design system. Formato basato su
 Installazione di una versione fissa (consigliata nei progetti):
 
 ```bash
-npm i github:AlessioGranella/openeconomics-design-system#v0.6.0
+npm i github:AlessioGranella/openeconomics-design-system#v0.7.0
 ```
+
+## [0.7.0] — 2026-10-23
+
+### Changed
+- **Footer: sede e link al sito.** Entrambe le varianti mostrano la sede (etichetta mono
+  «Headquarter», Via Vitorchiano, 123 · 00189 Roma (RM) · +39 068414537, telefono cliccabile) e, in
+  basso a sinistra, il link a www.openeconomics.eu prima del copyright. Nello standard la sede sta a
+  destra del brand, nell'analisi sotto il payoff. Nuove props `headquarters` (`null` la nasconde) e
+  `websiteUrl`; classi `.oe-footer__hq*` e `.oe-footer__site`. Aggiornati il blocco Footer Analisi
+  (snippet HTML statico) e la scheda Footer.
 
 ## [0.6.1] — 2026-10-08
 

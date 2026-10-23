@@ -29,6 +29,12 @@ import { Footer } from '@/components'
         <svg class="oe-footer__logo">…</svg>   <!-- wordmark bianco -->
         <p class="oe-footer__tagline">Enabling adaptation. Empowering impact.
           With platforms, strategy, and trust.</p>
+        <address class="oe-footer__hq">
+          <span class="oe-footer__hq-label">Headquarter</span>
+          <span class="oe-footer__hq-line">Via Vitorchiano, 123</span>
+          <span class="oe-footer__hq-line">00189 Roma (RM)</span>
+          <a class="oe-footer__hq-line oe-footer__link" href="tel:+39068414537">+39 068414537</a>
+        </address>
       </div>
       <div class="oe-footer__disclaimer">
         <span class="oe-footer__disclaimer-label">Condizioni d'uso</span>
@@ -39,7 +45,11 @@ import { Footer } from '@/components'
     </div>
     <hr class="oe-footer__rule">
     <div class="oe-footer__bottom">
-      <p class="oe-footer__meta">© 2026 OpenEconomics&nbsp;| Partita Iva 12504821005</p>
+      <p class="oe-footer__meta">
+        <a class="oe-footer__site" href="https://www.openeconomics.eu"
+           target="_blank" rel="noopener">www.openeconomics.eu</a>
+        <span aria-hidden="true"> · </span>© 2026 OpenEconomics&nbsp;| Partita Iva 12504821005
+      </p>
       <nav class="oe-footer__links" aria-label="Note legali">
         <a class="oe-footer__link" href="https://www.openeconomics.eu/privacy-policy"
            target="_blank" rel="noopener">Privacy Policy</a>
@@ -69,8 +79,9 @@ import { Footer } from '@/components'
           <span className="oe-card__eyebrow">Contenuto</span>
           <h3 className="oe-card__title">Wordmark, payoff, disclaimer</h3>
           <p className="oe-card__body">
-            Nell'ordine: wordmark bianco e payoff a sinistra, condizioni d'uso a destra; sotto la
-            riga, copyright con partita IVA e i due link legali. Niente selettore di lingua.
+            Nell'ordine: wordmark bianco, payoff e sede (Headquarter) a sinistra, condizioni d'uso a
+            destra; sotto la riga, a sinistra il link al sito e il copyright con partita IVA, a
+            destra i due link legali. Niente selettore di lingua.
           </p>
         </article>
         <article className="oe-card oe-col-4 oe-col-m-4">

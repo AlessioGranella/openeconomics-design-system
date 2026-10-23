@@ -73,6 +73,8 @@ Componente `Footer` con prop `variant`:
 - `standard` — brand + copyright + link legali.
 - `analisi` — in più la colonna "Condizioni d'uso" con disclaimer (per report/documenti di analisi).
 
+Entrambe (da v0.7.0) mostrano la **sede** — «Headquarter · Via Vitorchiano, 123 · 00189 Roma (RM) · +39 068414537» (prop `headquarters`, `null` per nasconderla) — e, **in basso a sinistra, il link al sito** www.openeconomics.eu (props `website`/`websiteUrl`). Standard: sede a destra del brand; analisi: sede sotto il payoff.
+
 ## UI Blocks
 
 Sezioni intere già composte (stile "Tailwind UI"), da copiare, nella sezione "UI Blocks" della libreria — costruite combinando i componenti, tematizzabili sotto `.theme-civiqa`. Helper: `.oe-hero`, `.oe-hero-analisi`, `.oe-stats/.oe-stat`, `.oe-cta` (+ `Button variant="inverse"`), `.oe-report-head`, `.oe-panel`, `.oe-shell`.
