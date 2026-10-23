@@ -45,16 +45,14 @@ import { Footer } from '@/components'
     </div>
     <hr class="oe-footer__rule">
     <div class="oe-footer__bottom">
-      <p class="oe-footer__meta">
-        <a class="oe-footer__site" href="https://www.openeconomics.eu"
-           target="_blank" rel="noopener">www.openeconomics.eu</a>
-        <span aria-hidden="true"> · </span>© 2026 OpenEconomics&nbsp;| Partita Iva 12504821005
-      </p>
+      <p class="oe-footer__meta">© 2026 OpenEconomics&nbsp;| Partita Iva 12504821005</p>
       <nav class="oe-footer__links" aria-label="Note legali">
         <a class="oe-footer__link" href="https://www.openeconomics.eu/privacy-policy"
            target="_blank" rel="noopener">Privacy Policy</a>
         <a class="oe-footer__link" href="https://www.openeconomics.eu/cookie-policy"
            target="_blank" rel="noopener">Cookie Policy</a>
+        <a class="oe-footer__site" href="https://www.openeconomics.eu"
+           target="_blank" rel="noopener">www.openeconomics.eu</a>
       </nav>
     </div>
   </div>
@@ -80,8 +78,8 @@ import { Footer } from '@/components'
           <h3 className="oe-card__title">Wordmark, payoff, disclaimer</h3>
           <p className="oe-card__body">
             Nell'ordine: wordmark bianco, payoff e sede (Headquarter) a sinistra, condizioni d'uso a
-            destra; sotto la riga, a sinistra il link al sito e il copyright con partita IVA, a
-            destra i due link legali. Niente selettore di lingua.
+            destra; sotto la riga, a sinistra il copyright con partita IVA, a destra i due link
+            legali e il link al sito. Niente selettore di lingua.
           </p>
         </article>
         <article className="oe-card oe-col-4 oe-col-m-4">

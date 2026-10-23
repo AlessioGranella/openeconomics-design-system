@@ -30,7 +30,7 @@ export interface FooterProps {
   disclaimer?: ReactNode
   /** Sede legale/operativa. `null` per nasconderla. */
   headquarters?: FooterHeadquarters | null
-  /** Testo del link al sito, in basso a sinistra. */
+  /** Testo del link al sito, in basso a destra dopo i link legali. */
   website?: string
   /** Destinazione del link al sito. */
   websiteUrl?: string
@@ -68,7 +68,7 @@ const DEFAULT_LINKS: FooterLink[] = [
 /**
  * Footer di brand OpenEconomics su fondo Bluette scuro.
  * Due varianti selezionabili per progetto: `standard` e `analisi`.
- * Entrambe mostrano la sede (Headquarter) e, in basso a sinistra, il link al sito.
+ * Entrambe mostrano la sede (Headquarter) e, in basso a destra, il link al sito.
  */
 export default function Footer({
   variant = 'standard',
@@ -122,10 +122,6 @@ export default function Footer({
 
         <div className="oe-footer__bottom">
           <p className="oe-footer__meta">
-            <a className="oe-footer__site" href={websiteUrl} target="_blank" rel="noopener">
-              {website}
-            </a>
-            <span aria-hidden="true"> · </span>
             Copyright © {company} {year}
           </p>
           <nav className="oe-footer__links" aria-label="Note legali">
@@ -134,6 +130,9 @@ export default function Footer({
                 {l.label}
               </a>
             ))}
+            <a className="oe-footer__site" href={websiteUrl} target="_blank" rel="noopener">
+              {website}
+            </a>
           </nav>
         </div>
       </div>

@@ -12,13 +12,13 @@ export default function Footers() {
       <p className="dx-lead">
         Footer di brand su fondo Bluette scuro, in due varianti selezionabili a seconda del
         progetto. Logotipo bianco + tagline serif, sede (Headquarter) con indirizzo e telefono, riga di
-        chiusura con il link al sito a sinistra, copyright e note legali a destra.
+        chiusura con il copyright a sinistra, note legali e link al sito a destra.
         Importabile da <code>design-system/src/components</code>.
       </p>
 
       <Demo
         title="Standard Footer"
-        description="Variante essenziale: brand e sede a destra; sotto la riga, link al sito e copyright a sinistra, link legali (privacy, cookie) a destra. Per sito, landing e mini-siti di report."
+        description="Variante essenziale: brand e sede a destra; sotto la riga, copyright a sinistra, link legali (privacy, cookie) e link al sito a destra. Per sito, landing e mini-siti di report."
         code={`import { Footer } from '@/components'
 
 <Footer variant="standard" />

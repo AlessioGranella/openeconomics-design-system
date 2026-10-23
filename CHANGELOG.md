@@ -6,8 +6,14 @@ Tutte le modifiche rilevanti al design system. Formato basato su
 Installazione di una versione fissa (consigliata nei progetti):
 
 ```bash
-npm i github:AlessioGranella/openeconomics-design-system#v0.7.0
+npm i github:AlessioGranella/openeconomics-design-system#v0.7.1
 ```
+
+## [0.7.1] — 2026-10-23
+
+### Changed
+- **Footer: link al sito a destra.** www.openeconomics.eu passa dal lato sinistro della riga di
+  chiusura a destra, dopo Privacy e Cookie policy; a sinistra resta solo il copyright.
 
 ## [0.7.0] — 2026-10-23
 

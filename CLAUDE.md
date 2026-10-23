@@ -73,7 +73,7 @@ Componente `Footer` con prop `variant`:
 - `standard` — brand + copyright + link legali.
 - `analisi` — in più la colonna "Condizioni d'uso" con disclaimer (per report/documenti di analisi).
 
-Entrambe (da v0.7.0) mostrano la **sede** — «Headquarter · Via Vitorchiano, 123 · 00189 Roma (RM) · +39 068414537» (prop `headquarters`, `null` per nasconderla) — e, **in basso a sinistra, il link al sito** www.openeconomics.eu (props `website`/`websiteUrl`). Standard: sede a destra del brand; analisi: sede sotto il payoff.
+Entrambe (da v0.7.0) mostrano la **sede** — «Headquarter · Via Vitorchiano, 123 · 00189 Roma (RM) · +39 068414537» (prop `headquarters`, `null` per nasconderla) — e, **in basso a destra, dopo privacy e cookie, il link al sito** www.openeconomics.eu (da v0.7.1) (props `website`/`websiteUrl`). Standard: sede a destra del brand; analisi: sede sotto il payoff.
 
 ## UI Blocks
 

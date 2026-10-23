@@ -391,6 +391,7 @@
   color: rgba(255, 255, 255, 0.82);
 }
 .oe-footer__site {
+  font-size: 14px;
   color: var(--oe-white);
   font-weight: 500;
   text-decoration: underline;
@@ -406,6 +407,8 @@
 }
 .oe-footer__links {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: var(--oe-space-l);
 }
 .oe-footer__link {
