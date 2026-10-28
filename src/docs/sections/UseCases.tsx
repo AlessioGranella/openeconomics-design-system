@@ -100,7 +100,8 @@ export default function UseCases() {
       <div className="dx-callout">
         <strong>Regola #0 — Che cosa devi fare?</strong> Chi lavora con il design system o con la
         skill <code>oe-frontend-brand</code> chiede prima di tutto quale di questi casi serve. Poi il
-        brand, poi (per le analisi) caso studio o studio indipendente, poi i materiali. La mappa delle
+        brand (OpenEconomics o Civiqa), con una domanda a sé che non si salta mai, nemmeno se la
+        richiesta nomina OE: il brand non si deduce dal testo. Poi (per le analisi) caso studio o studio indipendente, poi i materiali. La mappa delle
         sezioni si approva prima di scrivere codice.
       </div>
 

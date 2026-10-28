@@ -135,7 +135,10 @@ Libreria di asset: la trovabilità viene prima di tutto.
 ## Cosa chiedere, in ordine
 
 1. **Che cosa devi fare?** Uno dei sei tipi, oppure allineare al brand una pagina esistente.
-2. **Brand**: OpenEconomics o Civiqa (prima di ogni scelta di colore).
+2. **Brand**: OpenEconomics o Civiqa, chiesto **dopo** il caso d'uso e prima di ogni scelta di
+   colore. La domanda sul caso d'uso è neutra («Che cosa devi fare?»), mai «per OpenEconomics».
+   **Si chiede sempre**, come domanda a sé: anche se la richiesta nomina OE o OpenEconomics («un
+   lavoro per OE» dice per chi si lavora, non quale brand usare). Il brand non si deduce mai.
 3. **Solo per le analisi**: caso studio per un cliente o studio indipendente?
 4. **Materiali**: testi da un file di testo (Word, markdown, Excel, testo incollato) usati verbatim;
    numeri solo dall'Excel, con foglio e cella; PDF e immagini solo come riferimento grafico. Le

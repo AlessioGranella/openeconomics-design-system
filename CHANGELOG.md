@@ -6,8 +6,15 @@ Tutte le modifiche rilevanti al design system. Formato basato su
 Installazione di una versione fissa (consigliata nei progetti):
 
 ```bash
-npm i github:AlessioGranella/openeconomics-design-system#v0.9.0
+npm i github:AlessioGranella/openeconomics-design-system#v0.9.1
 ```
+
+## [0.9.1] — 2026-10-28
+
+### Changed
+- **Domanda sul brand obbligatoria** (`CLAUDE.md` REGOLA #1, `CASI-D-USO.md`, scheda Casi d'uso):
+  «OpenEconomics o Civiqa?» si chiede sempre, con una domanda a sé dopo il caso d'uso, anche se la
+  richiesta nomina OE o OpenEconomics. Il brand non si deduce mai dal testo.
 
 ## [0.9.0] — 2026-10-28
 

@@ -26,6 +26,10 @@ d'uso). Nessun codice prima che la mappa delle sezioni sia approvata.
 All'inizio di **ogni nuovo progetto/asset**, prima di scegliere gli stili, **chiedere sempre**:
 **«Brand OpenEconomics o brand Civiqa?»**
 
+È una domanda a sé, subito dopo il caso d'uso, e **non si salta mai**: nemmeno se la richiesta
+nomina OE o OpenEconomics («un lavoro per OE» dice per chi si lavora, non quale brand usare). Il
+brand non si deduce dal testo e la domanda non ha un'opzione di default.
+
 I due brand condividono TUTTO (font, spaziatura, griglia, componenti: card, checkbox, input, ecc.). **Cambia solo il colore accento.**
 
 - **OpenEconomics** → nessuna classe extra. Accenti: **Bluette** `#4400B3` + **Lime** `#B9FF69`.
