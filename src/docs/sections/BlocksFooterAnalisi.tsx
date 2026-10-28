@@ -26,7 +26,8 @@ import { Footer } from '@/components'
   <div class="oe-footer__inner">
     <div class="oe-footer__top">
       <div class="oe-footer__brand">
-        <svg class="oe-footer__logo">…</svg>   <!-- wordmark bianco -->
+        <!-- il logo porta sempre al sito OpenEconomics -->
+        <a class="oe-logo-link" href="https://www.openeconomics.eu" target="_blank" rel="noopener"><svg class="oe-footer__logo">…</svg></a>
         <p class="oe-footer__tagline">Enabling adaptation. Empowering impact.
           With platforms, strategy, and trust.</p>
         <address class="oe-footer__hq">

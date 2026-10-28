@@ -20,6 +20,7 @@ import Footers from './sections/Footers'
 import BlocksSite from './sections/BlocksSite'
 import BlocksReport from './sections/BlocksReport'
 import BlocksDashboard from './sections/BlocksDashboard'
+import BlocksNavAnalisi from './sections/BlocksNavAnalisi'
 import BlocksHeroAnalisi from './sections/BlocksHeroAnalisi'
 import BlocksExecutiveSummary from './sections/BlocksExecutiveSummary'
 import BlocksNotaMetodologica from './sections/BlocksNotaMetodologica'
@@ -68,6 +69,7 @@ const nav = [
       { id: 'blocks-site', label: 'Sito & landing' },
       { id: 'blocks-report', label: 'Report & analisi' },
       { id: 'blocks-dashboard', label: 'Dashboard' },
+      { id: 'blocks-nav-analisi', label: 'Navigazione Analisi' },
       { id: 'blocks-hero-analisi', label: 'Hero Analisi' },
       { id: 'blocks-executive-summary', label: 'Executive Summary' },
       { id: 'blocks-nota-metodologica', label: 'Nota metodologica' },
@@ -130,6 +132,7 @@ export default function App() {
           <BlocksSite />
           <BlocksReport />
           <BlocksDashboard />
+          <BlocksNavAnalisi />
           <BlocksHeroAnalisi />
           <BlocksExecutiveSummary />
           <BlocksNotaMetodologica />

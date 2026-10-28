@@ -103,7 +103,10 @@ export default function Footer({
       <div className="oe-footer__inner">
         <div className="oe-footer__top">
           <div className="oe-footer__brand">
-            <Wordmark className="oe-footer__logo" />
+            {/* il logo porta sempre al sito OpenEconomics */}
+            <a className="oe-logo-link" href={websiteUrl} target="_blank" rel="noopener">
+              <Wordmark className="oe-footer__logo" />
+            </a>
             <p className="oe-footer__tagline">{tagline}</p>
             {variant === 'analisi' && hq}
           </div>

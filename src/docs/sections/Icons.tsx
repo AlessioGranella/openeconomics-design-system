@@ -3,7 +3,7 @@ import iconList from '../icons.json'
 const icons = iconList as string[]
 
 // Ultime icone aggiunte: evidenziate in cima alla sezione
-const recentBase = ['programmazione', 'progettazione-documento', 'finanziamento', 'approfondimento']
+const recentBase = ['prezzi-ombra', 'programmazione', 'progettazione-documento', 'finanziamento', 'approfondimento']
 // Ogni icona in 3 declinazioni colore: Bluette 900 + chiaro, Bluette + Lime, Lime + Bluette
 const recent = ['', '-bluette-lime', '-lime'].flatMap((v) => recentBase.map((n) => `${n}${v}.svg`))
 

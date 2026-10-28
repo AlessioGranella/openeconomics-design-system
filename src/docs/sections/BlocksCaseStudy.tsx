@@ -14,9 +14,9 @@ export default function BlocksCaseStudy() {
       <h3>1. Impianto della pagina — la regola che viene prima di tutte</h3>
       <Demo
         title="Fascia full-bleed + contenitore interno"
-        description="Ogni fascia (header, hero, sezione, CTA, footer) porta solo sfondo e padding VERTICALE. Il padding orizzontale e il cap a 1440px stanno sul wrapper interno .oe-container. Così tutti i bordi sinistri cadono sulla stessa colonna."
-        code={`<header class="site">                       <!-- fascia: sfondo + bordo, a tutta larghezza -->
-  <div class="oe-container site__inner"> … </div>   <!-- contenuto: 1440 + 32px -->
+        description="Ogni fascia (navigazione, hero, sezione, CTA, footer) porta solo sfondo e padding VERTICALE. Il padding orizzontale e il cap a 1440px stanno sul wrapper interno .oe-container. Così tutti i bordi sinistri cadono sulla stessa colonna."
+        code={`<header class="oe-nav-analisi">             <!-- fascia: sfondo + bordo, a tutta larghezza -->
+  <div class="oe-container oe-nav-analisi__inner"> … </div>   <!-- contenuto: 1440 + 32px -->
 </header>
 
 <section class="band band--tint">           <!-- fascia: solo padding verticale -->
@@ -68,7 +68,9 @@ export default function BlocksCaseStudy() {
       <Demo
         title="Ordine standard"
         description="Dieci fasce, sempre in quest'ordine. Le sezioni interne alternano bianco e grigio (--oe-bg-elev) per scandire la lettura; scure solo hero e «consegnato»."
-        code={`1.  header          fascia bianca, solo il logo OpenEconomics a sinistra
+        code={`1.  navigazione     UI Block «Navigazione Analisi»: barra bianca (logo OpenEconomics a sinistra,
+                    «Torna agli studi» a destra) + menu grigio agganciato, una voce-ancora
+                    per ogni sezione con il chip lime, stesso testo del chip
 2.  hero            immagine + velo; chip lime, logo cliente, H1, sottotitolo, indicatori
 3.  sintesi KPI     chip «Executive Summary» + .oe-kpi — l'ultimo in variante --dark
 4.  contesto        chip + H2 + testo su due colonne, sotto 2–3 .oe-card affiancate

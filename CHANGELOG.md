@@ -6,8 +6,28 @@ Tutte le modifiche rilevanti al design system. Formato basato su
 Installazione di una versione fissa (consigliata nei progetti):
 
 ```bash
-npm i github:AlessioGranella/openeconomics-design-system#v0.7.1
+npm i github:AlessioGranella/openeconomics-design-system#v0.8.0
 ```
+
+## [0.8.0] — 2026-10-27
+
+### Added
+- **Icona «prezzi-ombra»** nel set (tre declinazioni: Bluette 900 + chiaro, Bluette + Lime, Lime + Bluette), tra le «Aggiunte di recente».
+- **UI Block «Navigazione Analisi»** — testata obbligatoria delle landing di studio e analisi, con
+  la stessa impostazione della barra della home Studies: pannello sospeso, fisso in alto sopra la
+  hero, largo quanto il contenitore. `.oe-nav-analisi`: riquadro bianco uguale in tutte le pagine
+  Studies, con logo OpenEconomics e le label «Metodologia» e «Studi pubblicati» a sinistra
+  (`__links`, nascoste sotto i 900px), cerca e «Accedi» a destra (`__icons`). Niente etichetta
+  «Studies» accanto al logo. `.oe-nav-sezioni`: riquadro grigio attaccato sotto, una voce-ancora per ogni
+  sezione con il chip lime (stesso testo del chip, stesso ordine), allineate al logo; su desktop le
+  voci vanno a capo, sotto i 768px si aprono dall'hamburger (`.oe-nav-sezioni__toggle`, mostra la
+  sezione in vista). Filetto e ombra dopo 24px di scorrimento, come in Studies. Script
+  `src/components/oe-nav-sezioni.js`: voce attiva, ombra, hamburger e misure del pannello (la hero
+  gli lascia spazio, le ancore si fermano sotto). Scheda nella libreria (UI Blocks → Navigazione
+  Analisi). Il check DS verifica barra, menu, corrispondenza voci/chip, ancore, ordine e script.
+- **Logo = link al sito.** Il logo OpenEconomics porta sempre a https://www.openeconomics.eu
+  (nuova classe `.oe-logo-link`, nuova scheda). Il componente `Footer` avvolge il wordmark nel link
+  (`websiteUrl`); il check DS segnala ogni logo senza link.
 
 ## [0.7.1] — 2026-10-23
 
