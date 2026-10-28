@@ -6,8 +6,17 @@ Tutte le modifiche rilevanti al design system. Formato basato su
 Installazione di una versione fissa (consigliata nei progetti):
 
 ```bash
-npm i github:AlessioGranella/openeconomics-design-system#v0.8.0
+npm i github:AlessioGranella/openeconomics-design-system#v0.9.0
 ```
+
+## [0.9.0] — 2026-10-28
+
+### Added
+- **Casi d'uso** (`CASI-D-USO.md` + scheda Inizio → Casi d'uso nella libreria): i sei tipi di asset
+  web (analisi one-page, web report, presentazione a scroll, minisito verticale, dashboard,
+  repository) con obiettivo, materiali, hero e segni particolari di ciascuno, i tratti comuni a
+  tutti e l'ordine delle domande. Nuova **REGOLA #0** in `CLAUDE.md`: prima di tutto si chiede che
+  cosa si deve fare tra questi casi.
 
 ## [0.8.0] — 2026-10-27
 

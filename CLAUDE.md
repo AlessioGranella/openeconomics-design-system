@@ -12,6 +12,15 @@ npm run dev      # libreria su http://localhost:5173
 npm run build    # build di produzione in dist/
 ```
 
+## REGOLA #0 — Che cosa devi fare?
+
+Prima di tutto, anche prima del brand, **chiedere quale caso d'uso serve** tra i sei del design
+system: **analisi one-page · web report (minireport) · presentazione a scroll · minisito verticale ·
+dashboard · repository**, oppure **allineare al brand** una pagina esistente (dal codice sorgente).
+Se la richiesta lo dice già, anche con parole sue, non si richiede. Ogni tipo ha obiettivo, hero e
+segni particolari propri: sono in **[CASI-D-USO.md](CASI-D-USO.md)** (e nella libreria, Inizio → Casi
+d'uso). Nessun codice prima che la mappa delle sezioni sia approvata.
+
 ## REGOLA #1 — Quale brand?
 
 All'inizio di **ogni nuovo progetto/asset**, prima di scegliere gli stili, **chiedere sempre**:

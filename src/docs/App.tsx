@@ -1,4 +1,5 @@
 import GettingStarted from './sections/GettingStarted'
+import UseCases from './sections/UseCases'
 import Colors from './sections/Colors'
 import Typography from './sections/Typography'
 import SpacingLayout from './sections/SpacingLayout'
@@ -30,7 +31,7 @@ import BlocksCaseStudy from './sections/BlocksCaseStudy'
 import Civiqa from './sections/Civiqa'
 
 const nav = [
-  { group: 'Inizio', items: [{ id: 'intro', label: 'Introduzione' }] },
+  { group: 'Inizio', items: [{ id: 'intro', label: 'Introduzione' }, { id: 'casi-uso', label: "Casi d'uso" }] },
   {
     group: 'Foundations',
     items: [
@@ -112,6 +113,7 @@ export default function App() {
       <main className="dx-main">
         <div className="dx-content">
           <GettingStarted />
+          <UseCases />
           <Colors />
           <Typography />
           <SpacingLayout />
